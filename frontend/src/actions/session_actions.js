@@ -24,8 +24,16 @@ export const logoutUser = () => ({
     type: RECEIVE_USER_LOGOUT
 });
 
-export const signup = user => dispatch => (
-    APIUtil.signup(user).then(() => (
+export const signupClinician = user => dispatch => (
+    APIUtil.signupClinician(user).then(() => (
+        dispatch(receiveUserSignIn())
+    ), err => (
+        dispatch(receiveErrors(err.response.data))
+    ))
+);
+
+export const signupPatient = user => dispatch => (
+    APIUtil.signupPatient(user).then(() => (
         dispatch(receiveUserSignIn())
     ), err => (
         dispatch(receiveErrors(err.response.data))

@@ -9,7 +9,8 @@ class SignupForm extends React.Component {
       handle: '',
       password: '',
       password2: '',
-      errors: {}
+      errors: {},
+      isClinician: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -38,8 +39,13 @@ class SignupForm extends React.Component {
       password: this.state.password,
       password2: this.state.password2
     };
+    if (this.state.isClinician) {
+      this.props.signupClinician(user, this.props.history)
+    } else {
+      this.props.signupPatient(user, this.props.history)
+    }
 
-    this.props.signup(user, this.props.history); 
+    // this.props.signup(user, this.props.history); 
   }
 
   renderErrors() {
@@ -83,6 +89,10 @@ class SignupForm extends React.Component {
                 onChange={this.update('password2')}
                 placeholder="Confirm Password"
               />
+            <br/>
+            <label>Are you a Clinician? 
+              <input type="checkbox" onClick={() => this.setState({isClinician: !this.state.isClinician})}/>
+            </label>
             <br/>
             <input type="submit" value="Submit" />
             {this.renderErrors()}

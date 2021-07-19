@@ -1,7 +1,34 @@
+const util = require('util');
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
-const BaseUserSchema = new Schema({
+// const BaseUserSchema = new Schema({
+//     handle: {
+//       type: String,
+//       required: true
+//     },
+//     email: {
+//       type: String,
+//       required: true
+//     },
+//     password: {
+//       type: String,
+//       required: true
+//     },
+//     date: {
+//       type: Date,
+//       default: Date.now
+//     },
+//     isClinician: {
+//       type: Boolean,
+//       default: false
+//     }
+//   })
+
+function BaseUserSchema() {  
+  Schema.apply(this, arguments);  
+
+  this.add({  
     handle: {
       type: String,
       required: true
@@ -22,9 +49,13 @@ const BaseUserSchema = new Schema({
       type: Boolean,
       default: false
     }
-  })
+  });  
+}  
 
-BaseUser = mongoose.model('BaseUser', BaseUserSchema);
+util.inherits(BaseUserSchema, Schema);
+
+
+// BaseUser = mongoose.model('BaseUser', BaseUserSchema);
 
 const UserSchema = new BaseUserSchema();
 UserSchema.virtual('type').get(function () { return this.__t; });  

@@ -1,7 +1,12 @@
-import * as BaseUser from './BaseUser'
+const BaseUser = require('./BaseUser');
+const mongoose = require('mongoose');  
+const Schema = mongoose.Schema;
 
-const ClinitianSchema = new BaseUser.BaseUserSchema({
+let ClinitianSchema = new BaseUser.BaseUserSchema({
     patients: [{ type: Schema.Types.ObjectId, ref: 'Patient' }],
 })
 
-BaseUser.User.discriminator('Clinitian', ClinitianSchema)
+BaseUser.User.discriminator('Clinitian', ClinitianSchema);
+
+const Clinitian = mongoose.model('Clinitian');
+module.exports = Clinitian;

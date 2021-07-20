@@ -7,7 +7,7 @@ const mst = state => ({
 });
 
 const mdt = dispatch => ({
-    requestExercise: exerciseId => dispatch(requestExercise(exerciseId))
+    requestExercise: (userType, exerciseId) => dispatch(requestExercise(userType, exerciseId))
 });
 
 export default connect(mst,mdt)(Exercise);

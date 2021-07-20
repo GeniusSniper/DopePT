@@ -21,4 +21,6 @@ router.get('/:id', (req, res) => {
         res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
 });
 
+//adding post route for clian
+
 module.exports = router;

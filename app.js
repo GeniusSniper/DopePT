@@ -8,7 +8,7 @@ const passport = require('passport');
 // const users = require("./routes/api/users");
 const patients = require('./routes/api/patients');
 const clinicians = require('./routes/api/clinicians');
-const exercises = require('./routes/api/exercises');
+// const exercises = require('./routes/api/exercises');
 
 mongoose
   .connect(db, { useNewUrlParser: true })
@@ -25,7 +25,7 @@ app.use(bodyParser.json());
 
 app.use("/api/patients", patients);
 app.use("/api/clinicians", clinicians);
-app.use('/api/exercises', exercises);
+// app.use('/api/exercises', exercises);
 
 const port = process.env.PORT || 5000;
 app.listen(port, () => console.log(`Server is running on port ${port}`));

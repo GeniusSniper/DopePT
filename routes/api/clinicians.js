@@ -5,6 +5,7 @@ const Clinician = require('../../models/Clinician');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
+const Exercise = require("../../models/Exercise");
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -95,5 +96,18 @@ router.post('/register', (req, res) => {
         })
       })
   })
+
+  router.get('/exercises', (req, res) => {
+    Exercise.find()
+    .then( exercises => res.json(exercises))
+    .catch(err => res.status(404).json({ noexercisesfound: 'No exercises found :('}));
+  });
+
+  router.get('/exercises/:id', (req, res) => {
+      Exercise.findById(req.params.id)
+      .then(exercise => res.json(exercise))
+      .catch(err =>
+          res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
+  });
 
 module.exports = router;

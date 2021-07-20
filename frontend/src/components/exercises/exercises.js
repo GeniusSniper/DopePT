@@ -2,7 +2,7 @@ import React from 'react';
 
 class Exercises extends React.Component{
     componentDidMount(){
-        this.props.requestAllExercises();
+        this.props.requestAllExercises(this.props.match.params.userType);
     }
 
     render(){

@@ -13,10 +13,10 @@ export const receiveExercise = exercise => ({
     exercise
 });
 
-export const requestAllExercises = () => dispatch => (
-    APIUtil.getAllExercises().then( exercises => dispatch(receiveAllExercises(exercises)))
+export const requestAllExercises = (userType) => dispatch => (
+    APIUtil.getAllExercises(userType).then( exercises => dispatch(receiveAllExercises(exercises)))
 );
 
-export const requestExercise = exerciseId => dispatch => (
-    APIUtil.getExercise(exerciseId).then( exercise => dispatch(receiveExercise(exercise)))
+export const requestExercise = (userType, exerciseId) => dispatch => (
+    APIUtil.getExercise(userType, exerciseId).then( exercise => dispatch(receiveExercise(exercise)))
 );

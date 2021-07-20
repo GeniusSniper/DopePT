@@ -99,6 +99,7 @@ router.post('/register', (req, res) => {
 
   //for patients need to grab from itself
   router.get('/exercises', (req, res) => {
+    console.log(req)
     Patient.exercises.find()
       .then( exercises => res.json(exercises))
       .catch(err => 

@@ -5,7 +5,7 @@ const Patient = require('../../models/Patient');
 const jwt = require('jsonwebtoken');
 const keys = require('../../config/keys');
 const passport = require('passport');
-const Exercise = require("../../models/Exercise");
+// const Exercise = require("../../models/Exercise");
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
@@ -97,18 +97,19 @@ router.post('/register', (req, res) => {
       })
   })
 
-  //for patients need to grab from himself
+  //for patients need to grab from itself
   router.get('/exercises', (req, res) => {
-    Exercise.find()
-    .then( exercises => res.json(exercises))
-    .catch(err => res.status(404).json({ noexercisesfound: 'No exercises found :('}));
+    Patient.exercises.find()
+      .then( exercises => res.json(exercises))
+      .catch(err => 
+        res.status(404).json({ noexercisesfound: 'No exercises found :('}));
   });
 
   router.get('/exercises/:id', (req, res) => {
-      Exercise.findById(req.params.id)
+    Patient.exercises.findById(req.params.id)
       .then(exercise => res.json(exercise))
       .catch(err =>
-          res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
+        res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
   });
 
 module.exports = router;

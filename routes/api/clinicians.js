@@ -110,4 +110,28 @@ router.post('/register', (req, res) => {
           res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
   });
 
+  router.post('/exercises/new', (req, res) => {
+    const { errors, isValid } = validateRegisterInput(req.body);
+
+    if (!isValid) {
+      return res.status(400).json(errors);
+    }
+
+      Exercise.findOne({ title: req.body.title })
+        .then( exercise => {
+          if(exercise) {
+            return res.status(400).json({ title: 'The title has already exists' });
+          }
+
+          const newExercise = new Exercise({
+            title: req.body.title,
+            desription: req.body.desription
+          })
+
+          newExercise.save()
+            .then(exercise => res.json(exercise))
+            .catch(err => console.log(err))
+        })
+  })
+
 module.exports = router;

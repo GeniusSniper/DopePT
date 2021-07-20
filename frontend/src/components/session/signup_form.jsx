@@ -2,25 +2,23 @@ import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../styles/home.css'
 
-class LoginForm extends React.Component {
+class SignupForm extends React.Component {
   constructor(props) {
     super(props);
-
     this.state = {
       email: '',
+      handle: '',
       password: '',
-      errors: {}
+      password2: '',
+      errors: {},
+      isClinician: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.renderErrors = this.renderErrors.bind(this);
+    this.clearedErrors = false;
   }
 
   componentWillReceiveProps(nextProps) {
-    if (nextProps.currentUser === true) {
-      this.props.history.push('/tweets');
-    }
-
     this.setState({errors: nextProps.errors})
   }
 
@@ -32,19 +30,19 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
+    let user = {
+      email: this.state.email,
+      handle: this.state.handle,
+      password: this.state.password,
+      password2: this.state.password2
+    };
     if (this.state.isClinician) {
-      let user = {
-        email: this.state.email,
-        password: this.state.password
-      };
-      this.props.loginClinician(user); 
+      this.props.signupClinician(user, this.props.history)
     } else {
-      let user = {
-        email: this.state.email,
-        password: this.state.password
-      };
-      this.props.loginPatient(user); 
+      this.props.signupPatient(user, this.props.history)
     }
+
+    // this.props.signup(user, this.props.history); 
   }
 
   renderErrors() {
@@ -63,30 +61,55 @@ class LoginForm extends React.Component {
     return (
       <div className="login-form-container">
         <form onSubmit={this.handleSubmit}>
-          <div className='login-form'>
+          <div className="login-form">
             <br/>
-              <label>Email</label>
-              <br/>
+              <label>Email
+                <br/>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
-                placeholder="Email"
+                placeholder="example@email.com"
               />
+              </label>
             <br/>
-              <label>Password</label>
+            <label>Handle
+              <br/>
+              <input type="text"
+                value={this.state.handle}
+                onChange={this.update('handle')}
+                placeholder="Johnny"
+              />
+              </label>
+            <br/>
+            <label>Password
               <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
+              </label>
+            <br/>
+            <label>Confirm Password
+              <br/>
+              <input type="password"
+                value={this.state.password2}
+                onChange={this.update('password2')}
+                placeholder="Confirm Password"
+              />
+              </label>
+            <br/>
+            <label>Are you a Clinician? 
+              <br/>
+              <input type="checkbox" onClick={() => this.setState({isClinician: !this.state.isClinician})}/>
+            </label>
             <br/>
             <div className='submit-button-container'>
               <input className='submit-button' type="submit" value="Submit" />
             </div>
             <div className='already-have-account'>
-              <p>Don't have an account?</p>
-              <Link className='link-button' to='/Signup'>Signup</Link>
+              <p>Already have an account?</p>
+              <Link className='link-button' to='/login'>Login</Link>
             </div>
             {this.renderErrors()}
           </div>
@@ -96,4 +119,4 @@ class LoginForm extends React.Component {
   }
 }
 
-export default withRouter(LoginForm);
+export default withRouter(SignupForm);

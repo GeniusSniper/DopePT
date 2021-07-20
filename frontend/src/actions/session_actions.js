@@ -25,23 +25,7 @@ export const logoutUser = () => ({
 });
 
 export const signupClinician = user => dispatch => (
-    APIUtil.signupClinician(user).then(() => (
-        dispatch(receiveUserSignIn())
-    ), err => (
-        dispatch(receiveErrors(err.response.data))
-    ))
-);
-
-export const signupPatient = user => dispatch => (
-    APIUtil.signupPatient(user).then(() => (
-        dispatch(receiveUserSignIn())
-    ), err => (
-        dispatch(receiveErrors(err.response.data))
-    ))
-);
-
-export const loginClinician = user => dispatch => (
-    APIUtil.loginClinician(user).then(res => {
+    APIUtil.signupClinician(user).then(res => {
         const { token } = res.data;
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);
@@ -51,10 +35,36 @@ export const loginClinician = user => dispatch => (
     .catch(err => {
         dispatch(receiveErrors(err.response.data));
     })
+);
+
+export const signupPatient = user => dispatch => (
+    APIUtil.signupPatient(user).then(res => {
+        debugger
+        const { token } = res.data;
+        localStorage.setItem('jwtToken', token);
+        APIUtil.setAuthToken(token);
+        const decoded = jwt_decode(token);
+        dispatch(receiveCurrentUser(decoded))
+    }, err => {
+        dispatch(receiveErrors(err.response.data));
+    })
+);
+
+export const loginClinician = user => dispatch => (
+    APIUtil.loginClinician(user).then(res => {
+        const { token } = res.data;
+        localStorage.setItem('jwtToken', token);
+        APIUtil.setAuthToken(token);
+        const decoded = jwt_decode(token);
+        dispatch(receiveCurrentUser(decoded))
+    }, err => {
+        dispatch(receiveErrors(err.response.data));
+    })
 )
 
 export const loginPatient = user => dispatch => (
     APIUtil.loginPatient(user).then(res => {
+        debugger
         const { token } = res.data;
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);

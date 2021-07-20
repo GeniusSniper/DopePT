@@ -20,19 +20,13 @@ class NavBar extends React.Component {
                 <button onClick={this.logoutUser}>Logout</button>
             </div>
         );
-      } else {
-        return (
-            <div>
-                <Link to={'/signup'}>Signup</Link>
-                <Link to={'/login'}>Login</Link>
-            </div>
-        );
-      }
+      } 
   }
 
   render() {
       return (
         <div>
+            <h1>DOPE PT</h1>
             { this.getLinks() }
         </div>
       );

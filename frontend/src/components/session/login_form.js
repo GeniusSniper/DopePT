@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import '../../styles/home.css'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -54,23 +55,33 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="login-form-container">
         <form onSubmit={this.handleSubmit}>
-          <div>
+          <div className='login-form'>
             <br/>
+              <label>Email</label>
+              <br/>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
             <br/>
+              <label>Password</label>
+              <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
             <br/>
-            <input type="submit" value="Submit" />
+            <div className='submit-button-container'>
+              <input className='submit-button' type="submit" value="Submit" />
+            </div>
+            <div className='already-have-account'>
+              <p>Don't have an account?</p>
+              <Link className='link-button' to='/Signup'>Signup</Link>
+            </div>
             {this.renderErrors()}
           </div>
         </form>

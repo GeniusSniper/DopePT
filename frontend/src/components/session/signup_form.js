@@ -1,5 +1,6 @@
 import React from 'react';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
+import '../../styles/home.css'
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -66,35 +67,54 @@ class SignupForm extends React.Component {
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
             <br/>
+              <label>Email
+                <br/>
               <input type="text"
                 value={this.state.email}
                 onChange={this.update('email')}
                 placeholder="Email"
               />
+              </label>
             <br/>
+            <label>Handle
+              <br/>
               <input type="text"
                 value={this.state.handle}
                 onChange={this.update('handle')}
                 placeholder="Handle"
               />
+              </label>
             <br/>
+            <label>Password
+              <br/>
               <input type="password"
                 value={this.state.password}
                 onChange={this.update('password')}
                 placeholder="Password"
               />
+              </label>
             <br/>
+            <label>Password
+              <br/>
               <input type="password"
                 value={this.state.password2}
                 onChange={this.update('password2')}
                 placeholder="Confirm Password"
               />
+              </label>
             <br/>
             <label>Are you a Clinician? 
+              <br/>
               <input type="checkbox" onClick={() => this.setState({isClinician: !this.state.isClinician})}/>
             </label>
             <br/>
-            <input type="submit" value="Submit" />
+            <div className='submit-button-container'>
+              <input className='submit-button' type="submit" value="Submit" />
+            </div>
+            <div className='already-have-account'>
+              <p>Already have an account?</p>
+              <Link className='link-button' to='/login'>Login</Link>
+            </div>
             {this.renderErrors()}
           </div>
         </form>

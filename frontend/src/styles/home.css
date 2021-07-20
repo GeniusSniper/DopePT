@@ -3,6 +3,7 @@
 input {
     width: 20em;
     height: 2em;
+    border-radius: 10px;
 }
 
 label {
@@ -12,12 +13,14 @@ label {
 .login-form-container {
     display: flex;
     justify-content: center;
-    margin-top: 15%;
+    margin-top: 5%;
+    color: white;
 }
 
 .login-form {
     border: solid black 1px;
     padding: 1em;
+    background-color: teal;
 }
 
 .submit-button-container {
@@ -29,12 +32,13 @@ label {
 .submit-button {
     border-radius: 25px;
     width: 5em;
-    background-color: transparent;
+    background-color: black;
     border: 1px solid black;
+    color: white;
 }
 
 .submit-button:hover {
-    background-color: teal;
+    background-color: goldenrod;
     cursor: pointer;
 }
 
@@ -52,8 +56,12 @@ label {
     border: solid black 1px;
     border-radius: 25px;
     width: 5em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    background-color: black;
+    color: white;
 }
 
 .link-button:hover {
-    background-color: teal;
+    background-color: goldenrod;
 }

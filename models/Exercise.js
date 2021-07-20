@@ -13,10 +13,12 @@ const ExerciseSchema = new Schema({
     urls: {
         type: Array,
         default: []
-    }
+    },
+    // patient: {type: mongoose.Schema.Types.ObjectId, ref: 'Patient'},
     }, {
         timestamps: true
     }
 )
 
-module.exports = Exercise = mongoose.model('Exercise', ExerciseSchema);
+const Exercise = mongoose.model('Exercise', ExerciseSchema);
+module.exports = Exercise;

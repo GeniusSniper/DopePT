@@ -16,7 +16,10 @@ export const signupPatient = (userData) => {
   return axios.post('/api/patients/register', userData);
 };
 
-export const login = (userData) => {
-  return axios.post('/api/users/login', userData);
+export const loginClinician = (userData) => {
+  return axios.post('/api/clinicians/login', userData);
 };
 
+export const loginPatient = (userData) => {
+  return axios.post('/api/patients/login', userData);
+};

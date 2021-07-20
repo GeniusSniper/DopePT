@@ -32,13 +32,19 @@ class LoginForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault();
-
-    let user = {
-      email: this.state.email,
-      password: this.state.password
-    };
-
-    this.props.login(user); 
+    if (this.state.isClinician) {
+      let user = {
+        email: this.state.email,
+        password: this.state.password
+      };
+      this.props.loginClinician(user); 
+    } else {
+      let user = {
+        email: this.state.email,
+        password: this.state.password
+      };
+      this.props.loginPatient(user); 
+    }
   }
 
   renderErrors() {

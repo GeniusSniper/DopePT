@@ -125,6 +125,7 @@ router.post('/register', (req, res) => {
   })
 
   //for patients need to grab from itself
+  //
   router.get('/:userId/exercises', (req, res) => {
     Patient.findById(req.params.userId).then( some => {
       return res.json(some.exercise)

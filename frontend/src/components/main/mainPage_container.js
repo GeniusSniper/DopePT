@@ -2,7 +2,8 @@ import { connect } from 'react-redux';
 import MainPage from './main_page';
 
 const mapStateToProps = state => {
-    let isDoctor = state.session.isClinician || state.session.user.isClinician;
+    
+    let isDoctor = state.session.isClinician || (state.session.user && state.session.user.isClinician);
     let userType = isDoctor ? 'clinicians' : 'patients';
     return ({
         userType

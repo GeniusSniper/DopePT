@@ -8,6 +8,6 @@ export const getExercise = (userType, userId, exerciseId) => (
     axios.get(`/api/${userType}/${userId}/exercises/${exerciseId}`) 
 );
 
-export const createExercise = (exerciseData) => ( 
-    axios.post(`/api/clinicians/exercises/new`, exerciseData) 
+export const createExercise = (userId, exerciseData) => ( 
+    axios.post(`/api/clinicians/${userId}/exercises/new`, exerciseData) 
 );

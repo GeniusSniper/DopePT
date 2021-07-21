@@ -1,9 +1,9 @@
 import { connect } from 'react-redux';
-import { requestAllExercises } from '../../actions/exercise_actions';
+import { createExercise, requestAllExercises } from '../../actions/exercise_actions';
 import Exercises from './exercises';
 
 const mst = (state, props) => {
-    let userId = state.session.currentUserId || state.session.user.id
+    let userId = state.session.currentUserId 
     return ({
     currentUserId: userId,
     allExercises: Object.values(state.exercises),
@@ -12,6 +12,7 @@ const mst = (state, props) => {
 
 const mdt = dispatch => ({
     requestAllExercises: (userType, userId) => dispatch(requestAllExercises(userType, userId)),
+    createExercise: (userId, exercirse) => dispatch(createExercise(userId, exercirse)),
 });
 
 export default connect(mst,mdt)(Exercises);

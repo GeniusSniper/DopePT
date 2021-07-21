@@ -1,14 +1,14 @@
 import React from 'react';
 
 class Exercise extends React.Component{
-    componentDidMount(){
-        let props = this.props;
-        props.requestExercise(
-            props.match.params.userType, 
-            props.currentUserId,
-            props.match.params.exerciseId
-        );
-    }
+    // componentDidMount(){
+        // let props = this.props;
+        // props.requestExercise(
+        //     props.match.params.userType, 
+        //     props.currentUserId,
+        //     props.match.params.exerciseId
+        // );
+    // }
 
     render(){
         const exercise = this.props.exercise;

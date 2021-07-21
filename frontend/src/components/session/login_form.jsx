@@ -48,7 +48,7 @@ class LoginForm extends React.Component {
   }
 
   handleDemoUser(e) {
-    debugger
+    
     e.preventDefault();
     let patient = {
       handle: 'Demo Patient',

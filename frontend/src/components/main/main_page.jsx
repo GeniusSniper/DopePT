@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import ExercisesContainer from '../exercises/exercises_container';
 
 class MainPage extends React.Component {
@@ -13,7 +13,7 @@ class MainPage extends React.Component {
               <ExercisesContainer userType={this.props.userType}/>
             </div>
             <div>
-              
+
             </div>
           </div>
         <footer>

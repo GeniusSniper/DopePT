@@ -12,7 +12,11 @@ const clinicians = require('./routes/api/clinicians');
 // const exercises = require('./routes/api/exercises');
 
 mongoose
-  .connect(db, { useNewUrlParser: true })
+  .connect(db, { 
+    useNewUrlParser: true, 
+    reconnectTries: Number.MAX_VALUE,
+    reconnectInterval: 1000
+  })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 

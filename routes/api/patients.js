@@ -47,7 +47,26 @@ router.post('/register', (req, res) => {
               if (err) throw err;
               newPatient.password = hash;
               newPatient.save()
-                .then(patient => res.json(patient))
+                .then(payload => {
+                  jwt.sign(
+                    {id: payload.id},
+                    keys.secretOrKey,
+                    // Tell the key to expire in one hour
+                    {expiresIn: 3600},
+                    (err, token) => {
+                    res.json({
+                        user: {
+                          id: payload.id,
+                          handle: payload.handle,
+                          email: payload.email
+                        },
+                        success: true,
+                        token: 'Bearer ' + token
+                    });
+                  });
+                  // res.json(patient)
+                  
+                })
                 .catch(err => console.log(err));
             })
           })
@@ -77,7 +96,7 @@ router.post('/register', (req, res) => {
         bcrypt.compare(password, patient.password)
         .then(isMatch => {
             if (isMatch) {
-            const payload = {id: patient.id, name: patient.name};
+            const payload = {id: patient.id, handle: patient.handle, email: patient.email};
 
             jwt.sign(
                 payload,
@@ -86,6 +105,7 @@ router.post('/register', (req, res) => {
                 {expiresIn: 3600},
                 (err, token) => {
                 res.json({
+                    user: payload,
                     success: true,
                     token: 'Bearer ' + token
                 });
@@ -98,23 +118,26 @@ router.post('/register', (req, res) => {
   })
 
   //for patients need to grab from itself
-  router.get('/exercises', (req, res) => {
-    // console.log(Patient.findById('60f77337efef72367fa5965e'))
-    Patient.findById('60f77337efef72367fa5965e').then( some => {
-      console.log(some)
+  router.get('/:userId/exercises', (req, res) => {
+    Patient.findById(req.params.userId).then( some => {
       return res.json(some.exercise)
     })
-    // Patient.exercises.find()
-    //   .then( exercises => res.json(exercises))
-    //   .catch(err => 
-    //     res.status(404).json({ noexercisesfound: 'No exercises found :('}));
+    .catch(err => 
+      res.status(404).json({ noexercisesfound: 'No exercises found :('}));
   });
 
-  router.get('/exercises/:id', (req, res) => {
-    Patient.exercises.findById(req.params.id)
-      .then(exercise => res.json(exercise))
-      .catch(err =>
-        res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
+  //probably need to look at this one again
+  router.get('/:userId/exercises/:id', (req, res) => {
+    Patient.findById(req.params.userId).exercise.findById(req.params.id).then( some => {
+      return res.json(some)
+    })
+    .catch(err => 
+      res.status(404).json({ noexercisesfound: 'No exercises found :('}));
+
+    // Patient.exercises.findById(req.params.id)
+    //   .then(exercise => res.json(exercise))
+    //   .catch(err =>
+    //     res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
   });
 
 module.exports = router;

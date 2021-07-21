@@ -4,11 +4,12 @@ import Exercise from './exercise';
 
 const mst = (state, props) => {
     return ({
+    currentUserId: state.session.user.id,
     exercise: state.exercises[props.match.params.exerciseId]
 })};
 
 const mdt = dispatch => ({
-    requestExercise: (userType, exerciseId) => dispatch(requestExercise(userType, exerciseId))
+    requestExercise: (userType, userId, exerciseId) => dispatch(requestExercise(userType, userId, exerciseId))
 });
 
 export default connect(mst,mdt)(Exercise);

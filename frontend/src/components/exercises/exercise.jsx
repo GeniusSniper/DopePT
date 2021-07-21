@@ -5,6 +5,7 @@ class Exercise extends React.Component{
         let props = this.props;
         props.requestExercise(
             props.match.params.userType, 
+            props.currentUserId,
             props.match.params.exerciseId
         );
     }

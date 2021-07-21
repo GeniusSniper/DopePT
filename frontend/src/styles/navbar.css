@@ -1,0 +1,19 @@
+.navbar-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: teal;
+    color: white;
+    justify-content: space-evenly;
+}
+
+.logout-button {
+    background-color: transparent;
+    color: white;
+    border: none;
+}
+
+.logout-button:hover {
+    color: goldenrod;
+    cursor: pointer;
+}

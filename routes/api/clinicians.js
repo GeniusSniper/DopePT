@@ -48,8 +48,26 @@ router.post('/register', (req, res) => {
               if (err) throw err;
               newclinician.password = hash;
               newclinician.save()
-                .then(clinician => res.json(clinician))
-                .catch(err => console.log(err));
+              .then(payload => {
+                jwt.sign(
+                  {id: payload.id},
+                  keys.secretOrKey,
+                  // Tell the key to expire in one hour
+                  {expiresIn: 3600},
+                  (err, token) => {
+                  res.json({
+                      user: {
+                        id: payload.id,
+                        handle: payload.handle,
+                        email: payload.email,
+                        isClinician: true,
+                      },
+                      success: true,
+                      token: 'Bearer ' + token
+                  });
+                })
+              })
+              .catch(err => console.log(err));
             })
           })
         }
@@ -77,16 +95,26 @@ router.post('/register', (req, res) => {
   
         bcrypt.compare(password, clinician.password)
         .then(isMatch => {
-            if (isMatch) {
-            const payload = {id: clinician.id, name: clinician.name};
+          if (isMatch) {
+            const payload = {
+              id: clinician.id, 
+              handle: clinician.handle,
+              email: clinician.email
+            };
 
             jwt.sign(
-                payload,
+                {id: payload.id},
                 keys.secretOrKey,
                 // Tell the key to expire in one hour
                 {expiresIn: 3600},
                 (err, token) => {
                 res.json({
+                  user: {
+                    id: payload.id,
+                    handle: payload.handle,
+                    email: payload.email,
+                    isClinician: true,
+                  },
                     success: true,
                     token: 'Bearer ' + token
                 });
@@ -99,20 +127,21 @@ router.post('/register', (req, res) => {
   })
 
   //adding clinicianId to the routes
-  router.get('/exercises', (req, res) => {
+  router.get('/:userId/exercises', (req, res) => {
+    //probably need to add to check if the id matches doctor
     Exercise.find()
     .then( exercises => res.json(exercises))
     .catch(err => res.status(404).json({ noexercisesfound: 'No exercises found :('}));
   });
 
-  router.get('/exercises/:id', (req, res) => {
+  router.get('/:userId/exercises/:id', (req, res) => {
       Exercise.findById(req.params.id)
       .then(exercise => res.json(exercise))
       .catch(err =>
           res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
   });
 
-  router.post('/exercises/new', (req, res) => {
+  router.post('/:userId/exercises/new', (req, res) => {
     const { errors, isValid } = validateExerciseInput(req.body);
 
     if (!isValid) {

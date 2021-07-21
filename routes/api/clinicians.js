@@ -69,7 +69,7 @@ router.post('/register', (req, res) => {
             })
           })
         }
-      })
+      }, err => console.log(err));
   })
 
 

@@ -109,6 +109,19 @@ class LoginForm extends React.Component {
       )
   }
 
+  demoLoginButton() {
+    return(
+      <button className='demo-button' 
+        onClick={this.handleDemoUser}>
+          Demo 
+          {this.title().props.children[1] === 'Login for Clincians' ?
+           ' Clinician ' : 
+           ' Patient '} 
+           Login
+        </button>
+    )
+  }
+
   render() {
     return (
       <div className="login-form-container">
@@ -134,7 +147,7 @@ class LoginForm extends React.Component {
             <br/>
             <div className='submit-button-container'>
               <input className='submit-button' type="submit" value="Submit" />
-              <button className='demo-button' onClick={this.handleDemoUser}>Demo Login</button>
+              {this.demoLoginButton()}
             </div>
             {this.renderErrors()}
         </form>

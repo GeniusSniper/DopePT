@@ -24,7 +24,6 @@ export const signupClinician = user => dispatch => (
         const { token, user } = res.data;
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);
-        debugger
         dispatch(receiveCurrentUser(user))
     }, err => {
         dispatch(receiveErrors(err.response.data));
@@ -59,8 +58,7 @@ export const loginPatient = user => dispatch => (
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);
         dispatch(receiveCurrentUser(user))
-    })
-    .catch(err => {
+    }, err => {
         dispatch(receiveErrors(err.response.data));
     })
 )

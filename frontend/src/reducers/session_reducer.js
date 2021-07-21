@@ -4,22 +4,22 @@ import { RECEIVE_CURRENT_USER,
 
 const initialState = {
   isAuthenticated: false,
-  currentUserId: undefined
+  currentUserId: undefined,
+  isClinician: false
 };
 
 export default function(state = initialState, action) {
   switch (action.type) {
     case RECEIVE_CURRENT_USER:
       return {
-        ...state,
+        ...state, 
         isAuthenticated: !!action.user,
-        currentUserId: action.user.id
+        currentUserId: action.user.id,
+        isClinician: action.user.isClinician,
+        currentUser: action.user
       };
     case RECEIVE_USER_LOGOUT:
-      return {
-        isAuthenticated: false,
-        currentUserId: undefined
-      };
+      return initialState;
     default:
       return state;
   }

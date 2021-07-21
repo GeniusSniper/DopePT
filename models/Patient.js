@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 
 let PatientSchema = new BaseUser.BaseUserSchema({
     clinician: { type: Schema.Types.ObjectId, ref: 'Clinician' },
-    // exercises: [{ type: Schema.Types.ObjectId, ref: 'Exercise'}],
+    exercises: [{ type: Schema.Types.ObjectId, ref: 'Exercise'}],
 })
 
 BaseUser.User.discriminator('Patient', PatientSchema);

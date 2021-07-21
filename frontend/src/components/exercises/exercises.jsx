@@ -4,7 +4,7 @@ class Exercises extends React.Component{
     componentDidMount(){
         let props = this.props;
         props.requestAllExercises(
-            props.match.params.userType,
+            props.userType,
             props.currentUserId
         );
     }

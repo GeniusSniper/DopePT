@@ -51,8 +51,12 @@ router.post('/register', (req, res) => {
               newclinician.password = hash;
               newclinician.save()
               .then(payload => {
-                jwt.sign(
-                  {id: payload.id},
+                jwt.sign({
+                  id: payload.id,
+                 handle: payload.handle,
+                 isClinician: true,
+                 email: payload.email
+                },
                   keys.secretOrKey,
                   // Tell the key to expire in one hour
                   {expiresIn: 3600},
@@ -106,7 +110,7 @@ router.post('/register', (req, res) => {
             };
 
             jwt.sign(
-                {id: payload.id},
+                payload,
                 keys.secretOrKey,
                 // Tell the key to expire in one hour
                 {expiresIn: 3600},

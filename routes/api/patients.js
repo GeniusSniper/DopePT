@@ -58,7 +58,8 @@ router.post('/register', (req, res) => {
                         user: {
                           id: payload.id,
                           handle: payload.handle,
-                          email: payload.email
+                          email: payload.email,
+                          isClinician: false
                         },
                         success: true,
                         token: 'Bearer ' + token

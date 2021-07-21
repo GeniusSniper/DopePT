@@ -14,7 +14,7 @@ const ExerciseSchema = new Schema({
         type: Array,
         default: []
     },
-    // patient: {type: mongoose.Schema.Types.ObjectId, ref: 'Patient'},
+    patient: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient' },
     }, {
         timestamps: true
     }

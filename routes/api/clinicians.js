@@ -17,7 +17,8 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
     res.json({
       id: req.clinician.id,
       handle: req.clinician.handle,
-      email: req.clinician.email
+      email: req.clinician.email,
+      isClinician: true,
     });
   })
 
@@ -39,7 +40,8 @@ router.post('/register', (req, res) => {
           const newclinician = new Clinician({
             handle: req.body.handle,
             email: req.body.email,
-            password: req.body.password
+            password: req.body.password,
+            isClinician: true,
           })
 
           bcrypt.genSalt(10, (err, salt) => {
@@ -99,7 +101,8 @@ router.post('/register', (req, res) => {
             const payload = {
               id: clinician.id, 
               handle: clinician.handle,
-              email: clinician.email
+              email: clinician.email,
+              isClinician: true,
             };
 
             jwt.sign(

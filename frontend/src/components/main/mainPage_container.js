@@ -2,10 +2,10 @@ import { connect } from 'react-redux';
 import MainPage from './main_page';
 
 const mapStateToProps = state => {
-    debugger
-    let userType = state.session;
+    let isDoctor = state.session.isClinician || state.session.user.isClinician;
+    let userType = isDoctor ? 'clinicians' : 'patients';
     return ({
-
+        userType
 })};
 
 const mdt = dispatch => ({

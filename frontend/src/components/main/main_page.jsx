@@ -7,7 +7,7 @@ class MainPage extends React.Component {
     return (
       <div>
         <h1>Main</h1>
-        {/* <Link >My Exercises</Link> */}
+        <Link to={`${this.props.userType}/exercises`}>My Exercises</Link>
         <footer>
         </footer>
       </div>

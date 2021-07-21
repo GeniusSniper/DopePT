@@ -10,6 +10,9 @@ const ExerciseSchema = new Schema({
         type: String, 
         required: true
     },
+    instructions:{
+        type: String
+    },
     urls: {
         type: Array,
         default: []

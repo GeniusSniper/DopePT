@@ -25,37 +25,24 @@ const data = [
         'documents': [{
                 'title': 'title1',
                 'description': 'something',
+                'instructions': '',
+                'urls': [],
             },{
-                'title': 'title2',
+                'title': 'title1',
                 'description': 'something',
+                'instructions': '',
+                'urls': [],
             },{
-                'title': 'title3',
+                'title': 'title1',
                 'description': 'something',
+                'instructions': '',
+                'urls': [],
             },{
-                'title': 'title4',
+                'title': 'title1',
                 'description': 'something',
-            },{
-                'title': 'title5',
-                'description': 'something',
-            },{
-                'title': 'title6',
-                'description': 'something',
-            },{
-                'title': 'title7',
-                'description': 'something',
-            },{
-                'title': 'title8',
-                'description': 'something',
-            },{
-                'title': 'title9',
-                'description': 'something',
-            },{
-                'title': 'title10',
-                'description': 'something',
-            },{
-                'title': 'title11',
-                'description': 'something',
-        }]
+                'instructions': '',
+                'urls': [],
+            },]
     },{
         'model': 'Clinician',
         'documents': [{

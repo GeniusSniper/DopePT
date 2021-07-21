@@ -11,7 +11,7 @@ seeder.connect(keys.mongoURI,() => {
             Clinician.find().then( async (cli) => {
                 pat.forEach( pa => cli[1].patients.push(pa));
                 exer.forEach( exe => pat[1].exercises.push(exe));
-                cli[1].patients.push(pat[1]);
+                pat[1].clinician.push(cli[1]);
                 // console.log('execrise: ' + exer)
                 // console.log('patient: ' + pat[1])
                 // console.log('clinician: ' + cli[1])

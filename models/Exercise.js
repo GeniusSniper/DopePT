@@ -6,7 +6,7 @@ const ExerciseSchema = new Schema({
         type: String, 
         required: true
     },
-    desription: {
+    description: {
         type: String, 
         required: true
     },

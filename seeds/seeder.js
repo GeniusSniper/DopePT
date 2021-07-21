@@ -23,37 +23,37 @@ const data = [
         'model': 'Exercise',
         'documents': [{
                 'title': 'title1',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title2',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title3',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title4',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title5',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title6',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title7',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title8',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title9',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title10',
-                'desription': 'something',
+                'description': 'something',
             },{
                 'title': 'title11',
-                'desription': 'something',
+                'description': 'something',
         }]
     },{
         'model': 'Clinician',

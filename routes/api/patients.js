@@ -99,11 +99,15 @@ router.post('/register', (req, res) => {
 
   //for patients need to grab from itself
   router.get('/exercises', (req, res) => {
-    console.log(req)
-    Patient.exercises.find()
-      .then( exercises => res.json(exercises))
-      .catch(err => 
-        res.status(404).json({ noexercisesfound: 'No exercises found :('}));
+    // console.log(Patient.findById('60f77337efef72367fa5965e'))
+    Patient.findById('60f77337efef72367fa5965e').then( some => {
+      console.log(some)
+      return res.json(some.exercise)
+    })
+    // Patient.exercises.find()
+    //   .then( exercises => res.json(exercises))
+    //   .catch(err => 
+    //     res.status(404).json({ noexercisesfound: 'No exercises found :('}));
   });
 
   router.get('/exercises/:id', (req, res) => {

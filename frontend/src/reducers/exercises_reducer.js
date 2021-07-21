@@ -10,7 +10,7 @@ import {
       case RECEIVEALLEXERCISES:
         return action.exercises;
       case RECEIVEEXERCISE:
-        return Object.assign({}, state, {[action.exercise.id]: action.exercise});
+        return Object.assign({}, state, {[action.exercise._id]: action.exercise});
       default:
         return state;
     }

@@ -98,6 +98,7 @@ router.post('/register', (req, res) => {
       })
   })
 
+  //adding clinicianId to the routes
   router.get('/exercises', (req, res) => {
     Exercise.find()
     .then( exercises => res.json(exercises))

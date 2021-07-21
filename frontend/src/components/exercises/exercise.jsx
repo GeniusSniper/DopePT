@@ -10,10 +10,12 @@ class Exercise extends React.Component{
     }
 
     render(){
-        
+        const exercise = this.props.exercise;
+        if(!exercise) return null;
         return (
             <div>
-                <h1>Hi</h1>
+                <div>{exercise.title}</div>
+                <div>{exercise.description}</div>
             </div>
         )
     }

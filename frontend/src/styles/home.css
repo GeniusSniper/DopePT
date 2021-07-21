@@ -4,6 +4,7 @@ input {
     width: 20em;
     height: 2em;
     border-radius: 10px;
+    outline: none;
 }
 
 label {
@@ -60,8 +61,30 @@ label {
     padding-bottom: 0.3em;
     background-color: black;
     color: white;
+    white-space: nowrap;
 }
 
 .link-button:hover {
     background-color: goldenrod;
+}
+
+.form-swap-button {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    border: solid black 1px;
+    border-radius: 25px;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    background-color: black;
+    color: white;
+    white-space: nowrap;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.form-swap-button:hover{
+    background-color: goldenrod;
+    cursor: pointer;
 }

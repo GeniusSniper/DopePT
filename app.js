@@ -21,7 +21,6 @@ require('./config/passport')(passport);
 
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
-debugger
 
 app.use("/api/patients", patients);
 app.use("/api/clinicians", clinicians);

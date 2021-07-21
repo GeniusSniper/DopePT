@@ -46,8 +46,26 @@ router.post('/register', (req, res) => {
               if (err) throw err;
               newclinician.password = hash;
               newclinician.save()
-                .then(clinician => res.json(clinician))
-                .catch(err => console.log(err));
+              .then(payload => {
+                jwt.sign(
+                  {id: payload.id},
+                  keys.secretOrKey,
+                  // Tell the key to expire in one hour
+                  {expiresIn: 3600},
+                  (err, token) => {
+                  res.json({
+                      user: {
+                        id: payload.id,
+                        handle: payload.handle,
+                        email: payload.email,
+                        isClinician: true,
+                      },
+                      success: true,
+                      token: 'Bearer ' + token
+                  });
+                })
+              })
+              .catch(err => console.log(err));
             })
           })
         }
@@ -75,16 +93,26 @@ router.post('/register', (req, res) => {
   
         bcrypt.compare(password, clinician.password)
         .then(isMatch => {
-            if (isMatch) {
-            const payload = {id: clinician.id, name: clinician.name};
+          if (isMatch) {
+            const payload = {
+              id: clinician.id, 
+              handle: clinician.handle,
+              email: clinician.email
+            };
 
             jwt.sign(
-                payload,
+                {id: payload.id},
                 keys.secretOrKey,
                 // Tell the key to expire in one hour
                 {expiresIn: 3600},
                 (err, token) => {
                 res.json({
+                  user: {
+                    id: payload.id,
+                    handle: payload.handle,
+                    email: payload.email,
+                    isClinician: true,
+                  },
                     success: true,
                     token: 'Bearer ' + token
                 });

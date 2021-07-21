@@ -60,7 +60,7 @@ class LoginForm extends React.Component {
 
   title() {
     return (
-      <h3> {
+      <h3 className='login-text'> {
         this.state.isClinician ? 
           'Login for Clincians' :
           'Login for Patients'
@@ -112,7 +112,9 @@ class LoginForm extends React.Component {
             </div>
             {this.renderErrors()}
         </form>
-        {this.formSwap()}
+        <div className='form-swap-button'>
+          {this.formSwap()}
+        </div>
         <div className='already-have-account'>
           <p>Don't have an account?</p>
           <Link className='link-button' to='/Signup'>Signup</Link>

@@ -1,5 +1,4 @@
 import React from 'react';
-import LoginForm from '../session/login_form_container';
 
 class MainPage extends React.Component {
 

@@ -1,0 +1,101 @@
+@import-normalize;
+
+input {
+    width: 20em;
+    height: 2em;
+    border-radius: 10px;
+    outline: none;
+}
+
+label {
+    padding-bottom: 1em;
+}
+
+.login-form-container {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+    color: white;
+}
+
+.login-form {
+    border: solid black 1px;
+    padding: 1em;
+    background-color: teal;
+}
+
+.submit-button-container {
+    display: flex;
+    justify-content: center;
+    justify-content: space-evenly;
+    padding-top: 1em;
+}
+
+.submit-button {
+    border-radius: 25px;
+    width: 5em;
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    white-space: nowrap;
+}
+
+.demo-button {
+    border-radius: 25px;
+    width: 7em;
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    white-space: nowrap;
+}
+
+.submit-button:hover {
+    background-color: goldenrod;
+    cursor: pointer;
+}
+
+.already-have-account {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.link-button {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    border: solid black 1px;
+    border-radius: 25px;
+    width: 5em;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    background-color: black;
+    color: white;
+    white-space: nowrap;
+}
+
+.link-button:hover {
+    background-color: goldenrod;
+}
+
+.form-swap-button {
+    display: flex;
+    justify-content: center;
+    text-decoration: none;
+    color: black;
+    border: solid black 1px;
+    border-radius: 25px;
+    padding-top: 0.3em;
+    padding-bottom: 0.3em;
+    background-color: black;
+    color: white;
+    white-space: nowrap;
+    margin-left: 4em;
+    margin-right: 4em;
+}
+
+.form-swap-button:hover{
+    background-color: goldenrod;
+    cursor: pointer;
+}

@@ -8,11 +8,18 @@ export const setAuthToken = token => {
   }
 };
 
-export const signup = (userData) => {
-  return axios.post('/api/users/register', userData);
+export const signupClinician = (userData) => {
+  return axios.post('/api/clinicians/register', userData);
 };
 
-export const login = (userData) => {
-  return axios.post('/api/users/login', userData);
+export const signupPatient = (userData) => {
+  return axios.post('/api/patients/register', userData);
 };
 
+export const loginClinician = (userData) => {
+  return axios.post('/api/clinicians/login', userData);
+};
+
+export const loginPatient = (userData) => {
+  return axios.post('/api/patients/login', userData);
+};

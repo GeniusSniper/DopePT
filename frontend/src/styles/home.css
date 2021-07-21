@@ -47,6 +47,11 @@ label {
     white-space: nowrap;
 }
 
+.demo-button:hover {
+    background-color: goldenrod;
+    cursor: pointer;
+}
+
 .submit-button:hover {
     background-color: goldenrod;
     cursor: pointer;

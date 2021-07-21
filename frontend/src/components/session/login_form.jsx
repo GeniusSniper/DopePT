@@ -15,6 +15,7 @@ class LoginForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.renderErrors = this.renderErrors.bind(this);
+    this.handleDemoUser = this.handleDemoUser.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -43,6 +44,30 @@ class LoginForm extends React.Component {
         // .then(
         //   () => this.props.history.push('/')
         // );
+    }
+  }
+
+  handleDemoUser(e) {
+    debugger
+    e.preventDefault();
+    let patient = {
+      handle: 'Demo Patient',
+      email: 'patient@email.com',
+      password: '123456',
+      isClinician: false,
+    };
+    
+    let clinician = {
+      handle: 'Demo Clinician',
+      email: 'clinician@email.com',
+      password: '123456',
+      isClinician: true,
+    };
+
+    if (this.title().props.children[1] === 'Login for Clincians') {
+      this.props.loginClinician(clinician);
+    } else {
+      this.props.loginPatient(patient)
     }
   }
 
@@ -84,6 +109,19 @@ class LoginForm extends React.Component {
       )
   }
 
+  demoLoginButton() {
+    return(
+      <button className='demo-button' 
+        onClick={this.handleDemoUser}>
+          Demo 
+          {this.title().props.children[1] === 'Login for Clincians' ?
+           ' Clinician ' : 
+           ' Patient '} 
+           Login
+        </button>
+    )
+  }
+
   render() {
     return (
       <div className="login-form-container">
@@ -109,6 +147,7 @@ class LoginForm extends React.Component {
             <br/>
             <div className='submit-button-container'>
               <input className='submit-button' type="submit" value="Submit" />
+              {this.demoLoginButton()}
             </div>
             {this.renderErrors()}
         </form>

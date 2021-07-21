@@ -27,6 +27,7 @@ label {
 .submit-button-container {
     display: flex;
     justify-content: center;
+    justify-content: space-evenly;
     padding-top: 1em;
 }
 
@@ -36,6 +37,16 @@ label {
     background-color: black;
     border: 1px solid black;
     color: white;
+    white-space: nowrap;
+}
+
+.demo-button {
+    border-radius: 25px;
+    width: 7em;
+    background-color: black;
+    border: 1px solid black;
+    color: white;
+    white-space: nowrap;
 }
 
 .submit-button:hover {

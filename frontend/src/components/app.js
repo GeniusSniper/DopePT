@@ -6,6 +6,7 @@ import NavBarContainer from './nav/navbar_container';
 import MainPageContainer from './main/mainPage_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
+// import UserProfile from './userProfile/user_profile_container';
 // import ExercisesContainer from './exercises/exercises_container';
 // import ExerciseContainer from './exercises/exercise_container';
 

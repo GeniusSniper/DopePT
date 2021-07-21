@@ -102,3 +102,12 @@ label {
     background-color: goldenrod;
     cursor: pointer;
 }
+
+.background {
+    z-index: -1;
+    position: absolute;
+    left: 0px;
+    top: 0px;  
+    height: 100%;
+    width: 100%;
+}

@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-/config/keys_dev.js
-=======
->>>>>>> main
 node_modules
 frontend/node_modules
 keys_dev.js

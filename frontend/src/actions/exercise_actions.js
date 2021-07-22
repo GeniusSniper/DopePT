@@ -22,3 +22,8 @@ export const requestExercise = (userType, userId, exerciseId) => dispatch => (
     APIUtil.getExercise(userType, userId, exerciseId)
         .then( exercise => dispatch(receiveExercise(exercise.data)))
 );
+
+export const createExercise = (userId, exercise) => dispatch => (
+    APIUtil.createExercise(userId, exercise)
+        .then( exercise => dispatch(receiveExercise(exercise.data)))
+);

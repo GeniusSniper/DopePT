@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+// import { Link } from 'react-router-dom';
 import '../../styles/navbar.css';
 
 class NavBar extends React.Component {
@@ -28,8 +28,11 @@ class NavBar extends React.Component {
       return (
         <div>
             <div className='navbar-container'>
+              <div></div>
               <h1 className='logo'>DOPE PT</h1>
+              <div className='logout-button-container'>
                 { this.getLinks() }
+              </div>
             </div>
         </div>
       );

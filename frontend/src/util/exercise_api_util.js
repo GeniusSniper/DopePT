@@ -1,13 +1,13 @@
 import axios from 'axios';
 
 export const getAllExercises = (userType, userId) => ( 
-    axios.get(`/api/${userType}/${userId}/exercises/`) 
+    axios.get(`/api/${userType}/${userId}`) 
 );
 
 export const getExercise = (userType, userId, exerciseId) => ( 
     axios.get(`/api/${userType}/${userId}/exercises/${exerciseId}`) 
 );
 
-export const createExercise = (exerciseData) => ( 
-    axios.post(`/api/clinicians/exercises/new`, exerciseData) 
+export const createExercise = (userId, exerciseData) => ( 
+    axios.post(`/api/clinicians/${userId}/exercises`, exerciseData) 
 );

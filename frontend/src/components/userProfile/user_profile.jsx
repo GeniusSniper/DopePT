@@ -1,10 +1,15 @@
-import React from 'react'
-import Cat from '../../styles/images/cat1.jpg'
-import '../../styles/profile.css'
+import React from 'react';
+import Cat from '../../styles/images/cat1.jpg';
+import '../../styles/profile.css';
+import ExercisesContainer from '../exercises/exercises_container';
 
 class userProfile extends React.Component {
     constructor(props) {
         super(props)
+    }
+
+    compoentDidMount(){
+        //fetch the user
     }
 
     render() {
@@ -15,14 +20,7 @@ class userProfile extends React.Component {
                     <img className='profile-picture' src={Cat}/>
                     <h1>Hello, {this.props.user.handle}!</h1>
                 </div>
-                <div className='profile-grid'>
-                    <div className='left-side-bar'>
-                        <h3>Left Side Bar</h3>
-                    </div>
-                    <div className='main-show'>
-                        <h3>Main Show</h3>
-                    </div>
-                </div>
+                <ExercisesContainer userType={this.props.userType}/>
             </div>
         )
     }

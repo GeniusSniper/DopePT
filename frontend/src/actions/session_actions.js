@@ -7,7 +7,8 @@ export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 
 export const receiveCurrentUser = user => ({
     type: RECEIVE_CURRENT_USER,
-    user
+    user,
+    exercises: user.exercises
 });
   
 export const receiveErrors = errors => ({

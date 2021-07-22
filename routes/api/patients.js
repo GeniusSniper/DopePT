@@ -9,6 +9,7 @@ const passport = require('passport');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const Exercise = require("../../models/Exercise");
 
 router.get("/test", (req, res) => res.json({ msg: "This is the patients route" }));
 
@@ -125,26 +126,27 @@ router.post('/register', (req, res) => {
   })
 
   //for patients need to grab from itself
-  router.get('/:userId/exercises', (req, res) => {
-    Patient.findById(req.params.userId).then( some => {
-      return res.json(some.exercise)
-    })
-    .catch(err => 
-      res.status(404).json({ noexercisesfound: 'No exercises found :('}));
+  //
+  router.get('/:userId', async   (req, res) => {
+    let patient = await Patient.findById(req.params.userId).populate('exercises')
+    // console.log(patient.exercises)
+    return res.json(patient)
+    // .catch(err => 
+    //   res.status(404).json({ noexercisesfound: 'No exercises found :('}));
   });
 
   //probably need to look at this one again
-  router.get('/:userId/exercises/:id', (req, res) => {
-    Patient.findById(req.params.userId).exercise.findById(req.params.id).then( some => {
-      return res.json(some)
-    })
-    .catch(err => 
-      res.status(404).json({ noexercisesfound: 'No exercises found :('}));
+  // router.get('/:userId/exercises/:id', (req, res) => {
+  //   Patient.findByI(req.params.userId).exercise.findById(req.params.id).then( some => {
+  //     return res.json(some)
+  //   })
+  //   .catch(err => 
+  //     res.status(404).json({ noexercisesfound: 'No exercises found :('}));
 
-    // Patient.exercises.findById(req.params.id)
-    //   .then(exercise => res.json(exercise))
-    //   .catch(err =>
-    //     res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
-  });
+  //   // Patient.exercises.findById(req.params.id)
+  //   //   .then(exedrcise => res.json(exercise))
+  //   //   .catch(err =>
+  //   //     res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
+  // });
 
 module.exports = router;

@@ -5,11 +5,16 @@ class Patients extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+        this.props.requestConnection(this.props.userType, this.props.currentUser.id)
+    }
+
     render(){
+        debugger
         return (
             <div>
-                {this.props.patients.map(patient => (
-                    <h2>{patient.handle}</h2>
+                {/* {this.props.patients.map(patient => (
+                    <h2>{patient.handle}</h2> */}
                 )
                 )}
             </div>

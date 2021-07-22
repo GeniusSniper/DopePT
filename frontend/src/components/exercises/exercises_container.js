@@ -7,7 +7,7 @@ const mst = (state, props) => {
     return ({
         currentUserId: userId,
         allExercises: Object.values(state.exercises),
-        userType: props.userType
+        userType: props.userType,
 })};
 
 const mdt = dispatch => ({

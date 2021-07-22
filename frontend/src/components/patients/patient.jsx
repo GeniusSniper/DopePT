@@ -3,16 +3,21 @@ import Cat from '../../styles/images/cat1.jpg';
 
 
 class Patient extends React.Component {
-    constructor(props){
-        super(props)
-    }
+    // constructor(props){
+    //     super(props);
 
-    componentDidMount() {
-        this.props.requestAllExercises('patients', this.props.patient.id);
+    //     this.state = {
+    //         i: 0
+    //     }
+    // }
+
+    componentDidUpdate(prevProps,prevState) {
+        // if(this.state.i !== prevState.i){
+            // this.props.requestAllExercises('patients', this.props.patient._id);
+        // }
     }
 
     render() {
-        if (!this.props.patient) return null;
         return (
             <div className='patient-info'>
                 <img src={Cat} alt="" />
@@ -21,7 +26,7 @@ class Patient extends React.Component {
                 </div>
                 <div>
                     {this.props.allExercises.map(exercise => (
-                        <li>
+                        <li key={exercise._id}>
                             {exercise.title}
                         </li>
                     ))}

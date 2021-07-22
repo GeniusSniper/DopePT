@@ -6,6 +6,7 @@ class ExerciseForm extends React.Component {
         this.state = {
             title: '',
             description: '',
+            errors: {},
             instructions: '',
             urls: []
         }
@@ -34,13 +35,13 @@ class ExerciseForm extends React.Component {
 
     renderErrors() {
         return(
-          <ul>
+          <>
             {Object.keys(this.state.errors).map((error, i) => (
               <li key={`error-${i}`}>
                 {this.state.errors[error]}
               </li>
             ))}
-          </ul>
+          </>
         );
     }
 
@@ -68,7 +69,8 @@ class ExerciseForm extends React.Component {
                             onChange={this.update('urls')}
                         />
                     </label> */}
-                    {this.renderErrors()}
+                    {/* {this.renderErrors()} */}
+                    <button>Create Exercise</button>
                 </form>
             </div>
         )

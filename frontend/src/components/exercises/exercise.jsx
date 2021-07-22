@@ -16,7 +16,7 @@ class Exercise extends React.Component{
         if(!exercise) return null;
         return (
             <div className='exercise-info'>
-                <img className='exercise-picture' src={exercise.urls[0]} alt="img" />    
+                <img className='exercise-picture' src={exercise.urls[0]} alt=":(" />    
                 <div className='exercise-title'>{exercise.title}</div>
                 <div className='exercise-instructions'>{exercise.instructions}</div>
             </div>

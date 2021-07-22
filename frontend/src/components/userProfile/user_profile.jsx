@@ -8,6 +8,10 @@ class userProfile extends React.Component {
         super(props)
     }
 
+    compoentDidMount(){
+        //fetch the user
+    }
+
     render() {
         if (!this.props.user) return null;
         return (

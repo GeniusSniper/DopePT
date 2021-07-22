@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/profile.css';
 
 class Exercise extends React.Component{
     // componentDidMount(){
@@ -14,10 +15,10 @@ class Exercise extends React.Component{
         const exercise = this.props.exercise;
         if(!exercise) return null;
         return (
-            <div>
-                <img src={exercise.urls[0]} alt="img" />    
-                <div>{exercise.title}</div>
-                <div>{exercise.instructions}</div>
+            <div className='exercise-info'>
+                <img className='exercise-picture' src={exercise.urls[0]} alt="img" />    
+                <div className='exercise-title'>{exercise.title}</div>
+                <div className='exercise-instructions'>{exercise.instructions}</div>
             </div>
         )
     }

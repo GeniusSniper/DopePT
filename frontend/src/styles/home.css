@@ -108,6 +108,7 @@ label {
     position: absolute;
     left: 0px;
     top: 0px;  
-    height: 100%;
     width: 100%;
+    overflow: hidden;
+    max-height: 100%;
 }

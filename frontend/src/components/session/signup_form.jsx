@@ -1,7 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../styles/home.css'
-import Background from '../../styles/images/background.jpg'
+import Background from '../../styles/images/background.jpeg'
 
 class SignupForm extends React.Component {
   constructor(props) {

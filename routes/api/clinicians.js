@@ -10,6 +10,7 @@ const Exercise = require("../../models/Exercise");
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const validateExerciseInput = require('../../validation/exercises');
+const Patient = require("../../models/Patient");
 
 router.get("/test", (req, res) => res.json({ msg: "This is the clinicians route" }));
 
@@ -135,6 +136,13 @@ router.post('/register', (req, res) => {
 
   router.get('/:userId', async (req, res) => {
     let clinician = await Clinician.findById(req.params.userId).populate('patients');
+    clinician.patients = await clinician.patients.map( async (patient) => {
+      patient.password = '';
+      let exercise = await Patient.findById(patient.id).populate('exercises');
+      patient.exercises = exercise.exercises;
+      return patient
+    });
+
     return res.json(clinician.patients)
   })
 

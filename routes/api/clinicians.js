@@ -136,13 +136,11 @@ router.post('/register', (req, res) => {
 
   router.get('/:userId', async (req, res) => {
     let clinician = await Clinician.findById(req.params.userId).populate('patients');
-    clinician.patients = await clinician.patients.map( async (patient) => {
-      patient.password = '';
-      let exercise = await Patient.findById(patient.id).populate('exercises');
-      patient.exercises = exercise.exercises;
+    clinician.patients = clinician.patients.map( (patient) => {
+      patient.password = undefined;
+      patient.exercises = undefined;
       return patient
     });
-
     return res.json(clinician.patients)
   })
 

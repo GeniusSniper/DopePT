@@ -9,10 +9,11 @@ const mSTP = state => {
     let userType = isDoctor ? 'clinicians' : 'patients';
     // const patients = Object.values(state.users);
     // delete patients[state.session.currentUserId]
+    const patients = state.connection;
     return {
         currentUser,
-        // patients,
-        userType
+        patients,
+        userType,
     }
 }
 

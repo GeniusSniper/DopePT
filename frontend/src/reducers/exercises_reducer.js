@@ -9,7 +9,6 @@ import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
     Object.freeze(state);
     switch(action.type) {
       case RECEIVEALLEXERCISES:
-        debugger
         return action.exercises;
       case RECEIVEEXERCISE:
         return Object.assign({}, state, {[action.exercise._id]: action.exercise});

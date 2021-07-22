@@ -7,7 +7,8 @@ const mSTP = state => {
     let userType = isDoctor ? 'clinicians' : 'patients';
     return {
         user,
-        userType
+        userType,
+        isDoctor
     }
 }
 

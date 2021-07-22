@@ -8,7 +8,10 @@ class Users extends React.Component {
     render(){
         return (
             <div>
-                
+                {this.props.patients.map(patient => (
+                    <h2>{patient.handle}</h2>
+                )
+                )}
             </div>
         )
     }

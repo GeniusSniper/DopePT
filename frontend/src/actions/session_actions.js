@@ -27,7 +27,7 @@ export const receiveConnection = payload => ({
 
 export const requestConnection = (userType, userId) => dispatch =>(
     APIUtil.getConnection(userType, userId)
-        .then(payload => dispatch(receiveConnection(payload)))
+        .then(payload => dispatch(receiveConnection(payload.data)))
 )
 
 export const signupClinician = user => dispatch => (

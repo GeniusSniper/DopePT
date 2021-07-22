@@ -13,6 +13,10 @@ class ExerciseForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount(){
+        this.props.getConnection('clinicians', this.props.userId);
+    }
+
     componentWillReceiveProps(nextProps) {
         this.setState({errors: nextProps.errors})
     }

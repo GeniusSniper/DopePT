@@ -3,11 +3,11 @@ import { createExercise } from '../../actions/exercise_actions';
 import { requestConnection } from '../../actions/session_actions';
 import ExerciseForm from './ExerciseForm';
 
-const mst = (state, props) => {
+const mst = (state) => {
     let userId = state.session.currentUserId || state.session.user.id
     return ({
-    userId,
-    connection: state
+        userId,
+        connection: state
 })};
 
 const mdt = dispatch => ({

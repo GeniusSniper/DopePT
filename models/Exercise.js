@@ -11,7 +11,8 @@ const ExerciseSchema = new Schema({
         required: true
     },
     instructions:{
-        type: String
+        type: String,
+        required: true
     },
     urls: {
         type: Array,

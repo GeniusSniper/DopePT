@@ -63,9 +63,9 @@ class ExerciseForm extends React.Component {
                             onChange={this.update('instructions')}
                         />
                     </label>
-                    {/* <label>Title:
-                        <input type="text" value={this.state.title}
-                            onChange={this.update('title')}
+                    {/* <label>Picture:
+                        <input type="text" value={this.state.urls}
+                            onChange={this.update('urls')}
                         />
                     </label> */}
                     {this.renderErrors()}

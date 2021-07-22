@@ -72,3 +72,8 @@
 .exercise-instructions {
     padding-bottom: 2%;
 }
+
+.navigation-tabs {
+    display: flex;
+    flex-direction: row;
+}

@@ -16,6 +16,14 @@ class userProfile extends React.Component {
                     <img className='profile-picture' src={Cat}/>
                     <h1>Hello, {this.props.user.handle}!</h1>
                 </div>
+                <div className='navigation-tabs'>
+                    <div>
+                        Exercises
+                    </div>
+                    <div>
+                        {this.props.user.isClinician ? 'Patients' : 'Clinician'}
+                    </div>
+                </div>
                 <ExercisesContainer userType={this.props.userType}/>
             </div>
         )

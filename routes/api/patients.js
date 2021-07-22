@@ -136,17 +136,17 @@ router.post('/register', (req, res) => {
   });
 
   //probably need to look at this one again
-  router.get('/:userId/exercises/:id', (req, res) => {
-    Patient.findById(req.params.userId).exercise.findById(req.params.id).then( some => {
-      return res.json(some)
-    })
-    .catch(err => 
-      res.status(404).json({ noexercisesfound: 'No exercises found :('}));
+  // router.get('/:userId/exercises/:id', (req, res) => {
+  //   Patient.findByI(req.params.userId).exercise.findById(req.params.id).then( some => {
+  //     return res.json(some)
+  //   })
+  //   .catch(err => 
+  //     res.status(404).json({ noexercisesfound: 'No exercises found :('}));
 
-    // Patient.exercises.findById(req.params.id)
-    //   .then(exercise => res.json(exercise))
-    //   .catch(err =>
-    //     res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
-  });
+  //   // Patient.exercises.findById(req.params.id)
+  //   //   .then(exedrcise => res.json(exercise))
+  //   //   .catch(err =>
+  //   //     res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
+  // });
 
 module.exports = router;

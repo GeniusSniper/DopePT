@@ -141,12 +141,12 @@ router.post('/register', (req, res) => {
     .catch(err => res.status(404).json({ noexercisesfound: 'No exercises found :('}));
   });
 
-  router.get('/:userId/exercises/:id', (req, res) => {
-      Exercise.findById(req.params.id)
-      .then(exercise => res.json(exercise))
-      .catch(err =>
-          res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
-  });
+  // router.get('/:userId/exercises/:id', (req, res) => {
+  //     Exercise.findById(req.params.id)
+  //     .then(exercise => res.json(exercise))
+  //     .catch(err =>
+  //         res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
+  // });
 
   router.post('/:userId/exercises/new', (req, res) => {
     const { errors, isValid } = validateExerciseInput(req.body);

@@ -49,17 +49,13 @@ router.post('/register', (req, res) => {
             bcrypt.hash(newclinician.password, salt, (err, hash) => {
               if (err) throw err;
               newclinician.password = hash;
-              newclinician.save().then( async (payload) => {
-                payload.exercises = await Exercise.find()
-                return payload;
-              })
+              newclinician.save()
               .then(payload => {
                 jwt.sign({
                   id: payload.id,
                  handle: payload.handle,
                  isClinician: true,
-                 email: payload.email,
-                 exercises: payload.exercises,
+                 email: payload.email
                 },
                   keys.secretOrKey,
                   // Tell the key to expire in one hour
@@ -71,7 +67,6 @@ router.post('/register', (req, res) => {
                         handle: payload.handle,
                         email: payload.email,
                         isClinician: true,
-                        exercises: payload.exercises,
                       },
                       success: true,
                       token: 'Bearer ' + token
@@ -99,13 +94,11 @@ router.post('/register', (req, res) => {
     const password = req.body.password;
   
     Clinician.findOne({email})
-      .then( async (clinician) => {
+      .then(clinician => {
         if (!clinician) {
           return res.status(404).json({email: 'This clinician does not exist'});
         }
-        
-        clinician.exercises = await Exercise.find();
-
+  
         bcrypt.compare(password, clinician.password)
         .then(isMatch => {
           if (isMatch) {
@@ -114,7 +107,6 @@ router.post('/register', (req, res) => {
               handle: clinician.handle,
               email: clinician.email,
               isClinician: true,
-              exercises: clinician.exercises
             };
 
             jwt.sign(
@@ -129,7 +121,6 @@ router.post('/register', (req, res) => {
                     handle: payload.handle,
                     email: payload.email,
                     isClinician: true,
-                    exercises: payload.exercises
                   },
                     success: true,
                     token: 'Bearer ' + token
@@ -143,29 +134,26 @@ router.post('/register', (req, res) => {
   })
 
   //adding clinicianId to the routes
-  router.get('/:userId/exercises', async (req, res) => {
+  router.get('/:userId/exercises', (req, res) => {
     //probably need to add to check if the id matches doctor
-    const exercises = await Exercise.find()
-    return res.json(exercises)
+    Exercise.find()
+    .then( exercises => res.json(exercises))
+    .catch(err => res.status(404).json({ noexercisesfound: 'No exercises found :('}));
   });
-  
-  // router.get('/:userId/exercises/:id', (req, res) => {
-    //     Exercise.findById(req.params.id)
-    //     .then(exercise => res.json(exercise))
-    //     .catch(err =>
-    //         res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
-    // });
-    
-  router.get('/:userId', async (req, res) => {
-      let clinician = await Clinician
-        .findById(req.params.userIdJ)
-        .populate('Patient')
-      clinician.exercises = Exercise.find()
-      // .catch(err => res.status(404).json({ noexercisesfound: 'No exercises found :('}));
-      return res.json(clinician)
-  }) 
 
-  router.post('/:userId/exercises', (req, res) => {
+  // router.get('/:userId/exercises/:id', (req, res) => {
+  //     Exercise.findById(req.params.id)
+  //     .then(exercise => res.json(exercise))
+  //     .catch(err =>
+  //         res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
+  // });
+
+  router.get('/:userId', async (req, res) => {
+    let patients = await Clinician.findById(req.params.userIdJ).populate('Patient');
+    return res.json(patients.patients)
+  })
+
+  router.post('/:userId/exercises/', (req, res) => {
     const { errors, isValid } = validateExerciseInput(req.body);
 
     if (!isValid) {

@@ -127,10 +127,10 @@ router.post('/register', (req, res) => {
 
   //for patients need to grab from itself
   //
-  router.get('/:userId', async   (req, res) => {
+  router.get('/:userId/exercises', async   (req, res) => {
     let patient = await Patient.findById(req.params.userId).populate('exercises')
     // console.log(patient.exercises)
-    return res.json(patient)
+    return res.json(patient.exercises)
     // .catch(err => 
     //   res.status(404).json({ noexercisesfound: 'No exercises found :('}));
   });

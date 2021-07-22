@@ -14,8 +14,8 @@ const clinicians = require('./routes/api/clinicians');
 mongoose
   .connect(db, { 
     useNewUrlParser: true, 
-    // reconnectTries: Number.MAX_VALUE,
-    // reconnectInterval: 1000
+    reconnectTries: Number.MAX_VALUE,
+    reconnectInterval: 1000
   })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));

@@ -28,8 +28,11 @@ class NavBar extends React.Component {
       return (
         <div>
             <div className='navbar-container'>
+              <div></div>
               <h1 className='logo'>DOPE PT</h1>
+              <div className='logout-button-container'>
                 { this.getLinks() }
+              </div>
             </div>
         </div>
       );

@@ -47,9 +47,14 @@ class Exercises extends React.Component{
 
     render(){
         if(this.props.allExercises.length === 0) return null;
-        const allExercises = this.props.allExercises.map( (exercise, j) => <div key={exercise._id} onClick={() => this.setState({i: j })}>
-                {exercise.title}
-                </div> 
+        const allExercises = this.props.allExercises.map( (exercise, j) => <ul key={exercise._id} onClick={() => this.setState({i: j })}>
+                <div className='exercise-title-index'>
+                    {exercise.title}
+                </div>
+                <div className='exercise-description'>
+                    {exercise.description}
+                </div>
+            </ul> 
             )
         // let ableToCreate = () => null;
         // if(this.props.userType === 'clinicians') {
@@ -62,14 +67,12 @@ class Exercises extends React.Component{
         return (
             <div className='profile-grid'>
                 <div className='left-side-bar'>
-                    <h3>Left Side Bar</h3>
-                    <div>
+                    <div className='exercises-index'>
                         {allExercises}
                     </div>
                 </div>
                 <div className='main-show'>
-                    <h3>Main Show</h3>
-                    <div>
+                    <div className='exercise-show'>
                         <ExerciseContainer exerciseId={this.state.i}/>
                     </div>
                 </div>

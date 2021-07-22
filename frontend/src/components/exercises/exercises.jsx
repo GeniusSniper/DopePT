@@ -23,7 +23,7 @@ class Exercises extends React.Component{
     render(){
         if(this.props.allExercises.length === 0) return null;
         const allExercises = this.props.allExercises.map( (exercise, j) => 
-            <ul key={exercise._id} onClick={() => this.setState({i: j })}>
+            <ul key={exercise._id} onClick={() => { this.setState({i: j, option: false}) }}>
                 <div className='exercise-title-index'>
                     {exercise.title}
                 </div>
@@ -35,8 +35,7 @@ class Exercises extends React.Component{
         let option, mainShow;
 
         if(this.props.userType === 'clinicians'){
-            option = <button 
-            onClick={() => this.setState({option: !this.state.option})}>
+            option = <button onClick={() => this.setState({option: true})}>
                 Create an exercise
             </button>
         }

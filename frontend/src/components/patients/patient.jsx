@@ -11,7 +11,7 @@ class Patient extends React.Component {
 
     componentDidUpdate(prevProps,prevState) {
         // if(this.state.i !== prevState.i){
-        //     this.props.requestAllExercises('patients', this.props.patient._id);
+            // this.props.requestAllExercises('patients', this.props.patient._id);
         // }
     }
 

@@ -3,7 +3,7 @@ import { createExercise, requestAllExercises } from '../../actions/exercise_acti
 import Exercises from './exercises';
 
 const mst = (state, props) => {
-    let userId = state.session.currentUserId 
+    let userId = state.session.currentUserId || state.session.user.id
     return ({
     currentUserId: userId,
     allExercises: Object.values(state.exercises),

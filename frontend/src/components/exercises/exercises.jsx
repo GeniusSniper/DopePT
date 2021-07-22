@@ -1,5 +1,6 @@
 import React from 'react';
 import ExerciseContainer from './exercise_container';
+import '../../styles/profile.css';
 
 class Exercises extends React.Component{
     constructor(props){
@@ -59,17 +60,18 @@ class Exercises extends React.Component{
         //     }
         // }
         return (
-            <div>
-                <div>
+            <div className='profile-grid'>
+                <div className='left-side-bar'>
+                    <h3>Left Side Bar</h3>
                     <div>
                         {allExercises}
                     </div>
-                    <div>
-                        {/* {ableToCreate()} */}
-                    </div>
                 </div>
-                <div>
-                    <ExerciseContainer exerciseId={this.state.i}/>
+                <div className='main-show'>
+                    <h3>Main Show</h3>
+                    <div>
+                        <ExerciseContainer exerciseId={this.state.i}/>
+                    </div>
                 </div>
             </div>
         )

@@ -9,6 +9,7 @@ const passport = require('passport');
 
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
+const Exercise = require("../../models/Exercise");
 
 router.get("/test", (req, res) => res.json({ msg: "This is the patients route" }));
 
@@ -127,9 +128,20 @@ router.post('/register', (req, res) => {
   //for patients need to grab from itself
   //
   router.get('/:userId/exercises', (req, res) => {
-    console.log(req.params.userId)
-    Patient.findById(req.params.userId).then( some => {
-      return res.json(some.exercise)
+    // console.log(Patient.findById(req.params.userId))
+    Patient.findById(req.params.userId).then(  (some) => {
+      // return res.json(some.exercises)
+      var arr = [];
+      // some.exercises.forEach(async (exerId) => {
+      //   Exercise.findById(exerId).then( (ele) => { 
+      //     arr.push(ele) 
+      //   })
+      //   await console.log('outside' + arr);
+      // });
+      // return res.json(arr)
+      Exercise.find(some.exercises).then( ele => {
+        console.log(ele)
+         return res.json(ele)})
     })
     .catch(err => 
       res.status(404).json({ noexercisesfound: 'No exercises found :('}));

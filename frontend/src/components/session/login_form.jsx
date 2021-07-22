@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../styles/home.css'
+import Background from '../../styles/images/background.jpg'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -48,7 +49,6 @@ class LoginForm extends React.Component {
   }
 
   handleDemoUser(e) {
-    
     e.preventDefault();
     let patient = {
       handle: 'Demo Patient',
@@ -124,40 +124,43 @@ class LoginForm extends React.Component {
 
   render() {
     return (
-      <div className="login-form-container">
-        <div className='login-form'>
-        <form onSubmit={this.handleSubmit}>
-          {this.title()}
-            <br/>
-              <label>Email</label>
+      <div>
+        <img className='background' src={Background}/>
+        <div className="login-form-container">
+          <div className='login-form'>
+          <form onSubmit={this.handleSubmit}>
+            {this.title()}
               <br/>
-              <input type="text"
-                value={this.state.email}
-                onChange={this.update('email')}
-                placeholder="Email"
-              />
-            <br/>
-              <label>Password</label>
+                <label>Email</label>
+                <br/>
+                <input type="text"
+                  value={this.state.email}
+                  onChange={this.update('email')}
+                  placeholder="Email"
+                />
               <br/>
-              <input type="password"
-                value={this.state.password}
-                onChange={this.update('password')}
-                placeholder="Password"
-              />
-            <br/>
-            <div className='submit-button-container'>
-              <input className='submit-button' type="submit" value="Submit" />
-              {this.demoLoginButton()}
-            </div>
-            {this.renderErrors()}
-        </form>
-        <div className='form-swap-button'>
-          {this.formSwap()}
-        </div>
-        <div className='already-have-account'>
-          <p>Don't have an account?</p>
-          <Link className='link-button' to='/Signup'>Signup</Link>
-        </div>
+                <label>Password</label>
+                <br/>
+                <input type="password"
+                  value={this.state.password}
+                  onChange={this.update('password')}
+                  placeholder="Password"
+                />
+              <br/>
+              <div className='submit-button-container'>
+                <input className='submit-button' type="submit" value="Submit" />
+                {this.demoLoginButton()}
+              </div>
+              {this.renderErrors()}
+          </form>
+          <div className='form-swap-button'>
+            {this.formSwap()}
+          </div>
+          <div className='already-have-account'>
+            <p>Don't have an account?</p>
+            <Link className='link-button' to='/Signup'>Signup</Link>
+          </div>
+          </div>
         </div>
       </div>
     );

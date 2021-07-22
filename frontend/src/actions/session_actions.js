@@ -58,8 +58,7 @@ export const loginPatient = user => dispatch => (
         localStorage.setItem('jwtToken', token);
         APIUtil.setAuthToken(token);
         dispatch(receiveCurrentUser(user))
-    })
-    .catch(err => {
+    }, err => {
         dispatch(receiveErrors(err.response.data));
     })
 )

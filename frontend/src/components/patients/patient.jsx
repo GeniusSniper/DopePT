@@ -1,4 +1,6 @@
 import React from 'react'
+import Cat from '../../styles/images/cat1.jpg';
+
 
 class Patient extends React.Component {
     constructor(props){
@@ -13,7 +15,7 @@ class Patient extends React.Component {
         if (!this.props.patient) return null;
         return (
             <div className='patient-info'>
-                <img src="" alt="" />
+                <img src={Cat} alt="" />
                 <div>
                     {this.props.patient.handle}
                 </div>

@@ -14,10 +14,6 @@ class userProfile extends React.Component {
         this.switchTabs = this.switchTabs.bind(this)
     }
 
-    compoentDidMount(){
-        //fetch the user
-    }
-
     renderSidebar() {
         switch (this.state.sidebar) {
             case 'exercises':
@@ -48,7 +44,7 @@ class userProfile extends React.Component {
         return (
             <div className='user-profile-container'>
                 <div className='patient-info-bar'>
-                    <img className='profile-picture' src={Cat}/>
+                    <img className='profile-picture' src={Cat} alt='img'/>
                     <h1>Hello, {this.props.user.handle}!</h1>
                 </div>
                 <div className='navigation-tabs'>

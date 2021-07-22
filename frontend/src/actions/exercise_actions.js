@@ -2,6 +2,7 @@ import * as APIUtil from '../util/exercise_api_util';
 
 export const RECEIVEALLEXERCISES = 'RECEIVEALLEXERCISES';
 export const RECEIVEEXERCISE = 'RECEIVEEXERCISE';
+export const HIDE_EXERCISE = 'HIDE_EXERCISE';
 
 export const receiveAllExercises = exercises => ({
     type: RECEIVEALLEXERCISES,

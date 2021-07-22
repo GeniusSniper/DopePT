@@ -3,7 +3,6 @@ import { requestAllExercises } from '../../actions/exercise_actions';
 import Patient from './patient'
 
 const mSTP = (state, ownProps) => {
-    debugger
     const patient = state.connection[ownProps.patientId];
     return {
         patient,

@@ -7,7 +7,8 @@ const mst = (state) => {
     let userId = state.session.currentUserId || state.session.user.id
     return ({
         userId,
-        connection: state
+        errors: state.session.errors,
+        connection: state,
 })};
 
 const mdt = dispatch => ({

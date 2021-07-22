@@ -11,12 +11,13 @@ class Patients extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestConnection(this.props.userType, this.props.currentUser.id)
+        this.props.requestConnection(this.props.userType, this.props.currentUser.id);
     }
 
     render(){
         if(this.props.patients.length === 0) return null;
-        const patients = this.props.patients.map( (patient, j) => <ul key={patient._id} onClick={() => this.setState({i: j })}>
+        const patients = this.props.patients.map( (patient, j) => 
+            <ul key={patient._id} onClick={() => this.setState({i: j })}>
                 <div className='patient-title-index'>
                     {patient.handle}
                 </div>

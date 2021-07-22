@@ -8,7 +8,8 @@ export const RECEIVE_CONNECTION = 'RECEIVE_CONNECTION';
 
 export const receiveCurrentUser = user => ({
     type: RECEIVE_CURRENT_USER,
-    user
+    user,
+    exercises: user.exercises
 });
   
 export const receiveErrors = errors => ({

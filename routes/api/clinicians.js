@@ -159,7 +159,12 @@ router.post('/register', (req, res) => {
   //         res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
   // });
 
-  router.post('/:userId/exercises/new', (req, res) => {
+  router.get('/:userId', async (req, res) => {
+    let patients = await Clinician.findById(req.params.userIdJ).populate('Patient');
+    return res.json(patients.patients)
+  })
+
+  router.post('/:userId/exercises/', (req, res) => {
     const { errors, isValid } = validateExerciseInput(req.body);
 
     if (!isValid) {

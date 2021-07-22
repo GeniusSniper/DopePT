@@ -133,6 +133,11 @@ router.post('/register', (req, res) => {
       })
   })
 
+  router.get('/:userId', async (req, res) => {
+    let clinician = await Clinician.findById(req.params.userId).populate('patients');
+    return res.json(clinician.patients)
+  })
+
   //adding clinicianId to the routes
   router.get('/:userId/exercises', (req, res) => {
     //probably need to add to check if the id matches doctor

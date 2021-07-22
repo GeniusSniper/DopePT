@@ -23,3 +23,7 @@ export const loginClinician = (userData) => {
 export const loginPatient = (userData) => {
   return axios.post('/api/patients/login', userData);
 };
+
+export const getConnection = (userType, userId) => {
+  return axios.get(`/api/${userType}/${userId}`)
+}

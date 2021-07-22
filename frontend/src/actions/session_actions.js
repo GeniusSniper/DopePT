@@ -25,8 +25,8 @@ export const receiveConnection = payload => ({
     payload
 });
 
-export const requestConnection = userType => dispatch =>(
-    APIUtil.getConnection(userType)
+export const requestConnection = (userType, userId) => dispatch =>(
+    APIUtil.getConnection(userType, userId)
         .then(payload => dispatch(receiveConnection(payload)))
 )
 

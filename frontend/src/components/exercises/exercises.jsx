@@ -7,8 +7,8 @@ class Exercises extends React.Component{
         super(props);
         this.state = {
             i: 0,
-            title: '',
-            description: '',
+            // title: '',
+            // description: '',
         }
 
         // this.generateExerciseForm = this.generateExerciseForm.bind(this);

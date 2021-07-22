@@ -1,6 +1,6 @@
 import React from "react";
 
-class Users extends React.Component {
+class Patients extends React.Component {
     constructor(props){
         super(props);
     }
@@ -17,4 +17,4 @@ class Users extends React.Component {
     }
 }
 
-export default Users;
+export default Patients;

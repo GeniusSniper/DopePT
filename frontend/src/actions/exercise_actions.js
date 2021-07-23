@@ -49,8 +49,7 @@ export const createExercise = (userId, exercise) => dispatch => (
         })
 );
 
-export const removeExercise = (exerciseId, index) => dispatch => {
-    debugger 
+export const removeExercise = (exerciseId) => dispatch => {
     return (
     APIUtil.deleteExercise(exerciseId)
         .then( () => dispatch(deleteEcercise(exerciseId)))

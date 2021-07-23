@@ -32,8 +32,8 @@ class Exercises extends React.Component{
                     Create an exercise
                 </button>)
 
-            deleteExercise = (exerciseId, j) => (
-                <button onClick={() => this.props.removeExercise(exerciseId, j) }
+            deleteExercise = (exerciseId) => (
+                <button onClick={() => this.props.removeExercise(exerciseId) }
                     className='createExerciseButton'>
                     Delete Exercise
                 </button>)
@@ -43,7 +43,7 @@ class Exercises extends React.Component{
             )
         }
 
-        const allExercises = this.props.allExercises.map( (exercise, j) => 
+        const allExercises = this.props.allExercises.map( (exercise) => 
             <div className='exercise-index-container' key={exercise._id}>
                 <ul  onClick={() => { this.setState({i: exercise._id, option: false}) }}>
                     <div className='exercise-title-index'>
@@ -53,7 +53,7 @@ class Exercises extends React.Component{
                         {exercise.description}
                     </div>
                 </ul> 
-                {deleteExercise(exercise._id, j)}
+                {deleteExercise(exercise._id)}
             </div>
             )
 

@@ -1,4 +1,5 @@
 import * as APIUtil from '../util/exercise_api_util';
+import { receiveErrors } from './session_actions';
 
 export const RECEIVEALLEXERCISES = 'RECEIVEALLEXERCISES';
 export const RECEIVEEXERCISE = 'RECEIVEEXERCISE';
@@ -43,10 +44,14 @@ export const requestExercise = (userType, userId, exerciseId) => dispatch => (
 
 export const createExercise = (userId, exercise) => dispatch => (
     APIUtil.createExercise(userId, exercise)
-        .then( exercise => dispatch(receiveExercise(exercise.data)))
+        .then( exercise => dispatch(receiveExercise(exercise.data)), err => {
+            dispatch(receiveErrors(err.response.data));
+        })
 );
 
-export const removeExercise = (exerciseId, index) => dispatch => (
+export const removeExercise = (exerciseId, index) => dispatch => {
+    debugger 
+    return (
     APIUtil.deleteExercise(exerciseId)
-        .then( () => dispatch(deleteEcercise(index)))
-)
+        .then( () => dispatch(deleteEcercise(exerciseId)))
+)}

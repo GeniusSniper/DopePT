@@ -45,7 +45,7 @@ class Exercises extends React.Component{
 
         const allExercises = this.props.allExercises.map( (exercise, j) => 
             <div className='exercise-index-container' key={exercise._id}>
-                <ul  onClick={() => { this.setState({i: j, option: false}) }}>
+                <ul  onClick={() => { this.setState({i: exercise._id, option: false}) }}>
                     <div className='exercise-title-index'>
                         {exercise.title}
                     </div>

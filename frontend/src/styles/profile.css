@@ -34,6 +34,8 @@
 
 .patients-index {
     font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .exercise-show {

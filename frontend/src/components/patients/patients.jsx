@@ -24,13 +24,6 @@ class Patients extends React.Component {
             </ul> 
         )
         return (
-            // <div>
-            //     {this.props.patients.map(patient => (
-            //         <h2>{patient.handle}</h2>
-            //     )
-            //     )}
-            // </div>
-
             <div className='profile-grid'>
             <div className='left-side-bar'>
                 <div className='patients-index'>

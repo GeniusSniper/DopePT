@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/assign_exercises.css';
 
 class AssignExercise extends React.Component {
     render(){
@@ -30,28 +31,31 @@ class AssignExercise extends React.Component {
         })
         
         let patientExe = exercises.map(exercise => (
-            <li key={exercise._id}>
+            <div className='mapped-exercises' key={exercise._id}>
                 {exercise.title}
-            </li>
+            </div>
         ))
 
         let renderAll = allExercises.map(exercise => (
-            <li key={exercise._id}>
+            <div className='mapped-exercises' key={exercise._id}>
                 <div>
                     {exercise.title}
                 </div>
-                <div>
+                <div className='assign-button'>
                     {exercise.button}
                 </div>
-            </li>
+                <br />
+            </div>
         ))
 
         return (
-            <div>
-                <div>
+            <div className='assign-exercise-container'>
+                <div className='patient-exercises-list'>
+                    <p className='exercise-list-title'>{this.props.patient.handle}'s Exercises</p>
                     {patientExe}
                 </div>
-                <div> all exercises
+                <div className='all-exercises-list'> 
+                    <p className='exercise-list-title'>All Exercises</p>
                     {renderAll}
                 </div>
             </div>

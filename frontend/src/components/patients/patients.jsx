@@ -20,7 +20,7 @@ class Patients extends React.Component {
         if(this.props.patients.length === 0) return null;
         if(!this.props.patients) return null;
         const patients = this.props.patients.map( (patient, j) => 
-            <div key={patient._id}>
+            <div className='patient-index' key={patient._id}>
                 <ul onClick={() => this.setState({i: j, option: false })}>
                     <div className='patient-title-index'>
                         {patient.handle}

@@ -33,13 +33,6 @@ class Patients extends React.Component {
         let option;
         option = this.state.option ? <AssignExercise patientIndex={this.state.i}/> : <Patient patientId={this.state.i}/>;
         return (
-            // <div>
-            //     {this.props.patients.map(patient => (
-            //         <h2>{patient.handle}</h2>
-            //     )
-            //     )}
-            // </div>
-
             <div className='profile-grid'>
             <div className='left-side-bar'>
                 <div className='patients-index'>

@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/exercise_form.css';
 
 class ExerciseForm extends React.Component {
     constructor(props){
@@ -48,20 +49,31 @@ class ExerciseForm extends React.Component {
     render(){
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form className='create-exercise-form' onSubmit={this.handleSubmit}>
+                    <h2>
+                        Create a New Exercise!
+                    </h2>
+                    <br />
                     <label>Title:
+                        <br />
                         <input type="text" value={this.state.title}
                             onChange={this.update('title')}
                         />
                     </label>
                     <label>Description:
-                        <input type="text" value={this.state.description}
+                        <br />
+                        <textarea value={this.state.description}
                             onChange={this.update('description')}
+                            rows={5}
+                            cols={32}
                         />
                     </label>
                     <label>Instructions:
-                        <input type="text" value={this.state.instructions}
+                        <br />
+                        <textarea value={this.state.instructions}
                             onChange={this.update('instructions')}
+                            rows={5}
+                            cols={32}
                         />
                     </label>
                     {/* <label>Picture:

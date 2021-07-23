@@ -1,4 +1,7 @@
 import React from 'react'
+import Cat from '../../styles/images/cat1.jpg';
+import '../../styles/patients.css'
+
 
 class Patient extends React.Component {
     // constructor(props){
@@ -23,19 +26,25 @@ class Patient extends React.Component {
         })
         
         let patientExe = exercises.map(exercise => (
-            <li key={exercise._id}>
+            <li className='patient-exercise' key={exercise._id}>
                 {exercise.title}
             </li>
         ))
 
         return (
             <div className='patient-info'>
-                <img src="" alt="" />
-                <div>
-                    {this.props.patient.handle}
+                <div className='patient'>
+                    <img 
+                        className='patient-profile-picture' 
+                        src={Cat} 
+                    />
+                    <h2 className='patient-name'>
+                        {this.props.patient.handle}
+                    </h2>
                 </div>
-                <div>
-                    {patientExe}
+                <div className='patient-exercises'>
+                    <h2>{this.props.patient.handle}'s Exercises</h2>
+                        {patientExe}
                 </div>
             </div>
         )

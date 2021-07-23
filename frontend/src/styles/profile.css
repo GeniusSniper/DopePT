@@ -32,8 +32,16 @@
     overflow-y: scroll;
 }
 
+.exercise-index-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .patients-index {
     font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .exercise-show {
@@ -108,4 +116,18 @@
     cursor: pointer;
     color: goldenrod;
     text-decoration: underline;
+}
+
+button {
+    border-radius: 25px;
+    background-color: black;
+    border: 1px solid black;
+    height: 2em;
+    color: white;
+    white-space: nowrap;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: goldenrod;
 }

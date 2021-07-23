@@ -1,4 +1,5 @@
 import React from 'react';
+import '../../styles/exercise_form.css';
 
 class ExerciseForm extends React.Component {
     constructor(props){
@@ -6,6 +7,7 @@ class ExerciseForm extends React.Component {
         this.state = {
             title: '',
             description: '',
+            errors: {},
             instructions: '',
             urls: []
         }
@@ -13,8 +15,12 @@ class ExerciseForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
     }
 
+    componentDidMount(){
+        this.props.getConnection('clinicians', this.props.userId);
+    }
+
     componentWillReceiveProps(nextProps) {
-        this.setState({errors: nextProps.errors})
+        this.setState({errors: nextProps.errors});
     }
 
     update(field) {
@@ -25,46 +31,58 @@ class ExerciseForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.porps.createExercise(this.userId, this.state)
+        this.props.createExercise(this.userId, this.state);
     }
 
     renderErrors() {
         return(
-          <ul>
+          <>
             {Object.keys(this.state.errors).map((error, i) => (
               <li key={`error-${i}`}>
                 {this.state.errors[error]}
               </li>
             ))}
-          </ul>
+          </>
         );
     }
 
     render(){
         return (
             <div>
-                <form onSubmit={this.handleSubmit}>
+                <form className='create-exercise-form' onSubmit={this.handleSubmit}>
+                    <h2>
+                        Create a New Exercise!
+                    </h2>
+                    <br />
                     <label>Title:
+                        <br />
                         <input type="text" value={this.state.title}
                             onChange={this.update('title')}
                         />
                     </label>
                     <label>Description:
-                        <input type="text" value={this.state.description}
+                        <br />
+                        <textarea value={this.state.description}
                             onChange={this.update('description')}
+                            rows={5}
+                            cols={32}
                         />
                     </label>
                     <label>Instructions:
-                        <input type="text" value={this.state.instructions}
+                        <br />
+                        <textarea value={this.state.instructions}
                             onChange={this.update('instructions')}
+                            rows={5}
+                            cols={32}
                         />
                     </label>
-                    {/* <label>Title:
-                        <input type="text" value={this.state.title}
-                            onChange={this.update('title')}
+                    {/* <label>Picture:
+                        <input type="text" value={this.state.urls}
+                            onChange={this.update('urls')}
                         />
                     </label> */}
-                    {this.renderErrors()}
+                    {/* {this.renderErrors()} */}
+                    <button>Create Exercise</button>
                 </form>
             </div>
         )

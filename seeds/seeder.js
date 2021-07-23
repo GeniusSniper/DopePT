@@ -89,7 +89,7 @@ const data = [
             'password': '$2a$10$xYpgufwbkO71ZxZAy8MTcu7JyhLrTp2duCqu/2qZT4mSOYazn0qva',
             'isClinician': true
         },{
-            'handle': 'tyler',
+            'handle': 'Tyler',
             'email': 'tyler@email.com',
             'password': '$2a$10$xYpgufwbkO71ZxZAy8MTcu7JyhLrTp2duCqu/2qZT4mSOYazn0qva',
             'isClinician': true
@@ -97,19 +97,19 @@ const data = [
     },{
         'model': 'Patient',
         'documents': [{
-            'handle': 'patient',
+            'handle': 'Patient',
             'email': 'patient@email.com',
             'password': '$2a$10$sDP1r7u0L6wF9y6d7tBN5u7v16Ei5VaPd7MQ3l.mbXTNUItrfbWjy'
         },{
-            'handle': 'patient1',
+            'handle': 'Patient 1',
             'email': 'patient1@email.com',
             'password': '$2a$10$sDP1r7u0L6wF9y6d7tBN5u7v16Ei5VaPd7MQ3l.mbXTNUItrfbWjy'
         },{
-            'handle': 'patient2',
+            'handle': 'Patient 2',
             'email': 'patient2@email.com',
             'password': '$2a$10$sDP1r7u0L6wF9y6d7tBN5u7v16Ei5VaPd7MQ3l.mbXTNUItrfbWjy'
         },{
-            'handle': 'ti',
+            'handle': 'Ti',
             'email': 'ti@ti.ti',
             'password': '$2a$10$MRmmJKmZFskjqy7JrxnM0.G/zNctD2Sv6e06KNnUhtVEergufNUwK'
         }]

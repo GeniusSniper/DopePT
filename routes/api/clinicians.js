@@ -10,6 +10,7 @@ const Exercise = require("../../models/Exercise");
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const validateExerciseInput = require('../../validation/exercises');
+const Patient = require("../../models/Patient");
 
 router.get("/test", (req, res) => res.json({ msg: "This is the clinicians route" }));
 
@@ -45,7 +46,7 @@ router.post('/register', (req, res) => {
           })
 
           bcrypt.genSalt(10, (err, salt) => {
-            console.log('clinicianbcrpt: ' + err);
+            // console.log('clinicianbcrpt: ' + err);
             bcrypt.hash(newclinician.password, salt, (err, hash) => {
               if (err) throw err;
               newclinician.password = hash;
@@ -84,7 +85,7 @@ router.post('/register', (req, res) => {
   router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
 
-    console.log(errors);
+    // console.log(errors);
 
     if (!isValid) {
       return res.status(400).json(errors);
@@ -133,6 +134,16 @@ router.post('/register', (req, res) => {
       })
   })
 
+  router.get('/:userId', async (req, res) => {
+    let clinician = await Clinician.findById(req.params.userId).populate('patients');
+    clinician.patients = clinician.patients.map( (patient) => {
+      patient.password = undefined;
+      // patient.exercises = undefined;
+      return patient
+    });
+    return res.json(clinician.patients)
+  })
+
   //adding clinicianId to the routes
   router.get('/:userId/exercises', (req, res) => {
     //probably need to add to check if the id matches doctor
@@ -148,13 +159,17 @@ router.post('/register', (req, res) => {
   //         res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
   // });
 
-  router.post('/:userId/exercises/new', (req, res) => {
+  router.get('/:userId', async (req, res) => {
+    let patients = await Clinician.findById(req.params.userIdJ).populate('Patient');
+    return res.json(patients.patients)
+  })
+
+  router.post('/:userId/exercises/', (req, res) => {
     const { errors, isValid } = validateExerciseInput(req.body);
 
     if (!isValid) {
       return res.status(400).json(errors);
     }
-
       Exercise.findOne({ title: req.body.title })
         .then( exercise => {
           if(exercise) {
@@ -163,7 +178,8 @@ router.post('/register', (req, res) => {
 
           const newExercise = new Exercise({
             title: req.body.title,
-            desription: req.body.desription
+            description: req.body.description,
+            instructions: req.body.instructions
           })
 
           newExercise.save()
@@ -171,5 +187,25 @@ router.post('/register', (req, res) => {
             .catch(err => console.log(err))
         })
   })
+
+  router.delete('/:exerciseId', (req, res) => {
+    Exercise.findOneAndRemove({ _id: req.params.exerciseId})
+      .exec( err => {
+        if(err) {
+          return res.json({code: 400, message: 'There was an error deleting it ', error: err})
+        }
+        return res.json({code: 200, message: 'deleted'})
+      })
+  })
+
+  router.post('/assign/:exerciseId/:patientId', (req, res) => {
+    Exercise.findById(req.params.exerciseId).then(exer => {
+      Patient.findById(req.params.patientId).then( async (pat) => {
+        pat.exercises.push(exer);
+        await pat.save()
+        return res.json({ code: 200, message: 'yup' });
+      })
+    })
+  });
 
 module.exports = router;

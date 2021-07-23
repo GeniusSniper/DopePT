@@ -1,0 +1,21 @@
+.clinician-profile-picture {
+    height: 20em;
+    width: 20em;
+}
+
+.clinician-container {
+    background-color: teal;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.clinician-info {
+    margin-left: 5%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.clinician-name {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

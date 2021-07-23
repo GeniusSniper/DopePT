@@ -11,7 +11,7 @@ class Clinician extends React.Component {
     }
 
     render() {
-        debugger
+        
         return(
             <div className='clinician-container'>
                 <div className='clinician'>

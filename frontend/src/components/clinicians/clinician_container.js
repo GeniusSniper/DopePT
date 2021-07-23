@@ -3,7 +3,7 @@ import { requestConnection } from '../../actions/session_actions';
 import Clinician from './clinician'
 
 const mSTP = (state) => {
-    debugger
+    
     const currentUser = state.session.currentUser || state.session.user;
     let isDoctor = state.session.isClinician || (state.session.user && state.session.user.isClinician);
     let userType = isDoctor ? 'clinicians' : 'patients';

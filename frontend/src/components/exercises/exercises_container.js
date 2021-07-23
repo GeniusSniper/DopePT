@@ -12,7 +12,7 @@ const mst = (state, props) => {
 
 const mdt = dispatch => ({
     requestAllExercises: (userType, userId) => dispatch(requestAllExercises(userType, userId)),
-    removeExercise: (exerciseId, index) => dispatch(removeExercise(exerciseId, index))
+    removeExercise: (exerciseId) => dispatch(removeExercise(exerciseId))
 });
 
 export default connect(mst,mdt)(Exercises);

@@ -5,6 +5,7 @@ export const RECEIVE_CURRENT_USER = "RECEIVE_CURRENT_USER";
 export const RECEIVE_SESSION_ERRORS = "RECEIVE_SESSION_ERRORS";
 export const RECEIVE_USER_LOGOUT = "RECEIVE_USER_LOGOUT";
 export const RECEIVE_CONNECTION = 'RECEIVE_CONNECTION';
+export const CLEAR_ERRORS = 'CLEAR_ERRORS';
 
 export const receiveCurrentUser = user => ({
     type: RECEIVE_CURRENT_USER,
@@ -25,6 +26,10 @@ export const receiveConnection = payload => ({
     type: RECEIVE_CONNECTION,
     payload
 });
+
+export const clearErrors = () => ({
+    type: CLEAR_ERRORS
+})
 
 export const requestConnection = (userType, userId) => dispatch =>(
     APIUtil.getConnection(userType, userId)

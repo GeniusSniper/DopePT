@@ -13,11 +13,12 @@ class Patients extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestConnection(this.props.userType, this.props.currentUser.id);
+        this.props.requestConnection('clinicians', this.props.currentUser.id);
     }
 
     render(){
         if(this.props.patients.length === 0) return null;
+        if(!this.props.patients) return null;
         const patients = this.props.patients.map( (patient, j) => 
             <div key={patient._id}>
                 <ul onClick={() => this.setState({i: j, option: false })}>

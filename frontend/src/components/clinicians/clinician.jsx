@@ -18,6 +18,7 @@ class Clinician extends React.Component {
                 <img 
                     className='clinician-profile-picture' 
                     src={Cat} 
+                    alt={'img'}
                 />
                 <h2 className='clinician-name'>
                     {this.props.clinician.handle}

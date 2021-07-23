@@ -37,6 +37,7 @@ class Patient extends React.Component {
                     <img 
                         className='patient-profile-picture' 
                         src={Cat} 
+                        alt='patient-profile'
                     />
                     <h2 className='patient-name'>
                         {this.props.patient.handle}

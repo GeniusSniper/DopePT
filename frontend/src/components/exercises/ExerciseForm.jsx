@@ -23,6 +23,10 @@ class ExerciseForm extends React.Component {
         this.setState({errors: nextProps.errors});
     }
 
+    componentWillUnmount(){
+        this.props.clearErrors();
+    }
+
     update(field) {
         return e => this.setState({
           [field]: e.currentTarget.value
@@ -31,15 +35,26 @@ class ExerciseForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.props.createExercise(this.userId, this.state);
+        this.props.createExercise(this.userId, this.state)
+        .then(() => {
+            this.setState({
+                title: '',
+                description: '',
+                errors: {},
+                instructions: '',
+                urls: []
+            })
+        })
     }
 
     renderErrors() {
+        if(this.props.errors.session.length ===0 ) return null;
         return(
           <>
-            {Object.keys(this.state.errors).map((error, i) => (
+            {Object.values(this.props.errors.session).map((error, i) => (
               <li key={`error-${i}`}>
-                {this.state.errors[error]}
+                {/* {this.state.errors[error]} */}
+                {error}
               </li>
             ))}
           </>
@@ -81,7 +96,7 @@ class ExerciseForm extends React.Component {
                             onChange={this.update('urls')}
                         />
                     </label> */}
-                    {/* {this.renderErrors()} */}
+                    {this.renderErrors()}
                     <button>Create Exercise</button>
                 </form>
             </div>

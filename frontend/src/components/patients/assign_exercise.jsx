@@ -19,7 +19,10 @@ class AssignExercise extends React.Component {
                         // );
                         props.assignExercise(exercise._id, props.patient._id);}
                     }>
-                        <Button true='true' onClick={() => this.true = undefined}/>
+                        {/* <Button true='true' onClick={() => this.true = undefined}/> */}
+                        <button>
+                            Assign this Exercise
+                        </button>
                     </div>
                 )
                 allExercises.push(exercise);
@@ -59,13 +62,13 @@ class AssignExercise extends React.Component {
 export default AssignExercise;
 
 
-const Button = props => {
-    if(props.true){
-        return(
-            <button>
-                Assign this Exercise
-            </button>
-        )
-    }
-    return null;
-}
+// const Button = props => {
+//     if(props.true){
+//         return(
+//             <button>
+//                 Assign this Exercise
+//             </button>
+//         )
+//     }
+//     return null;
+// }

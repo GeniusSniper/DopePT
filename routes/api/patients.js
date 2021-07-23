@@ -45,7 +45,7 @@ router.post('/register', (req, res) => {
           })
 
           bcrypt.genSalt(10, (err, salt) => {
-            console.log('userbcrpt: ' + err);
+            // console.log('userbcrpt: ' + err);
             bcrypt.hash(newPatient.password, salt, (err, hash) => {
               if (err) throw err;
               newPatient.password = hash;
@@ -86,7 +86,7 @@ router.post('/register', (req, res) => {
   router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
 
-    console.log(errors);
+    // console.log(errors);
 
     if (!isValid) {
       return res.status(400).json(errors);
@@ -125,12 +125,18 @@ router.post('/register', (req, res) => {
       })
   })
 
-  //for patients need to grab from itself
+  router.get('/:userId', async (req, res) => {
+    let clinician = await Patient.findById(req.params.userId).populate('clinician');
+    clinician.clinician.exercises = undefined
+    clinician.clinician.password = undefined
+    clinician.clinician.patients = undefined
+    return res.json(clinician.clinician)
+  })
   //
-  router.get('/:userId', async   (req, res) => {
+  router.get('/:userId/exercises', async   (req, res) => {
     let patient = await Patient.findById(req.params.userId).populate('exercises')
     // console.log(patient.exercises)
-    return res.json(patient)
+    return res.json(patient.exercises)
     // .catch(err => 
     //   res.status(404).json({ noexercisesfound: 'No exercises found :('}));
   });

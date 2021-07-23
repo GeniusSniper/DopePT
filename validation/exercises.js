@@ -5,14 +5,19 @@ module.exports = function validateExerciseInput(data) {
   let errors = {};
 
   data.title = validText(data.title) ? data.title : '';
-  data.desription = validText(data.desription) ? data.desription : '';
+  data.description = validText(data.description) ? data.description : '';
+  data.instructions = validText(data.instructions) ? data.instructions : '';
 
   if (Validator.isEmpty(data.title)) {
     errors.title = 'Title field is required';
   }
 
-  if (Validator.isEmpty(data.desription)) {
-    errors.desription = 'Desription field is required';
+  if (Validator.isEmpty(data.description)) {
+    errors.description = 'Desription field is required';
+  }
+
+  if (Validator.isEmpty(data.instructions)) {
+    errors.instructions = 'Instructions field is required';
   }
 
   return {

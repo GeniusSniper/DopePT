@@ -30,6 +30,24 @@
 .exercises-index {
     font-family: Georgia, 'Times New Roman', Times, serif;
     overflow-y: scroll;
+    display: flex;
+    flex-direction: column;
+}
+
+.createExerciseButton {
+    margin: 2%;
+}
+
+.exercise-index-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.patients-index {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    display: flex;
+    flex-direction: column;
 }
 
 .exercise-show {
@@ -63,7 +81,19 @@
     font-weight: bold;
 }
 
+.patient-title-index {
+    padding-bottom: 1%;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 .exercise-title-index:hover{
+    cursor: pointer;
+    color: goldenrod;
+    text-decoration: underline;
+}
+
+.patient-title-index:hover{
     cursor: pointer;
     color: goldenrod;
     text-decoration: underline;
@@ -71,4 +101,39 @@
 
 .exercise-instructions {
     padding-bottom: 2%;
+}
+
+.navigation-tabs {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    justify-content: flex-end;
+    width: 30%;
+}
+
+.navigation-tabs > div {
+    border-left: solid black 1px;
+    background-color: teal;
+    padding: 2%;
+    color: white;
+}
+
+.navigation-tabs > div:hover {
+    cursor: pointer;
+    color: goldenrod;
+    text-decoration: underline;
+}
+
+button {
+    border-radius: 25px;
+    background-color: black;
+    border: 1px solid black;
+    height: 2em;
+    color: white;
+    white-space: nowrap;
+}
+
+button:hover {
+    cursor: pointer;
+    background-color: goldenrod;
 }

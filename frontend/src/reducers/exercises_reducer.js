@@ -1,20 +1,22 @@
 import { 
+  DELETEEXERCISE,
     RECEIVEALLEXERCISES, 
     RECEIVEEXERCISE 
 } from "../actions/exercise_actions";
-import { RECEIVE_CURRENT_USER } from "../actions/session_actions";
 
   
   const ExercisesReducer = (state = {}, action) => {
     Object.freeze(state);
     switch(action.type) {
       case RECEIVEALLEXERCISES:
-        debugger
         return action.exercises;
       case RECEIVEEXERCISE:
-        return Object.assign({}, state, {[action.exercise._id]: action.exercise});
-      case RECEIVE_CURRENT_USER:
-        return action.exercises;
+        let num = state.length;
+        return Object.assign({}, state, {[num]: action.exercise});
+      case DELETEEXERCISE:
+        let nextState = Object.assign({}, state);
+        delete nextState[action.index];
+        return nextState;
       default:
         return state;
     }

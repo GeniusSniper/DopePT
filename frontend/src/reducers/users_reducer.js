@@ -7,8 +7,6 @@ export default function(state = {}, action) {
     switch (action.type) {
         case RECEIVE_CURRENT_USER:
             newState[action.user.id] = action.user
-            delete newState[action.user.id].exercises
-            debugger
             return newState;
         default:
             return state;

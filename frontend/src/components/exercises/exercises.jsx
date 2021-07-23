@@ -1,18 +1,15 @@
 import React from 'react';
 import ExerciseContainer from './exercise_container';
 import '../../styles/profile.css';
+import NewExerciseContainer from './new_exercise_container';
 
 class Exercises extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             i: 0,
-            // title: '',
-            // description: '',
+            option: false
         }
-
-        // this.generateExerciseForm = this.generateExerciseForm.bind(this);
-        // this.submitForm = this.submitForm.bind(this);
     }
 
     componentDidMount(){
@@ -23,57 +20,57 @@ class Exercises extends React.Component{
         );
     }
 
-    // submitForm(e){
-    //     e.preventDefault();
-    //     // let exercise = Object.assign({}, );
-    //     this.props.createExercise(this.props.currentUserId, this.state);
-    // }
-
-    // generateExerciseForm(){
-    //     return (
-    //         <form onSubmit={this.submitForm}>
-    //             <label>Title:
-    //                 <input type="text" 
-    //                 onClick={e => this.setState({[title]: e.target.value})}/>
-    //             </label>
-    //             <label>Description:
-    //                 <input type="text" 
-    //                 onClick={e => this.setState({[description]: e.target.value})}/>
-    //             </label>
-    //             <button>Create Exercise</button>
-    //         </form>
-    //     )
-    // }
-
     render(){
         if(this.props.allExercises.length === 0) return null;
-        const allExercises = this.props.allExercises.map( (exercise, j) => <ul key={exercise._id} onClick={() => this.setState({i: j })}>
-                <div className='exercise-title-index'>
-                    {exercise.title}
-                </div>
-                <div className='exercise-description'>
-                    {exercise.description}
-                </div>
-            </ul> 
+        let isClinician = (this.props.userType === 'clinicians');
+        let option, deleteExercise, mainShow;
+        
+        if(isClinician){
+            option = (
+                <button onClick={() => this.setState({option: true}) }
+                    className='createExerciseButton'>
+                    Create an exercise
+                </button>)
+
+            deleteExercise = (exerciseId, j) => (
+                <button onClick={() => this.props.removeExercise(exerciseId, j) }
+                    className='createExerciseButton'>
+                    Delete Exercise
+                </button>)
+        } else {
+            deleteExercise = () => (
+                null
             )
-        // let ableToCreate = () => null;
-        // if(this.props.userType === 'clinicians') {
-        //     ableToCreate = () => {
-        //         return (
-        //             <div><button>Create Exerise</button></div>
-        //         )
-        //     }
-        // }
+        }
+
+        const allExercises = this.props.allExercises.map( (exercise, j) => 
+            <div className='exercise-index-container' key={exercise._id}>
+                <ul  onClick={() => { this.setState({i: j, option: false}) }}>
+                    <div className='exercise-title-index'>
+                        {exercise.title}
+                    </div>
+                    <div className='exercise-description'>
+                        {exercise.description}
+                    </div>
+                </ul> 
+                {deleteExercise(exercise._id, j)}
+            </div>
+            )
+
+
+        mainShow = this.state.option ? <NewExerciseContainer/> : <ExerciseContainer exerciseId={this.state.i}/>;
         return (
             <div className='profile-grid'>
                 <div className='left-side-bar'>
                     <div className='exercises-index'>
+                        {option}
+                        <br />
                         {allExercises}
                     </div>
                 </div>
                 <div className='main-show'>
                     <div className='exercise-show'>
-                        <ExerciseContainer exerciseId={this.state.i}/>
+                        {mainShow}
                     </div>
                 </div>
             </div>

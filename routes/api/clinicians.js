@@ -170,7 +170,6 @@ router.post('/register', (req, res) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-
       Exercise.findOne({ title: req.body.title })
         .then( exercise => {
           if(exercise) {
@@ -179,13 +178,24 @@ router.post('/register', (req, res) => {
 
           const newExercise = new Exercise({
             title: req.body.title,
-            desription: req.body.desription
+            description: req.body.description,
+            instructions: req.body.instructions
           })
 
           newExercise.save()
             .then(exercise => res.json(exercise))
             .catch(err => console.log(err))
         })
+  })
+
+  router.delete('/:exerciseId', (req, res) => {
+    Exercise.findOneAndRemove({ _id: req.params.exerciseId})
+      .exec( err => {
+        if(err) {
+          return res.json({code: 400, message: 'There was an error deleting it ', error: err})
+        }
+        return res.json({code: 200, message: 'deleted'})
+      })
   })
 
 module.exports = router;

@@ -22,19 +22,25 @@ class Exercises extends React.Component{
 
     render(){
         if(this.props.allExercises.length === 0) return null;
+        let isClinician = (this.props.userType === 'clinicians');
         const allExercises = this.props.allExercises.map( (exercise, j) => 
-            <ul key={exercise._id} onClick={() => { this.setState({i: j, option: false}) }}>
-                <div className='exercise-title-index'>
-                    {exercise.title}
-                </div>
-                <div className='exercise-description'>
-                    {exercise.description}
-                </div>
-            </ul> 
+            <div key={exercise._id}>
+                <ul  onClick={() => { this.setState({i: j, option: false}) }}>
+                    <div className='exercise-title-index'>
+                        {exercise.title}
+                    </div>
+                    <div className='exercise-description'>
+                        {exercise.description}
+                    </div>
+                </ul> 
+                <button onClick={() => this.props.removeExercise(exercise._id, j) }>
+                    Delete Exercise
+                </button>
+            </div>
             )
         let option, mainShow;
 
-        if(this.props.userType === 'clinicians'){
+        if(isClinician){
             option = <button onClick={() => this.setState({option: true})}>
                 Create an exercise
             </button>

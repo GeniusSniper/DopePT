@@ -46,7 +46,7 @@ router.post('/register', (req, res) => {
           })
 
           bcrypt.genSalt(10, (err, salt) => {
-            console.log('clinicianbcrpt: ' + err);
+            // console.log('clinicianbcrpt: ' + err);
             bcrypt.hash(newclinician.password, salt, (err, hash) => {
               if (err) throw err;
               newclinician.password = hash;
@@ -85,7 +85,7 @@ router.post('/register', (req, res) => {
   router.post('/login', (req, res) => {
     const { errors, isValid } = validateLoginInput(req.body);
 
-    console.log(errors);
+    // console.log(errors);
 
     if (!isValid) {
       return res.status(400).json(errors);

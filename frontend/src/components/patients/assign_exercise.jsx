@@ -12,11 +12,15 @@ class AssignExercise extends React.Component {
                 allExercises.push(exercise);
             } else {
                 exercise.button = (
-                    <button onClick={() => 
-                        props.assignExercise(exercise._id, props.patient._id)
+                    <div onClick={() => {
+                        // button.style.display = "none";
+                        // patientExe.push(
+                        //     <li key={exercise._id}>{exercise.title}</li>
+                        // );
+                        props.assignExercise(exercise._id, props.patient._id);}
                     }>
-                        Assign this Exercise
-                    </button>
+                        <Button true='true' onClick={() => this.true = undefined}/>
+                    </div>
                 )
                 allExercises.push(exercise);
             };
@@ -53,3 +57,15 @@ class AssignExercise extends React.Component {
 }
 
 export default AssignExercise;
+
+
+const Button = props => {
+    if(props.true){
+        return(
+            <button>
+                Assign this Exercise
+            </button>
+        )
+    }
+    return null;
+}

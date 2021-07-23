@@ -1,4 +1,4 @@
-import { connect } from 'react-redux'
+import { connect } from 'react-redux';
 import { requestConnection } from '../../actions/session_actions';
 import Patients from './patients';
 
@@ -18,7 +18,7 @@ const mSTP = state => {
 }
 
 const mDTP = dispatch => ({
-    requestConnection: (userType, userId) => dispatch(requestConnection(userType, userId))
+    requestConnection: (userType, userId) => dispatch(requestConnection(userType, userId)),
 })
 
 export default connect(mSTP, mDTP)(Patients);

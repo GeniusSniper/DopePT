@@ -138,7 +138,7 @@ router.post('/register', (req, res) => {
     let clinician = await Clinician.findById(req.params.userId).populate('patients');
     clinician.patients = clinician.patients.map( (patient) => {
       patient.password = undefined;
-      patient.exercises = undefined;
+      // patient.exercises = undefined;
       return patient
     });
     return res.json(clinician.patients)
@@ -197,5 +197,15 @@ router.post('/register', (req, res) => {
         return res.json({code: 200, message: 'deleted'})
       })
   })
+
+  router.post('/assign/:exerciseId/:patientId', (req, res) => {
+    Exercise.findById(req.params.exerciseId).then(exer => {
+      Patient.findById(req.params.patientId).then( async (pat) => {
+        pat.exercises.push(exer);
+        await pat.save()
+        return res.json({ code: 200, message: 'yup' });
+      })
+    })
+  });
 
 module.exports = router;

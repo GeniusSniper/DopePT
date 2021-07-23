@@ -19,7 +19,7 @@ class ExerciseForm extends React.Component {
     }
 
     componentWillReceiveProps(nextProps) {
-        this.setState({errors: nextProps.errors})
+        this.setState({errors: nextProps.errors});
     }
 
     update(field) {
@@ -30,7 +30,7 @@ class ExerciseForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        this.porps.createExercise(this.userId, this.state)
+        this.props.createExercise(this.userId, this.state);
     }
 
     renderErrors() {

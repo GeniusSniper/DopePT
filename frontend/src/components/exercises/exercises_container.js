@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { requestAllExercises } from '../../actions/exercise_actions';
+import { removeExercise, requestAllExercises } from '../../actions/exercise_actions';
 import Exercises from './exercises';
 
 const mst = (state, props) => {
@@ -12,6 +12,7 @@ const mst = (state, props) => {
 
 const mdt = dispatch => ({
     requestAllExercises: (userType, userId) => dispatch(requestAllExercises(userType, userId)),
+    removeExercise: (exerciseId, index) => dispatch(removeExercise(exerciseId, index))
 });
 
 export default connect(mst,mdt)(Exercises);

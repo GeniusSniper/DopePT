@@ -9,5 +9,9 @@ export const getExercise = (userType, userId, exerciseId) => (
 );
 
 export const createExercise = (userId, exerciseData) => ( 
-    axios.post(`/api/clinicians/${userId}/exercises/new`, exerciseData) 
+    axios.post(`/api/clinicians/${userId}/exercises/`, exerciseData) 
+);
+
+export const deleteExercise = (exerciseId) => (
+    axios.delete(`/api/clinicians/${exerciseId}`)
 );

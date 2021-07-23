@@ -1,4 +1,5 @@
 import { 
+  DELETEEXERCISE,
     RECEIVEALLEXERCISES, 
     RECEIVEEXERCISE 
 } from "../actions/exercise_actions";
@@ -10,7 +11,12 @@ import {
       case RECEIVEALLEXERCISES:
         return action.exercises;
       case RECEIVEEXERCISE:
-        return Object.assign({}, state, {[action.exercise._id]: action.exercise});
+        let num = state.length;
+        return Object.assign({}, state, {[num]: action.exercise});
+      case DELETEEXERCISE:
+        let nextState = Object.assign({}, state);
+        delete nextState[action.index];
+        return nextState;
       default:
         return state;
     }

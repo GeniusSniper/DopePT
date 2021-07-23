@@ -13,7 +13,7 @@ class Patients extends React.Component {
     }
 
     componentDidMount() {
-        this.props.requestConnection(this.props.userType, this.props.currentUser.id);
+        this.props.requestConnection('clinicians', this.props.currentUser.id);
     }
 
     render(){

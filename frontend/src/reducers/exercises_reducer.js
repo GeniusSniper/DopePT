@@ -11,7 +11,7 @@ import {
     switch(action.type) {
       case RECEIVEALLEXERCISES:
         nextState = {};
-        action.exercises.map( exercise => {
+        action.exercises.forEach( exercise => {
           nextState[exercise._id] = exercise
         })
         return nextState;

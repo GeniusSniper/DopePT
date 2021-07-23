@@ -3,6 +3,7 @@ import Cat from '../../styles/images/cat1.jpg';
 import '../../styles/profile.css';
 import ExercisesContainer from '../exercises/exercises_container';
 import PatientsContainer from '../patients/patients_container'
+import CliniciansContainer from '../clinicians/clinician_container';
 
 class userProfile extends React.Component {
     constructor(props) {
@@ -21,7 +22,7 @@ class userProfile extends React.Component {
             case 'patients':
                 return <PatientsContainer/>
             case 'clinician':
-                break;
+                return <CliniciansContainer/>
             default:
                 break;
         }

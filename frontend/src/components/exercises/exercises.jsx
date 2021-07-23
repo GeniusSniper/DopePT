@@ -23,8 +23,26 @@ class Exercises extends React.Component{
     render(){
         if(this.props.allExercises.length === 0) return null;
         let isClinician = (this.props.userType === 'clinicians');
+        let option, deleteExercise, mainShow;
+        
+        if(isClinician){
+            option = (
+                <button onClick={() => this.setState({option: true})}>
+                    Create an exercise
+                </button>)
+
+            deleteExercise = (exerciseId, j) => (
+                <button onClick={() => this.props.removeExercise(exerciseId, j) }>
+                    Delete Exercise
+                </button>)
+        } else {
+            deleteExercise = () => (
+                null
+            )
+        }
+
         const allExercises = this.props.allExercises.map( (exercise, j) => 
-            <div key={exercise._id}>
+            <div className='exercise-index-container' key={exercise._id}>
                 <ul  onClick={() => { this.setState({i: j, option: false}) }}>
                     <div className='exercise-title-index'>
                         {exercise.title}
@@ -33,18 +51,10 @@ class Exercises extends React.Component{
                         {exercise.description}
                     </div>
                 </ul> 
-                <button onClick={() => this.props.removeExercise(exercise._id, j) }>
-                    Delete Exercise
-                </button>
+                {deleteExercise(exercise._id, j)}
             </div>
             )
-        let option, mainShow;
 
-        if(isClinician){
-            option = <button onClick={() => this.setState({option: true})}>
-                Create an exercise
-            </button>
-        }
 
         mainShow = this.state.option ? <NewExerciseContainer/> : <ExerciseContainer exerciseId={this.state.i}/>;
         return (

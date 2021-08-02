@@ -5,7 +5,7 @@ export const RECEIVEALLEXERCISES = 'RECEIVEALLEXERCISES';
 export const RECEIVEEXERCISE = 'RECEIVEEXERCISE';
 export const HIDE_EXERCISE = 'HIDE_EXERCISE';
 export const DELETEEXERCISE = 'DELETEEXERCISE';
-export const ASSIGN_EXERCISE = 'ASSIGN_EXERCISE';
+// export const ASSIGN_EXERCISE = 'ASSIGN_EXERCISE';
 
 export const receiveAllExercises = exercises => ({
     type: RECEIVEALLEXERCISES,
@@ -37,10 +37,10 @@ export const requestAllExercises = (userType, userId) => dispatch => (
         .then( exercises => dispatch(receiveAllExercises(exercises.data)))
 );
 
-export const requestExercise = (userType, userId, exerciseId) => dispatch => (
-    APIUtil.getExercise(userType, userId, exerciseId)
-        .then( exercise => dispatch(receiveExercise(exercise.data)))
-);
+// export const requestExercise = (userType, userId, exerciseId) => dispatch => (
+//     APIUtil.getExercise(userType, userId, exerciseId)
+//         .then( exercise => dispatch(receiveExercise(exercise.data)))
+// );
 
 export const createExercise = (userId, exercise) => dispatch => (
     APIUtil.createExercise(userId, exercise)

@@ -2,6 +2,7 @@ import React from 'react';
 import Cat from '../../styles/images/cat1.jpg';
 import '../../styles/profile.css';
 import ExercisesContainer from '../exercises/exercises_container';
+import Calendar from 'react-calendar';
 
 class userProfile extends React.Component {
     constructor(props) {
@@ -21,6 +22,7 @@ class userProfile extends React.Component {
                     <h1>Hello, {this.props.user.handle}!</h1>
                 </div>
                 <ExercisesContainer userType={this.props.userType}/>
+                <Calendar/>
             </div>
         )
     }

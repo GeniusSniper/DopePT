@@ -1,0 +1,41 @@
+.assign-exercise-container {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: flex-start;
+    justify-content: space-evenly;
+    height: 100%;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}
+
+.all-exercises-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.mapped-exercises {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2%;
+    border: solid black 1px;
+    padding: 1%;
+}
+
+.assign-button {
+    display: flex;
+    justify-content: flex-end;
+    flex-grow: 1;
+}
+
+.patient-exercises-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+}
+
+.exercise-list-title {
+    font-size: 24px;
+}

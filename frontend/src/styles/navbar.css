@@ -14,6 +14,6 @@
 }
 
 .logout-button:hover {
-    color: goldenrod;
+    background-color: goldenrod;
     cursor: pointer;
 }

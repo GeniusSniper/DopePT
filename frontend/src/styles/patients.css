@@ -1,0 +1,29 @@
+.patient-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 5%;
+}
+
+.patient-profile-picture {
+    height: 20em;
+    width: 20em;
+}
+
+.patient {
+    display: flex;
+    flex-direction: column;
+}
+
+.patient-exercises {
+    margin-left: 5%;
+}
+
+.patient-exercise {
+    white-space: nowrap;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    padding-bottom: 2%;
+}
+
+.patient-name {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+}

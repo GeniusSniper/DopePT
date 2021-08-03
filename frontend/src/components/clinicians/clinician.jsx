@@ -7,11 +7,10 @@ class Clinician extends React.Component {
     //     super(props)
     // }
     componentDidMount() {
-        this.props.requestConnection(this.props.userType, this.props.currentUser.id);
+        this.props.requestConnection('patients', this.props.currentUser.id);
     }
 
     render() {
-        
         return(
             <div className='clinician-container'>
                 <div className='clinician'>

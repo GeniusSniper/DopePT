@@ -18,21 +18,21 @@ class Patients extends React.Component {
 
     render(){
         if(this.props.patients.length === 0) return null;
-        if(!this.props.patients) return null;
+        if(this.props.patients.isClinician) return null;
         const patients = this.props.patients.map( (patient, j) => 
             <div className='patient-index' key={patient._id}>
                 <ul onClick={() => this.setState({i: j, option: false })}>
                     <div className='patient-title-index'>
                         {patient.handle}
                     </div>
-                </ul> 
+                </ul>
                 <button onClick={() => this.setState({i: j, option: true})}>
                     Assign Exercise
                 </button>
             </div>
         )
         let option;
-        option = this.state.option ? <AssignExercise patientIndex={this.state.i}/> : <Patient patientId={this.state.i}/>;
+        option = this.state.option ? <AssignExercise key={this.state.i} patientIndex={this.state.i}/> : <Patient patientId={this.state.i}/>;
         return (
             <div className='profile-grid'>
             <div className='left-side-bar'>

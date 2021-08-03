@@ -203,7 +203,7 @@ router.post('/register', (req, res) => {
       Patient.findById(req.params.patientId).then( async (pat) => {
         pat.exercises.push(exer);
         await pat.save()
-        return res.json({ code: 200, message: 'yup' });
+        return res.json(exer);
       })
     })
   });

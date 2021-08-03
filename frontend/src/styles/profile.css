@@ -147,3 +147,11 @@
     cursor: pointer;
     background-color: goldenrod;
 }
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    background-color: teal;
+    height: 100%;
+    padding: 5%;
+}

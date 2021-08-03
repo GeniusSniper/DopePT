@@ -32,7 +32,7 @@ class Patients extends React.Component {
             </div>
         )
         let option;
-        option = this.state.option ? <AssignExercise patientIndex={this.state.i}/> : <Patient patientId={this.state.i}/>;
+        option = this.state.option ? <AssignExercise key={this.state.i} patientIndex={this.state.i}/> : <Patient patientId={this.state.i}/>;
         return (
             <div className='profile-grid'>
             <div className='left-side-bar'>

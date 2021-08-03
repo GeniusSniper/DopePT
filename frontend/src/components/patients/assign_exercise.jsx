@@ -3,11 +3,16 @@ import '../../styles/assign_exercises.css';
 
 class AssignExercise extends React.Component {
     componentDidMount(){
-        this.props.requestAllExercises('patients', this.props.patient._id)
+        this.props.patientExercises('patients', this.props.patient._id);
     }
 
     render(){
-        return null;
+        if(!this.patientExercises) return null;
+        return (
+            <div>
+                hi
+            </div>
+        )
     }
 }
 

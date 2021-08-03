@@ -1,20 +1,20 @@
 import { connect } from 'react-redux';
-import { requestAllExercises, requestAssignExercise } from '../../actions/exercise_actions';
+import { patientExercises, requestAssignExercise } from '../../actions/exercise_actions';
 import AssignExercise from './assign_exercise';
 
 const mstp = (state, props) => {
     const patient = state.connection[props.patientIndex];
-        debugger
-        return({
+    debugger
+    return({
         patient,
         allExercises: Object.values(state.exercises),
-        patientExercise: null
+        patientExercise: Object.values(state.patient)
     })
 };
 
 const mdtp = dispatch => ({
     assignExercise: (exerciseId, patientId) => dispatch(requestAssignExercise(exerciseId, patientId)),
-    requestAllExercises: (userType, userId) => dispatch(requestAllExercises(userType, userId)),
+    patientExercises: (userType, userId) => dispatch(patientExercises(userType, userId)),
 });
 
 export default connect(mstp, mdtp)(AssignExercise);

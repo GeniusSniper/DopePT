@@ -50,7 +50,6 @@ class userProfile extends React.Component {
                     <img className='profile-picture' src={Cat} alt='img'/>
                     <h1>Hello, {this.props.user.handle}!</h1>
                 </div>
-                <ExercisesContainer userType={this.props.userType}/>
                 <Calendar/>
                 <div className='navigation-tabs'>
                     <div 

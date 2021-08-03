@@ -8,6 +8,7 @@ export const DELETEEXERCISE = 'DELETEEXERCISE';
 // export const ASSIGN_EXERCISE = 'ASSIGN_EXERCISE';
 export const PATIENT_EXERCISES = 'PATIENT_EXERCISES';
 export const PATIENT_EXERCISE = 'PATIENT_EXERCISE';
+export const CLEAR_PATIENT_EXERCISE = 'CLEAR_PATIENT_EXERCISE';
 
 export const receiveAllExercises = exercises => ({
     type: RECEIVEALLEXERCISES,
@@ -34,9 +35,13 @@ export const receivePaticentExercise = exercise => ({
     exercise
 });
 
+export const clearExercises = () => ({
+    type: CLEAR_PATIENT_EXERCISE,
+})
+
 export const requestAssignExercise = (exerciseId, patientId) => dispatch => (
     APIUtil.assignExercise(exerciseId, patientId)
-        .then( exercise => dispatch(receivePaticentExercise(exercise)))
+        .then( exercise => dispatch(receivePaticentExercise(exercise.data)))
 );
 
 export const requestAllExercises = (userType, userId) => dispatch => (

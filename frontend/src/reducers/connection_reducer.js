@@ -7,7 +7,7 @@ const connectionReducer = (state = [], action) => {
     case RECEIVE_CONNECTION:
         return action.payload
     default:
-        return [];
+        return state;
     }
 };
 

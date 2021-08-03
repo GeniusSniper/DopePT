@@ -1,6 +1,7 @@
 import { 
     PATIENT_EXERCISES, 
-    PATIENT_EXERCISE 
+    PATIENT_EXERCISE,
+    CLEAR_PATIENT_EXERCISE
   } from "../actions/exercise_actions";
   
     
@@ -17,6 +18,8 @@ import {
         case PATIENT_EXERCISE:
           // let num = state.length;
           return Object.assign({}, state, {[action.exercise._id]: action.exercise});
+        case CLEAR_PATIENT_EXERCISE:
+          return {};
         default:
           return state;
       }

@@ -103,7 +103,7 @@ label {
     cursor: pointer;
 }
 
-.background {
+/* .background {
     z-index: -1;
     position: absolute;
     left: 0px;
@@ -111,4 +111,15 @@ label {
     width: 100%;
     overflow: hidden;
     max-height: 100%;
+} */
+
+.background {
+    z-index: -1;
+    position: absolute;
+    background-image: linear-gradient(to bottom right, #FF00FF, red);
+    left: 0px;
+    top: 0px;  
+    width: 100vh;
+    overflow: hidden;
+    height: 100vh;
 }

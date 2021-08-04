@@ -126,7 +126,7 @@ class LoginForm extends React.Component {
     return (
       <div>
         {/* <img className='background' src={Background} alt='background'/> */}
-        <div className='background'></div>
+        {/* <div className='background'></div> */}
         <div className="login-form-container">
           <div className='login-form'>
           <form onSubmit={this.handleSubmit}>

@@ -1,0 +1,14 @@
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.icon {
+    padding: 0 10px 0;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+}

@@ -1,4 +1,4 @@
-.assign-exercise-container {
+.patient-exercise-container {
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -9,9 +9,16 @@
 }
 
 .all-exercises-list {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
+    display: grid;
+    grid-template-columns: 50% 50%;
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+    border-bottom: solid 1px black;
+    /* flex-direction: row;
+    align-items: center;
+    justify-content: flex-end;
+    justify-content: space-evenly; */
 }
 
 .mapped-exercises {
@@ -30,10 +37,16 @@
     flex-grow: 1;
 }
 
-.patient-exercises-list {
+.patient-exercise-list {
     display: flex;
     flex-direction: column;
-    justify-content: space-evenly;
+}
+
+.patient-exercise-list-item {
+    padding-top: 2%;
+    padding-bottom: 2%;
+    margin-bottom: 2%;
+    border-bottom: solid 1px black;
 }
 
 .exercise-list-title {

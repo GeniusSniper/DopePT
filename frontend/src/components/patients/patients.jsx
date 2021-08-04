@@ -26,7 +26,7 @@ class Patients extends React.Component {
                         {patient.handle}
                     </div>
                 </ul>
-                <button onClick={() => this.setState({i: j, option: true})}>
+                <button className="exercise-button" onClick={() => this.setState({i: j, option: true})}>
                     Assign Exercise
                 </button>
             </div>

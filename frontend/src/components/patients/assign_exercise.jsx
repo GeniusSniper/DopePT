@@ -23,7 +23,9 @@ class AssignExercise extends React.Component {
             if(this.props.patient.exercises.indexOf(exercise._id) === -1){
                 if(!this.state[i]){
                     button = (
-                    <button onClick={() => {
+                    <button 
+                        className='exercise-button'
+                        onClick={() => {
                             this.props.assignExercise(exercise._id, this.props.patient._id);
                             this.setState({ [i]: true })
                         }}>
@@ -34,25 +36,25 @@ class AssignExercise extends React.Component {
 
             }
             return (
-            <div key={exercise._id}>
+            <div className='all-exercises-list' key={exercise._id}>
                 <div>{exercise.title}</div>
                {button}
             </div>
         )});
         let patientExercises = this.props.patientExercise.map( exercise => (
-            <div key={exercise._id}>
+            <div className='patient-exercise-list-item' key={exercise._id}>
                 <div>{exercise.title}</div>
             </div>
         ))
         return (
-            <div>
+            <div className='patient-exercise-container'>
                 <div>
-                    <h1>ALL Exericses</h1>
+                    <h1>All Exericses</h1>
                     <div>{allExercises}</div>
                 </div>
-                <div>
+                <div className='patient-exercise-list-container'>
                     <h1>{this.props.patient.handle}'s Exercise</h1>
-                    <div>{patientExercises}</div>
+                    <div className='patient-exercise-list'>{patientExercises}</div>
                 </div>
             </div>
         )

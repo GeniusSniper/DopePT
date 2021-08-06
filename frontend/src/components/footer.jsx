@@ -5,7 +5,7 @@ import '../styles/footer.css';
 export default () => {
     return (
         <div className='main'>
-            <div>
+            <div className='footer'>
                 <h1 className='about'>About us</h1>
                 <div className='contact'>
                     <div className='contact'>

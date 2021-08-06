@@ -1,6 +1,12 @@
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: teal;
+}
+
 .main {
     display: block;
-    background-color: teal;
     width: 100%;
 }
 

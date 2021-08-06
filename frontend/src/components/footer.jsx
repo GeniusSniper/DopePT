@@ -19,6 +19,9 @@ export default () => {
                             <a href="https://github.com/tsbernstein" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
                         </div>
                     </div>
+                    <div className='icon'>
+                        <a href="https://github.com/GeniusSniper/DopePT" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
+                    </div>
                     <div className='contact'>
                         <div className='icon'>
                             <a href="https://angel.co/u/ti-wei" target='_blank' rel="noopener noreferrer"><FaAngellist size={32}/></a>
@@ -29,9 +32,6 @@ export default () => {
                         <div className='icon'>
                             <a href="https://github.com/GeniusSniper" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
                         </div>
-                    </div>
-                    <div className='icon'>
-                        <a href="https://github.com/GeniusSniper/DopePT" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
                     </div>
                 </div>
             </div>

@@ -160,7 +160,7 @@ router.post('/register', (req, res) => {
   // });
 
   router.get('/:userId', async (req, res) => {
-    let patients = await Clinician.findById(req.params.userIdJ).populate('Patient');
+    let patients = await Clinician.findById(req.params.userId).populate('Patient');
     return res.json(patients.patients)
   })
 
@@ -203,7 +203,7 @@ router.post('/register', (req, res) => {
       Patient.findById(req.params.patientId).then( async (pat) => {
         pat.exercises.push(exer);
         await pat.save()
-        return res.json({ code: 200, message: 'yup' });
+        return res.json(exer);
       })
     })
   });

@@ -28,13 +28,13 @@ class Exercises extends React.Component{
         if(isClinician){
             option = (
                 <button onClick={() => this.setState({option: true}) }
-                    className='createExerciseButton'>
+                    className='exercise-button'>
                     Create an exercise
                 </button>)
 
             deleteExercise = (exerciseId) => (
                 <button onClick={() => this.props.removeExercise(exerciseId) }
-                    className='createExerciseButton'>
+                    className='exercise-button'>
                     Delete Exercise
                 </button>)
         } else {

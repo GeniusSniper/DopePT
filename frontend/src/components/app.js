@@ -11,7 +11,7 @@ import SignupFormContainer from './session/signup_form_container';
 // import ExerciseContainer from './exercises/exercise_container';
 
 const App = () => (
-  <div>
+  <div style={{backgroundImage: 'linear-gradient(to bottom right, lightblue, #FF00FF)', height: '100%'}}>
     <NavBarContainer />
     <Switch>
       <ProtectedRoute exact path="/" component={MainPageContainer} />

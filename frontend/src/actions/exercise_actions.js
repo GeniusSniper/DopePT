@@ -5,7 +5,10 @@ export const RECEIVEALLEXERCISES = 'RECEIVEALLEXERCISES';
 export const RECEIVEEXERCISE = 'RECEIVEEXERCISE';
 export const HIDE_EXERCISE = 'HIDE_EXERCISE';
 export const DELETEEXERCISE = 'DELETEEXERCISE';
-export const ASSIGN_EXERCISE = 'ASSIGN_EXERCISE';
+// export const ASSIGN_EXERCISE = 'ASSIGN_EXERCISE';
+export const PATIENT_EXERCISES = 'PATIENT_EXERCISES';
+export const PATIENT_EXERCISE = 'PATIENT_EXERCISE';
+export const CLEAR_PATIENT_EXERCISE = 'CLEAR_PATIENT_EXERCISE';
 
 export const receiveAllExercises = exercises => ({
     type: RECEIVEALLEXERCISES,
@@ -22,25 +25,39 @@ export const deleteEcercise = index => ({
     index
 });
 
-// export const assignExercise = () => ({
-//     type: ASSIGN_EXERCISE,
+export const receivePaticentExercises = exercises => ({
+    type: PATIENT_EXERCISES,
+    exercises
+});
 
-// });
+export const receivePaticentExercise = exercise => ({
+    type: PATIENT_EXERCISE,
+    exercise
+});
+
+export const clearExercises = () => ({
+    type: CLEAR_PATIENT_EXERCISE,
+})
 
 export const requestAssignExercise = (exerciseId, patientId) => dispatch => (
     APIUtil.assignExercise(exerciseId, patientId)
-        // .then( () => dispatch(assignExercise()))
-)
+        .then( exercise => dispatch(receivePaticentExercise(exercise.data)))
+);
 
 export const requestAllExercises = (userType, userId) => dispatch => (
     APIUtil.getAllExercises(userType, userId)
         .then( exercises => dispatch(receiveAllExercises(exercises.data)))
 );
 
-export const requestExercise = (userType, userId, exerciseId) => dispatch => (
-    APIUtil.getExercise(userType, userId, exerciseId)
-        .then( exercise => dispatch(receiveExercise(exercise.data)))
+export const patientExercises = (userType, userId) => dispatch => (
+    APIUtil.getAllExercises(userType, userId)
+        .then( exercises => dispatch(receivePaticentExercises(exercises.data)))
 );
+
+// export const requestPatientExercise = (userType, userId) => dispatch => (
+//     APIUtil.getAllExercises(userType, userId)
+//         .then( exercises => dispatch(receiveExercise(exercises.data)))
+// );
 
 export const createExercise = (userId, exercise) => dispatch => (
     APIUtil.createExercise(userId, exercise)

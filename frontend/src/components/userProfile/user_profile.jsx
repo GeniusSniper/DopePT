@@ -2,8 +2,10 @@ import React from 'react';
 import Cat from '../../styles/images/cat1.jpg';
 import '../../styles/profile.css';
 import ExercisesContainer from '../exercises/exercises_container';
+import ReactCalendar from '../calendar/calendar';
 import PatientsContainer from '../patients/patients_container'
 import CliniciansContainer from '../clinicians/clinician_container';
+import 'react-calendar/dist/Calendar.css';
 
 class userProfile extends React.Component {
     constructor(props) {
@@ -23,6 +25,8 @@ class userProfile extends React.Component {
                 return <PatientsContainer/>
             case 'clinician':
                 return <CliniciansContainer/>
+            case 'calendar':
+                return <ReactCalendar/>
             default:
                 break;
         }
@@ -58,6 +62,12 @@ class userProfile extends React.Component {
                     <div 
                         onClick={this.switchTabs}>
                         {this.props.isDoctor ? 'Patients' : 'Clinician'}
+                    </div>
+                    <div 
+                        onClick={() => this.setState({
+                            sidebar: 'calendar'
+                        })}>
+                        Calendar
                     </div>
                 </div>
                 {this.renderSidebar()}

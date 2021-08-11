@@ -8,11 +8,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <div>
-          <div>
-            <UserProfileContainer/>
-          </div>
-        </div>
+        <UserProfileContainer/>
       </div>
     );
   }

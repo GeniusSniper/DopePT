@@ -34,10 +34,6 @@
     flex-direction: column;
 }
 
-.createExerciseButton {
-    margin: 2%;
-}
-
 .exercise-index-container {
     display: flex;
     justify-content: space-between;
@@ -59,6 +55,7 @@
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
+    border-bottom: solid black 1px;
 }
 
 .exercise-show {
@@ -137,16 +134,30 @@
     text-decoration: underline;
 }
 
-button {
+.exercise-button {
+    display: block;
+    margin: 2%;
     border-radius: 25px;
     background-color: black;
+    background: linear-gradient(to right, goldenrod 50%, black 50%);
+    background-size: 200% 100%;
+    background-position: right bottom;
     border: 1px solid black;
     height: 2em;
     color: white;
     white-space: nowrap;
+    transition: background .5s ease;
 }
 
-button:hover {
+.exercise-button:hover {
     cursor: pointer;
-    background-color: goldenrod;
+    background-position: left bottom;
+}
+
+.calendar-container {
+    display: flex;
+    justify-content: center;
+    background-color: teal;
+    height: 100%;
+    padding: 5%;
 }

@@ -6,31 +6,39 @@ export default () => {
     return (
         <div className='main'>
             <div className='footer'>
-                <h1 className='about'>About us</h1>
                 <div className='contact'>
-                    <div className='contact'>
-                        <div className='icon'>
-                            <a href="https://angel.co/u/tyler-bernstein-5" target='_blank' rel="noopener noreferrer"><FaAngellist size={32}/></a>
-                        </div>
-                        <div className='icon'>
-                            <a href="https://www.linkedin.com/in/tyler-bernstein-356ba0106/" target='_blank' rel="noopener noreferrer"><FaLinkedin size={32}/></a>
-                        </div>
-                        <div className='icon'>
-                            <a href="https://github.com/tsbernstein" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
+                    <div className='about'>
+                        <h2>Tyler Bernstein</h2>
+                        <div className='contact'>
+                            <div className='icon'>
+                                <a href="https://angel.co/u/tyler-bernstein-5" target='_blank' rel="noopener noreferrer"><FaAngellist size={32}/></a>
+                            </div>
+                            <div className='icon'>
+                                <a href="https://www.linkedin.com/in/tyler-bernstein-356ba0106/" target='_blank' rel="noopener noreferrer"><FaLinkedin size={32}/></a>
+                            </div>
+                            <div className='icon'>
+                                <a href="https://github.com/tsbernstein" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
+                            </div>
                         </div>
                     </div>
-                    <div className='icon'>
-                        <a href="https://github.com/GeniusSniper/DopePT" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
+                    <div className='about'>
+                        <h2>Source Code</h2>
+                        <div className='icon'>
+                            <a href="https://github.com/GeniusSniper/DopePT" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
+                        </div>
                     </div>
-                    <div className='contact'>
-                        <div className='icon'>
-                            <a href="https://angel.co/u/ti-wei" target='_blank' rel="noopener noreferrer"><FaAngellist size={32}/></a>
-                        </div>
-                        <div className='icon'>
-                            <a href="https://www.linkedin.com/in/ti-wei-0a20a61b8/" target='_blank' rel="noopener noreferrer"><FaLinkedin size={32}/></a>
-                        </div>
-                        <div className='icon'>
-                            <a href="https://github.com/GeniusSniper" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
+                    <div className='about'>
+                        <h2>Ti Wei</h2>
+                        <div className='contact'>
+                            <div className='icon'>
+                                <a href="https://angel.co/u/ti-wei" target='_blank' rel="noopener noreferrer"><FaAngellist size={32}/></a>
+                            </div>
+                            <div className='icon'>
+                                <a href="https://www.linkedin.com/in/ti-wei-0a20a61b8/" target='_blank' rel="noopener noreferrer"><FaLinkedin size={32}/></a>
+                            </div>
+                            <div className='icon'>
+                                <a href="https://github.com/GeniusSniper" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,0 +1,27 @@
+.footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    background-color: teal;
+    border: 1px solid black;
+}
+
+.main {
+    display: block;
+    width: 100%;
+}
+
+.contact {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+}
+
+.icon {
+    padding: 0 10px 0;
+}
+
+.about {
+    display: flex;
+    justify-content: center;
+}

@@ -6,7 +6,7 @@ class Calendar extends React.Component {
     super(...arguments);
     this.data = [{
             Id: 1,
-            Subject: 'Clinians are not available',
+            Subject: 'Clinicians are not available',
             StartTime: new Date(2021, 0, 24, 10, 0),
             EndTime: new Date(2021, 0, 24, 12, 30),
             IsAllDay: true,

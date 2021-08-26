@@ -37,7 +37,9 @@ export default () => {
                                 <a href="https://www.linkedin.com/in/ti-wei-0a20a61b8/" target='_blank' rel="noopener noreferrer"><FaLinkedin size={32}/></a>
                             </div>
                             <div className='icon'>
-                                <a href="https://github.com/GeniusSniper" target="_blank" rel="noopener noreferrer"><FaGithub size={32}/></a>
+                                <a href="https://github.com/GeniusSniper" target="_blank" rel="noopener noreferrer">
+                                    <FaGithub size={32}/>
+                                </a>
                             </div>
                         </div>
                     </div>

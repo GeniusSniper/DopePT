@@ -1,7 +1,6 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../styles/home.css'
-import Background from '../../styles/images/background.jpeg'
 
 class LoginForm extends React.Component {
   constructor(props) {

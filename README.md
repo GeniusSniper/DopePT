@@ -39,6 +39,18 @@ DopePT is designed to bring these facilities into the age of technology and stre
 
 - Clinician users will have the ability to create new exercises or delete existing ones from the database.
 
+## Core Features
+
+### Dual Auth
+
+![DOPE_PT_login1](https://user-images.githubusercontent.com/79271412/130991750-6103545b-6145-48d7-9d41-e639fba33883.gif)
+Clinician Login
+
+![DOPE_PT_login2](https://user-images.githubusercontent.com/79271412/130991841-27f43895-1c7e-4104-bb67-3431bea9609b.gif)
+Patient Login
+
+
+
 ## Group Members and Work Breakdown
 
 ### Group members: Tyler Bernstein, Ti Wei

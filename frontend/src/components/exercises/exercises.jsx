@@ -59,6 +59,13 @@ class Exercises extends React.Component{
 
 
         mainShow = this.state.option ? <NewExerciseContainer/> : <ExerciseContainer exerciseId={this.state.i}/>;
+
+        if(this.props.allExercises.length === 0) {
+            allExercises = (
+                <div>No Exercise available :(</div>
+            )
+        }
+
         return (
             <div className='profile-grid'>
                 <div className='left-side-bar'>

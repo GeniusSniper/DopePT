@@ -10,6 +10,7 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const Exercise = require("../../models/Exercise");
+const Clinician = require('../../models/Clinician');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the patients route" }));
 

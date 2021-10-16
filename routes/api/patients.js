@@ -37,11 +37,6 @@ router.post('/register', (req, res) => {
           // Throw a 400 error if the email address already exists
           return res.status(400).json({email: "A patient has already registered with this address"})
         } else {
-          let num = 0;
-          Clinician.find().then( async cli => {
-            num = paseInt(Math.random() * cli.length);
-            await cli[num].save();
-          })
 
           // Otherwise create a new patient
           let newPatient = new Patient({
@@ -58,6 +53,12 @@ router.post('/register', (req, res) => {
               newPatient.password = hash;
               newPatient.save()
                 .then(payload => {
+                  let num = 0;
+                  Clinician.find().then( async cli => {
+                    num = paseInt(Math.random() * cli.length);
+                    await cli[num].save();
+                  });
+
                   jwt.sign({
                       id: payload.id,
                      handle: payload.handle,

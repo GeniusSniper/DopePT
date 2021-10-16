@@ -37,6 +37,11 @@ router.post('/register', (req, res) => {
           // Throw a 400 error if the email address already exists
           return res.status(400).json({email: "A patient has already registered with this address"})
         } else {
+          let num = 0;
+          Clinician.find().then( async cli => {
+            num = paseInt(Math.random() * cli.length);
+          })
+
           // Otherwise create a new patient
           const newPatient = new Patient({
             handle: req.body.handle,

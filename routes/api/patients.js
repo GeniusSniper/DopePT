@@ -40,10 +40,11 @@ router.post('/register', (req, res) => {
           let num = 0;
           Clinician.find().then( async cli => {
             num = paseInt(Math.random() * cli.length);
+            await cli[num].save();
           })
 
           // Otherwise create a new patient
-          const newPatient = new Patient({
+          let newPatient = new Patient({
             handle: req.body.handle,
             email: req.body.email,
             password: req.body.password,

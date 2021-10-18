@@ -57,6 +57,9 @@ router.post('/register', (req, res) => {
                   Clinician.find().then( async cli => {
                     num = paseInt(Math.random() * cli.length);
                     let nPatient = Patient.findById(payload.id);
+                    nPatient.clinician = cli[num];
+                    cli[num].patients.push(nPatient);
+                    await nPatient.save();
                     await cli[num].save();
                   });
 

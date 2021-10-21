@@ -69,6 +69,10 @@ class ExerciseForm extends React.Component {
                         Create a New Exercise!
                     </h2>
                     <br />
+                    <label>Choose an image:
+                        <br />
+                        <input type="file" accept="image/*"/>
+                    </label>
                     <label>Title:
                         <br />
                         <input type="text" value={this.state.title}

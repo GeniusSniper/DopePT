@@ -16,6 +16,7 @@
   "author": "",
   "license": "",
   "dependencies": {
+    "@material-ui/core": "^4.12.3",
     "@syncfusion/ej2-react-schedule": "^19.2.51",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.18.3",

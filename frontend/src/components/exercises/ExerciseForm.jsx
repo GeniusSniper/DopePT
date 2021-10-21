@@ -1,5 +1,6 @@
 import React from 'react';
 import '../../styles/exercise_form.css';
+import Button from "@material-ui/core/Button";
 
 class ExerciseForm extends React.Component {
     constructor(props){
@@ -69,10 +70,12 @@ class ExerciseForm extends React.Component {
                         Create a New Exercise!
                     </h2>
                     <br />
-                    <label>Choose an image:
-                        <br />
-                        <input type="file" accept="image/*"/>
-                    </label>
+                    <div>
+                        <input type="file" accept="image/*" style={{display: 'none'}} />
+                        <Button  variant='contained' color='primary'>
+                            Choose
+                        </Button>
+                    </div>
                     <label>Title:
                         <br />
                         <input type="text" value={this.state.title}

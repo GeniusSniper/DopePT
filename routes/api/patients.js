@@ -53,14 +53,14 @@ router.post('/register', (req, res) => {
               newPatient.password = hash;
               newPatient.save()
                 .then(payload => {
-                  let num = 0;
-                  Clinician.find().then( async cli => {
-                    num = paseInt(Math.random() * cli.length);
-                    let nPatient = Patient.findById(payload.id);
-                    nPatient.clinician = cli[num];
-                    cli[num].patients.push(nPatient);
-                    await nPatient.save();
-                    await cli[num].save();
+                  Clinician.find().then( cli => {
+                    let num = parseInt(Math.random() * cli.length);
+                    Patient.findById(payload.id).then( async pat => {
+                      pat.clinician = cli[num];
+                      cli[num].patients.push(pat);
+                      await pat.save();
+                      await cli[num].save();
+                    });
                   });
 
                   jwt.sign({

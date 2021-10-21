@@ -17,7 +17,7 @@ class AssignExercise extends React.Component {
     }
 
     render(){
-        if(this.props.patientExercise.length === 0) return null;
+        // if(this.props.patientExercise.length === 0) return null;
         let allExercises = this.props.allExercises.map( (exercise, i) => {
             let button = null;
             if(this.props.patient.exercises.indexOf(exercise._id) === -1){

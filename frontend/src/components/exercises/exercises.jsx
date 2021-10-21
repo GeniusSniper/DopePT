@@ -62,9 +62,9 @@ class Exercises extends React.Component{
 
         mainShow = this.state.option ? <NewExerciseContainer/> : <ExerciseContainer exerciseId={this.state.i}/>;
 
-        if(this.props.allExercises.length === 0) {
-            allExercises = (
-                <div>No Exercise available :(</div>
+        if(this.props.allExercises.length === 0 && mainShow) {
+            mainShow = (
+                <div>No Exercise available! please contact your clinician</div>
             )
         }
 

@@ -15,8 +15,8 @@ const ExerciseSchema = new Schema({
         required: true
     },
     urls: {
-        type: Array,
-        default: []
+        type: String,
+        required: true
     },
     patient: { type: mongoose.Schema.Types.ObjectId, ref: 'Patient' },
     }, {

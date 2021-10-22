@@ -10,7 +10,8 @@ class ExerciseForm extends React.Component {
             description: '',
             errors: {},
             instructions: '',
-            urls: []
+            urls: [],
+            image: null
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -67,6 +68,8 @@ class ExerciseForm extends React.Component {
 
         // const triggerFileSelectPopup = () => inputRef.current.click();
 
+        let triggerFileSelect = () => document.getElementById('get_file').click();
+
         return (
             <div>
                 <form className='create-exercise-form' onSubmit={this.handleSubmit}>
@@ -75,8 +78,8 @@ class ExerciseForm extends React.Component {
                     </h2>
                     <br />
                     <div>
-                        <input type="file" accept="image/*" style={{display: 'none'}}  />
-                        <Button  variant='contained' color='primary' >
+                        <input type="file" accept="image/*" style={{display: 'none'}} id='get_file' />
+                        <Button  variant='contained' color='primary' onClick={triggerFileSelect}>
                             Choose
                         </Button>
                     </div>

@@ -1,6 +1,8 @@
 import React from 'react';
 import '../../styles/exercise_form.css';
 import Button from "@material-ui/core/Button";
+import Slider from "@material-ui/core/Slider";
+import Cropper from "react-easy-crop";
 
 class ExerciseForm extends React.Component {
     constructor(props){
@@ -11,7 +13,7 @@ class ExerciseForm extends React.Component {
             errors: {},
             instructions: '',
             urls: [],
-            image: null
+            image: null,
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);

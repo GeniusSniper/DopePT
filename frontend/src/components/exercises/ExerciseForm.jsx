@@ -103,18 +103,33 @@ class ExerciseForm extends React.Component {
                     </h2>
                     <br />
                     <div>
-                        <>
-                            <Cropper 
-                                image={this.state.image} 
-                                crop={this.state.crop} 
-                                zoom={this.state.zoom} 
-                                accept={1} 
-                                onCropChange={v => this.setState({crop: v})} 
-                                onZoomChange={v => this.setState({zoom: v})} 
-                                onCropComplete={this.onCropComplete} 
-                            />
-                            <Slider />
-                        </>
+                        {
+                            this.state.image ? 
+                            <>
+                                <div className="cropper">
+                                    <Cropper 
+                                        image={this.state.image} 
+                                        crop={this.state.crop} 
+                                        zoom={this.state.zoom} 
+                                        accept={1} 
+                                        onCropChange={v => this.setState({crop: v})} 
+                                        onZoomChange={v => this.setState({zoom: v})} 
+                                        onCropComplete={this.onCropComplete} 
+                                    />
+                                </div>
+                                <div className="slider">
+                                    <Slider 
+                                        min={1}
+                                        max={3}
+                                        step={0.1}
+                                        value={this.state.zoom}
+                                        onChange={(e, zoom) => this.setState({zoom: zoom})}
+                                        color='secondary'
+                                    />
+                                </div>
+                            </> :
+                            null
+                        }
                     </div>
                     <div>
                         <>

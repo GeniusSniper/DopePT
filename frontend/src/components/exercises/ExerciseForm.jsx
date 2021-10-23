@@ -24,6 +24,7 @@ class ExerciseForm extends React.Component {
 
         this.handleSubmit = this.handleSubmit.bind(this);
         this.onSelectFile = this.onSelectFile.bind(this);
+        this.onCropComplete = this.onCropComplete.bind(this);
     }
 
     componentDidMount(){
@@ -83,13 +84,16 @@ class ExerciseForm extends React.Component {
           }
     }
 
+    onCropComplete(croppedAreaPercentage, croppedAreaPixel){
+        this.setState({croppedArea: croppedAreaPixel})
+    }
+
     render(){
         // const inputRef = React.useRef();
 
         // const triggerFileSelectPopup = () => inputRef.current.click();
 
         let triggerFileSelect = () => document.getElementById('get_file').click();
-        let onCropComplete = () => {};
 
         return (
             <div>
@@ -107,7 +111,7 @@ class ExerciseForm extends React.Component {
                                 accept={1} 
                                 onCropChange={v => this.setState({crop: v})} 
                                 onZoomChange={v => this.setState({zoom: v})} 
-                                onCropComplete={onCropComplete} 
+                                onCropComplete={this.onCropComplete} 
                             />
                             <Slider />
                         </>

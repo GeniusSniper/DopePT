@@ -14,9 +14,16 @@ class ExerciseForm extends React.Component {
             instructions: '',
             urls: [],
             image: null,
+            croppedArea: null,
+            crop: {
+                x: 0,
+                y: 0
+            },
+            zoom: 1
         }
 
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.onSelectFile = this.onSelectFile.bind(this);
     }
 
     componentDidMount(){
@@ -65,12 +72,24 @@ class ExerciseForm extends React.Component {
         );
     }
 
+    onSelectFile(e){
+        let file = document.getElementById('get_file').files
+        if (file && file.length > 0) {
+            const reader = new FileReader();
+            reader.readAsDataURL(file[0]);
+            reader.addEventListener("load", () => {
+              this.setState({ image: reader.result})
+            });
+          }
+    }
+
     render(){
         // const inputRef = React.useRef();
 
         // const triggerFileSelectPopup = () => inputRef.current.click();
 
         let triggerFileSelect = () => document.getElementById('get_file').click();
+        let onCropComplete = () => {};
 
         return (
             <div>
@@ -80,10 +99,29 @@ class ExerciseForm extends React.Component {
                     </h2>
                     <br />
                     <div>
-                        <input type="file" accept="image/*" style={{display: 'none'}} id='get_file' />
-                        <Button  variant='contained' color='primary' onClick={triggerFileSelect}>
-                            Choose
-                        </Button>
+                        <>
+                            <Cropper 
+                                image={this.state.image} 
+                                crop={this.state.crop} 
+                                zoom={this.state.zoom} 
+                                accept={1} 
+                                onCropChange={v => this.setState({crop: v})} 
+                                onZoomChange={v => this.setState({zoom: v})} 
+                                onCropComplete={onCropComplete} 
+                            />
+                            <Slider />
+                        </>
+                    </div>
+                    <div>
+                        <>
+                            <input type="file" accept="image/*" 
+                                style={{display: 'none'}} 
+                                id='get_file' onChange={this.onSelectFile} 
+                            />
+                            <Button  variant='contained' color='primary' onClick={triggerFileSelect}>
+                                Choose
+                            </Button>
+                        </>
                     </div>
                     <label>Title:
                         <br />

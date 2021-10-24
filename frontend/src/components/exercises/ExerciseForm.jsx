@@ -102,45 +102,47 @@ class ExerciseForm extends React.Component {
                         Create a New Exercise!
                     </h2>
                     <br />
-                    <div>
-                        {
-                            this.state.image ? 
+                    <div className="container">
+                        <div  className="container-cropper">
+                            {
+                                this.state.image ? 
+                                <>
+                                    <div className="cropper">
+                                        <Cropper 
+                                            image={this.state.image} 
+                                            crop={this.state.crop} 
+                                            zoom={this.state.zoom} 
+                                            accept={1} 
+                                            onCropChange={v => this.setState({crop: v})} 
+                                            onZoomChange={v => this.setState({zoom: v})} 
+                                            onCropComplete={this.onCropComplete} 
+                                        />
+                                    </div>
+                                    <div className="slider">
+                                        <Slider 
+                                            min={1}
+                                            max={3}
+                                            step={0.1}
+                                            value={this.state.zoom}
+                                            onChange={(e, zoom) => this.setState({zoom: zoom})}
+                                            color='secondary'
+                                        />
+                                    </div>
+                                </> :
+                                null
+                            }
+                        </div>
+                        <div className="container-buttons">
                             <>
-                                <div className="cropper">
-                                    <Cropper 
-                                        image={this.state.image} 
-                                        crop={this.state.crop} 
-                                        zoom={this.state.zoom} 
-                                        accept={1} 
-                                        onCropChange={v => this.setState({crop: v})} 
-                                        onZoomChange={v => this.setState({zoom: v})} 
-                                        onCropComplete={this.onCropComplete} 
-                                    />
-                                </div>
-                                <div className="slider">
-                                    <Slider 
-                                        min={1}
-                                        max={3}
-                                        step={0.1}
-                                        value={this.state.zoom}
-                                        onChange={(e, zoom) => this.setState({zoom: zoom})}
-                                        color='secondary'
-                                    />
-                                </div>
-                            </> :
-                            null
-                        }
-                    </div>
-                    <div>
-                        <>
-                            <input type="file" accept="image/*" 
-                                style={{display: 'none'}} 
-                                id='get_file' onChange={this.onSelectFile} 
-                            />
-                            <Button  variant='contained' color='primary' onClick={triggerFileSelect}>
-                                Choose
-                            </Button>
-                        </>
+                                <input type="file" accept="image/*" 
+                                    style={{display: 'none'}} 
+                                    id='get_file' onChange={this.onSelectFile} 
+                                />
+                                <Button  variant='contained' color='primary' onClick={triggerFileSelect}>
+                                    Choose
+                                </Button>
+                            </>
+                        </div>
                     </div>
                     <label>Title:
                         <br />

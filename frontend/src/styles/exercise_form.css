@@ -8,3 +8,11 @@
 textarea {
     border-radius: 10px;
 }
+
+.container-cropper{
+    z-index: 5;
+}
+
+.container-button{
+    height: 10%;
+}

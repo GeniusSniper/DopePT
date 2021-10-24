@@ -133,7 +133,7 @@ class ExerciseForm extends React.Component {
                             }
                         </div>
                         <div className="container-buttons">
-                            <>
+                            <div className='buttons'>
                                 <input type="file" accept="image/*" 
                                     style={{display: 'none'}} 
                                     id='get_file' onChange={this.onSelectFile} 
@@ -141,7 +141,7 @@ class ExerciseForm extends React.Component {
                                 <Button  variant='contained' color='primary' onClick={triggerFileSelect}>
                                     Choose
                                 </Button>
-                            </>
+                            </div>
                         </div>
                     </div>
                     <label>Title:

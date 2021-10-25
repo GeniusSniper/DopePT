@@ -47,6 +47,7 @@ class ExerciseForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
+        uploadImg(this.state.image, this.state.croppedArea);
 
         this.props.createExercise(this.userId, this.state)
         .then(() => {
@@ -216,16 +217,29 @@ class ExerciseForm extends React.Component {
 export default ExerciseForm;
 
 const uploadImg = async (image, croppedArea) => {
-    
     const canvas = await getCroppedImg(image, croppedArea);
     const canvasDataUrl = canvas.toDataURL("image/jpeg");
     const convertedUrlToFile = dataURLtoFile(
         canvasDataUrl,
         "cropped-image.jpeg"
     );
+    console.log(canvas, canvasDataUrl, convertedUrlToFile);
 }
 
-const getCroppedImg = (imageSrc, pixelCrop, rotation = 0) => {
+const createImage = (url) =>
+	new Promise((resolve, reject) => {
+		const image = new Image();
+		image.addEventListener("load", () => resolve(image));
+		image.addEventListener("error", (error) => reject(error));
+		image.setAttribute("crossOrigin", "anonymous"); // needed to avoid cross-origin issues on CodeSandbox
+		image.src = url;
+	});
+
+const getRadianAngle = (degreeValue) => {
+    return (degreeValue * Math.PI) / 180;
+}
+
+const getCroppedImg = async (imageSrc, pixelCrop, rotation = 0) => {
 	const image = await createImage(imageSrc);
 	const canvas = document.createElement("canvas");
 	const ctx = canvas.getContext("2d");
@@ -267,3 +281,15 @@ const getCroppedImg = (imageSrc, pixelCrop, rotation = 0) => {
 	// return canvas.toDataURL("image/jpeg");
 	return canvas;
 }
+
+const dataURLtoFile = (dataurl, filename) => {
+	const arr = dataurl.split(",");
+	const mime = arr[0].match(/:(.*?);/)[1];
+	const bstr = atob(arr[1]);
+	let n = bstr.length;
+	const u8arr = new Uint8Array(n);
+
+	while (n--) u8arr[n] = bstr.charCodeAt(n);
+
+	return new File([u8arr], filename, { type: mime });
+};

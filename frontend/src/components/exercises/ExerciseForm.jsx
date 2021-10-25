@@ -54,7 +54,14 @@ class ExerciseForm extends React.Component {
                 description: '',
                 errors: {},
                 instructions: '',
-                urls: []
+                urls: [],
+                image: null,
+                croppedArea: null,
+                crop: {
+                    x: 0,
+                    y: 0
+                },
+                zoom: 1
             })
         })
     }
@@ -87,6 +94,7 @@ class ExerciseForm extends React.Component {
     onCropComplete(croppedAreaPercentage, croppedAreaPixel){
         this.setState({croppedArea: croppedAreaPixel})
     }
+
 
     render(){
         // const inputRef = React.useRef();
@@ -138,9 +146,34 @@ class ExerciseForm extends React.Component {
                                     style={{display: 'none'}} 
                                     id='get_file' onChange={this.onSelectFile} 
                                 />
-                                <Button  variant='contained' color='primary' onClick={triggerFileSelect}>
+                                <Button
+                                    onClick={() => this.setState({image: null})}
+                                    variant="contained"
+                                    color="primary"
+                                    style={{ marginRight: "10px" }}
+                                >
+                                    Clear
+                                </Button>
+                                <Button  variant='contained' color='primary' onClick={triggerFileSelect} style={{ marginRight: "10px" }}>
                                     Choose
                                 </Button>
+                                {/* <Button
+                                    variant="contained"
+                                    color="secondary"
+                                    onClick={() => {
+
+                                    }}
+                                    style={{ marginRight: "10px" }}
+                                >
+                                    Download
+                                </Button> */}
+                                {/* <Button variant="contained" color="secondary" 
+                                    onClick={() => {
+
+                                    }}
+                                >
+                                    Upload
+                                </Button> */}
                             </div>
                         </div>
                     </div>

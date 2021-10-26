@@ -56,7 +56,7 @@ class ExerciseForm extends React.Component {
         );
 
         const formdata = new FormData();
-        formdata.append('croppedImage', convertedUrlToFile);
+        formdata.append("croppedImage", convertedUrlToFile);
 
         // console.log(formdata);
         // return convertedUrlToFile;
@@ -64,8 +64,8 @@ class ExerciseForm extends React.Component {
         // const formdata = new FormData();
         // formdata.append('croppedImage', imageFile);
         
-        console.log(convertedUrlToFile, formdata);
-        const res = await fetch(`http://localhost:5000/api/clinicians/${this.props.userId}/exercises`, {
+        console.log(convertedUrlToFile, formdata.get('croppedImage'));
+        const res = await fetch(`/api/clinicians/${this.props.userId}/exercises`, {
             method: "POST",
             body: formdata,
         });

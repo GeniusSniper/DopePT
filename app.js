@@ -12,24 +12,26 @@ const patients = require('./routes/api/patients');
 const clinicians = require('./routes/api/clinicians');
 // const exercises = require('./routes/api/exercises');
 
+
 mongoose
   .connect(db, { 
     useNewUrlParser: true, 
     reconnectTries: Number.MAX_VALUE,
-    reconnectInterval: 1000
+    reconnectInterval: 1000,
   })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
-  if (process.env.NODE_ENV === 'production') {
-    app.use(express.static('frontend/build'));
-    app.get('/', (req, res) => {
-      res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
-    })
-  } else {
-    app.get("/", (req, res) => res.send("Hello World!!"));
-  }
-app.use(cors(), express.json())
+app.use(cors(), express.json());
+
+if (process.env.NODE_ENV === 'production') {
+  app.use(express.static('frontend/build'));
+  app.get('/', (req, res) => {
+    res.sendFile(path.resolve(__dirname, 'frontend', 'build', 'index.html'));
+  })
+} else {
+  app.get("/", (req, res) => res.send("Hello World!!"));
+}
 
 app.use(passport.initialize());
 require('./config/passport')(passport);

@@ -164,8 +164,10 @@ router.post('/register', (req, res) => {
     return res.json(patients.patients)
   })
 
-  router.post('/:userId/exercises/', (req, res) => {
-    console.log(req.body, req.files, req.file);
+  router.post('/:userId/exercises/', (req, res, next) => {
+    console.log(req.body, req.files, req.file, next);
+    return res.status(200).json({ data: req.files});
+
     const { errors, isValid } = validateExerciseInput(req.body);
 
     if (!isValid) {

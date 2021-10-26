@@ -1,4 +1,5 @@
 const express = require("express");
+const cors = require("cors");
 const app = express();
 const db = require('./config/keys').mongoURI;
 const mongoose = require('mongoose');
@@ -28,6 +29,7 @@ mongoose
   } else {
     app.get("/", (req, res) => res.send("Hello World!!"));
   }
+app.use(cors(), express.json())
 
 app.use(passport.initialize());
 require('./config/passport')(passport);

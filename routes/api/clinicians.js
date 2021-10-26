@@ -165,7 +165,7 @@ router.post('/register', (req, res) => {
   })
 
   router.post('/:userId/exercises/', (req, res) => {
-    // console.log(req.body, req.files, req.file);
+    console.log(req.body, req.files, req.file);
     const { errors, isValid } = validateExerciseInput(req.body);
 
     if (!isValid) {

@@ -45,37 +45,59 @@ class ExerciseForm extends React.Component {
         });
     }
 
-    handleSubmit(e){
+    async handleSubmit(e){
         e.preventDefault();
-        const imageFile = uploadImg(this.state.image, this.state.croppedArea);
+        // const imageFile = uploadImg(this.state.image, this.state.croppedArea);
+        const canvas = await getCroppedImg(this.state.image, this.state.croppedArea);
+        const canvasDataUrl = canvas.toDataURL("image/jpeg");
+        const convertedUrlToFile = dataURLtoFile(
+            canvasDataUrl,
+            "cropped-image.jpeg"
+        );
 
         const formdata = new FormData();
-        formdata.append('croppedImage', imageFile);
+        formdata.append('croppedImage', convertedUrlToFile);
 
-        console.log(imageFile, formdata);
+        // console.log(formdata);
+        // return convertedUrlToFile;
 
-        this.props.createExercise(this.props.userId, {
-            title: this.state.title,
-            description: this.state.description,
-            instructions: this.state.instructions,
-            file: formdata
-        })
-        .then(() => {
-            this.setState({
-                title: '',
-                description: '',
-                errors: {},
-                instructions: '',
-                urls: [],
-                image: null,
-                croppedArea: null,
-                crop: {
-                    x: 0,
-                    y: 0
-                },
-                zoom: 1
-            })
-        })
+        // const formdata = new FormData();
+        // formdata.append('croppedImage', imageFile);
+        
+        console.log(convertedUrlToFile, formdata);
+        const res = await fetch(`http://localhost:5000/api/clinicians/${this.props.userId}/exercises`, {
+            method: "POST",
+            body: formdata,
+        });
+
+        const res2 = await res.json();
+
+        console.log(res2);
+
+        // this.props.createExercise(this.props.userId, 
+        //     {
+        //     // title: this.state.title,
+        //     // description: this.state.description,
+        //     // instructions: this.state.instructions,
+        //     file: formdata
+        // }
+        // )
+        // .then(() => {
+        //     this.setState({
+        //         title: '',
+        //         description: '',
+        //         errors: {},
+        //         instructions: '',
+        //         urls: [],
+        //         image: null,
+        //         croppedArea: null,
+        //         crop: {
+        //             x: 0,
+        //             y: 0
+        //         },
+        //         zoom: 1
+        //     })
+        // })
     }
 
     renderErrors() {
@@ -237,7 +259,7 @@ const uploadImg = async (image, croppedArea) => {
     const formdata = new FormData();
     formdata.append('croppedImage', convertedUrlToFile);
 
-    console.log(formdata);
+    // console.log(formdata);
     return convertedUrlToFile;
 }
 

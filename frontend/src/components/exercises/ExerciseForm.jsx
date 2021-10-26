@@ -47,9 +47,19 @@ class ExerciseForm extends React.Component {
 
     handleSubmit(e){
         e.preventDefault();
-        uploadImg(this.state.image, this.state.croppedArea);
+        const imageFile = uploadImg(this.state.image, this.state.croppedArea);
 
-        this.props.createExercise(this.userId, this.state)
+        const formdata = new FormData();
+        formdata.append('croppedImage', imageFile);
+
+        console.log(imageFile, formdata);
+
+        this.props.createExercise(this.props.userId, {
+            title: this.state.title,
+            description: this.state.description,
+            instructions: this.state.instructions,
+            file: formdata
+        })
         .then(() => {
             this.setState({
                 title: '',
@@ -223,7 +233,12 @@ const uploadImg = async (image, croppedArea) => {
         canvasDataUrl,
         "cropped-image.jpeg"
     );
-    console.log(canvas, canvasDataUrl, convertedUrlToFile);
+
+    const formdata = new FormData();
+    formdata.append('croppedImage', convertedUrlToFile);
+
+    console.log(formdata);
+    return convertedUrlToFile;
 }
 
 const createImage = (url) =>

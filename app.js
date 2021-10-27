@@ -12,6 +12,7 @@ const fileUpload = require('express-fileupload');
 // const users = require("./routes/api/users");
 const patients = require('./routes/api/patients');
 const clinicians = require('./routes/api/clinicians');
+const uploadImages = require('./routes/api/images');
 // const exercises = require('./routes/api/exercises');
 
 
@@ -46,6 +47,7 @@ app.use(bodyParser.json());
 
 app.use("/api/patients", patients);
 app.use("/api/clinicians", clinicians);
+app.use("/api/uploadImage", uploadImages);
 // app.use('/api/exercises', exercises);
 
 const port = process.env.PORT || 5000;

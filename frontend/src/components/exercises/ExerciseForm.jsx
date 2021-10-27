@@ -74,6 +74,13 @@ class ExerciseForm extends React.Component {
 
         // console.log(res2);
 
+        const obj = {
+            title: this.state.title,
+            description: this.state.description,
+            instructions: this.state.instructions,
+        }
+        formdata.append('body', obj)
+
         this.props.createExercise(this.props.userId, formdata)
         //     {
         //     // title: this.state.title,

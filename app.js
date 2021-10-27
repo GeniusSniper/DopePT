@@ -7,6 +7,8 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 
+const fileUpload = require('express-fileupload');
+
 // const users = require("./routes/api/users");
 const patients = require('./routes/api/patients');
 const clinicians = require('./routes/api/clinicians');
@@ -18,11 +20,14 @@ mongoose
     useNewUrlParser: true, 
     reconnectTries: Number.MAX_VALUE,
     reconnectInterval: 1000,
+    useCreateIndex: true,
+    useFindAndModify: false,
+    useUnifiedTopology: true,
   })
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
-app.use(cors(), express.json());
+app.use(cors(), express.json(), fileUpload());
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));

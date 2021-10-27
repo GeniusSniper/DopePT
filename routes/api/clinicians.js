@@ -161,7 +161,7 @@ router.post('/register', (req, res) => {
 
   router.get('/:userId', async (req, res) => {
     let patients = await Clinician.findById(req.params.userId).populate('Patient');
-    return res.json(patients.patients)
+    return res.json(patients.patients);
   })
 
   router.post('/:userId/exercises/', (req, res, next) => {

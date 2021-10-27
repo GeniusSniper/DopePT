@@ -67,14 +67,14 @@ class ExerciseForm extends React.Component {
         console.log(convertedUrlToFile, formdata.get('croppedImage'));
         const res = await fetch(`/api/clinicians/${this.props.userId}/exercises`, {
             method: "POST",
-            body: new FormData(convertedUrlToFile),
+            body: formdata,
         });
 
         const res2 = await res.json();
 
         console.log(res2);
 
-        // this.props.createExercise(this.props.userId, 
+        this.props.createExercise(this.props.userId, {formdata})
         //     {
         //     // title: this.state.title,
         //     // description: this.state.description,

@@ -65,7 +65,7 @@ class ExerciseForm extends React.Component {
         // formdata.append('croppedImage', imageFile);
         
         // console.log(convertedUrlToFile, formdata.get('croppedImage'));
-        const res = await fetch(`/api/uploadImages`, {
+        const res = await fetch(`/api/uploadImages/exercises`, {
             method: "POST",
             body: formdata,
         });

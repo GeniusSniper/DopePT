@@ -65,46 +65,35 @@ class ExerciseForm extends React.Component {
         // formdata.append('croppedImage', imageFile);
         
         // console.log(convertedUrlToFile, formdata.get('croppedImage'));
-        // const res = await fetch(`/api/clinicians/${this.props.userId}/exercises`, {
-        //     method: "POST",
-        //     body: formdata,
-        // });
+        const res = await fetch(`/api/uploadImages`, {
+            method: "POST",
+            body: formdata,
+        });
 
-        // const res2 = await res.json();
+        const res2 = await res.json();
 
-        // console.log(res2);
+        console.log(res2);
 
-        const obj = {
+        this.props.createExercise(this.props.userId,{
             title: this.state.title,
             description: this.state.description,
             instructions: this.state.instructions,
-        }
-        formdata.append('body', obj)
-
-        this.props.createExercise(this.props.userId, formdata)
-        //     {
-        //     // title: this.state.title,
-        //     // description: this.state.description,
-        //     // instructions: this.state.instructions,
-        //     file: formdata
-        // }
-        // )
-        // .then(() => {
-        //     this.setState({
-        //         title: '',
-        //         description: '',
-        //         errors: {},
-        //         instructions: '',
-        //         urls: [],
-        //         image: null,
-        //         croppedArea: null,
-        //         crop: {
-        //             x: 0,
-        //             y: 0
-        //         },
-        //         zoom: 1
-        //     })
-        // })
+        }).then(() => {
+            this.setState({
+                title: '',
+                description: '',
+                errors: {},
+                instructions: '',
+                urls: [],
+                image: null,
+                croppedArea: null,
+                crop: {
+                    x: 0,
+                    y: 0
+                },
+                zoom: 1
+            })
+        })
     }
 
     renderErrors() {

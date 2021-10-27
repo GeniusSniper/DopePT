@@ -31,7 +31,11 @@ const upload = bucketName => multer({
 router.post('/exercises', (req, res, next) => {
     const uploadSingle = upload('dope-pt-image-upload').single('croppedImage');
 
-    return res.status(200).json({ data: req.files});
+    uploadSingle(req, res, err => {
+        if(err) return res.status(400).json({ sucess: false, message: err.message});
+
+        res.status(200).json({ data: req.file.location });
+    })
 })
 
 module.exports = router;

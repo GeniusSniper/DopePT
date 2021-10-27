@@ -7,7 +7,7 @@ const bodyParser = require('body-parser');
 const passport = require('passport');
 const path = require('path');
 
-const fileUpload = require('express-fileupload');
+// const fileUpload = require('express-fileupload');
 
 // const users = require("./routes/api/users");
 const patients = require('./routes/api/patients');
@@ -28,7 +28,7 @@ mongoose
   .then(() => console.log("Connected to MongoDB successfully"))
   .catch(err => console.log(err));
 
-app.use(cors(), express.json(), fileUpload());
+app.use(cors(), express.json(), );
 
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));

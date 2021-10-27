@@ -7,6 +7,7 @@ module.exports = function validateExerciseInput(data) {
   data.title = validText(data.title) ? data.title : '';
   data.description = validText(data.description) ? data.description : '';
   data.instructions = validText(data.instructions) ? data.instructions : '';
+  data.urls = validText(data.urls) ? data.urls : '';
 
   if (Validator.isEmpty(data.title)) {
     errors.title = 'Title field is required';
@@ -18,6 +19,10 @@ module.exports = function validateExerciseInput(data) {
 
   if (Validator.isEmpty(data.instructions)) {
     errors.instructions = 'Instructions field is required';
+  }
+
+  if (Validator.isEmpty(data.urls)) {
+    errors.urls = 'Need to select an image';
   }
 
   return {

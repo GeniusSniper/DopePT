@@ -182,7 +182,8 @@ router.post('/register', (req, res) => {
           const newExercise = new Exercise({
             title: req.body.title,
             description: req.body.description,
-            instructions: req.body.instructions
+            instructions: req.body.instructions,
+            urls: req.body.urls
           })
 
           newExercise.save()

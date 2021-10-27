@@ -72,12 +72,13 @@ class ExerciseForm extends React.Component {
 
         const res2 = await res.json();
 
-        console.log(res2);
+        console.log(res2.data);
 
         this.props.createExercise(this.props.userId,{
             title: this.state.title,
             description: this.state.description,
             instructions: this.state.instructions,
+
         }).then(() => {
             this.setState({
                 title: '',

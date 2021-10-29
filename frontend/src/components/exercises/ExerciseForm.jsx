@@ -186,7 +186,7 @@ class ExerciseForm extends React.Component {
                                     Clear
                                 </Button>
                                 <Button  variant='contained' color='primary' onClick={triggerFileSelect} style={{ marginRight: "10px" }}>
-                                    Choose
+                                    Choose an image
                                 </Button>
                                 {/* <Button
                                     variant="contained"
@@ -245,20 +245,20 @@ class ExerciseForm extends React.Component {
 
 export default ExerciseForm;
 
-const uploadImg = async (image, croppedArea) => {
-    const canvas = await getCroppedImg(image, croppedArea);
-    const canvasDataUrl = canvas.toDataURL("image/jpeg");
-    const convertedUrlToFile = dataURLtoFile(
-        canvasDataUrl,
-        "cropped-image.jpeg"
-    );
+// const uploadImg = async (image, croppedArea) => {
+//     const canvas = await getCroppedImg(image, croppedArea);
+//     const canvasDataUrl = canvas.toDataURL("image/jpeg");
+//     const convertedUrlToFile = dataURLtoFile(
+//         canvasDataUrl,
+//         "cropped-image.jpeg"
+//     );
 
-    const formdata = new FormData();
-    formdata.append('croppedImage', convertedUrlToFile);
+//     const formdata = new FormData();
+//     formdata.append('croppedImage', convertedUrlToFile);
 
-    // console.log(formdata);
-    return convertedUrlToFile;
-}
+//     // console.log(formdata);
+//     return convertedUrlToFile;
+// }
 
 const createImage = (url) =>
 	new Promise((resolve, reject) => {

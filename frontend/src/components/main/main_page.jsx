@@ -1,6 +1,6 @@
 import React from 'react';
 // import { Link } from 'react-router-dom';
-import UserProfileContainer from '../userProfile/user_profile_container'
+import SwitchBarCoontainer from '../switchBar/switchBarContainer'
 
 
 class MainPage extends React.Component {
@@ -8,7 +8,7 @@ class MainPage extends React.Component {
   render() {
     return (
       <div>
-        <UserProfileContainer/>
+        <SwitchBarCoontainer/>
       </div>
     );
   }

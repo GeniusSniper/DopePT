@@ -11,7 +11,7 @@ class SignupForm extends React.Component {
       handle: '',
       password: '',
       password2: '',
-      phone: null,
+      phone: '',
       errors: {},
       isClinician: false,
     };
@@ -103,8 +103,8 @@ class SignupForm extends React.Component {
               <input type="tel"
                 value={this.state.phone}
                 onChange={this.update('phone')}
-                placeholder='0000000000' 
-                // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
+                placeholder='000-000-0000' 
+                // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required
               />
               </label>
             <br/>

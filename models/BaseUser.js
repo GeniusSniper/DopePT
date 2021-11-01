@@ -23,7 +23,7 @@ function BaseUserSchema() {
       default: Date.now
     },
     phone: {
-      type: Number,
+      type: String,
       required: true
     },
     isClinician: {

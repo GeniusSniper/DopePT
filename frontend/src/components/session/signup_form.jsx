@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import '../../styles/home.css'
+import '../../styles/home.css';
+import multiavatar from '@multiavatar/multiavatar';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -16,6 +17,7 @@ class SignupForm extends React.Component {
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    this.updateAvatar = this.updateAvatar.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -45,6 +47,16 @@ class SignupForm extends React.Component {
     // this.props.signup(user, this.props.history); 
   }
 
+  updateAvatar(e){
+    e.preventDefault();
+    let avatarClass = document.querySelector('.avatar');
+    let avatar = multiavatar(e.currentTarget.value);
+    avatarClass.innerHTML = avatar;
+    this.setState({
+      handle: e.currentTarget.value
+    });
+  }
+
   renderErrors() {
     return(
       <ul>
@@ -64,6 +76,7 @@ class SignupForm extends React.Component {
         {/* <img className='background' src={Background} alt="" /> */}
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
+            <div className='avatar'></div>
             <br/>
               <label>Email
                 <br/>
@@ -78,7 +91,7 @@ class SignupForm extends React.Component {
               <br/>
               <input type="text"
                 value={this.state.handle}
-                onChange={this.update('handle')}
+                onChange={this.updateAvatar}
                 placeholder="Johnny"
               />
               </label>

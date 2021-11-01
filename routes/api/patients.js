@@ -19,6 +19,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
       id: req.patient.id,
       handle: req.patient.handle,
       email: req.patient.email,
+      phone: req.patient.phone,
       isClinician: false,
     });
   })
@@ -42,6 +43,7 @@ router.post('/register', (req, res) => {
           let newPatient = new Patient({
             handle: req.body.handle,
             email: req.body.email,
+            phone: req.body.phone,
             password: req.body.password,
             isClinician: false
           })
@@ -67,7 +69,8 @@ router.post('/register', (req, res) => {
                       id: payload.id,
                      handle: payload.handle,
                      isClinician: false,
-                     email: payload.email
+                     email: payload.email,
+                     phone: payload.phone
                     },
                     keys.secretOrKey,
                     // Tell the key to expire in one hour
@@ -78,6 +81,7 @@ router.post('/register', (req, res) => {
                           id: payload.id,
                           handle: payload.handle,
                           email: payload.email,
+                          phone: payload.phone,
                           isClinician: false
                         },
                         success: true,
@@ -116,7 +120,7 @@ router.post('/register', (req, res) => {
         bcrypt.compare(password, patient.password)
         .then(isMatch => {
             if (isMatch) {
-            const payload = {id: patient.id, handle: patient.handle, email: patient.email, isClinician: false};
+            const payload = {id: patient.id, handle: patient.handle, email: patient.email, isClinician: false, phone: patient.phone};
 
             jwt.sign(
                 payload,

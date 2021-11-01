@@ -11,6 +11,7 @@ class SignupForm extends React.Component {
       handle: '',
       password: '',
       password2: '',
+      phone: null,
       errors: {},
       isClinician: false,
     };
@@ -36,7 +37,8 @@ class SignupForm extends React.Component {
       email: this.state.email,
       handle: this.state.handle,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      phone: this.state.phone,
     };
     if (this.state.isClinician) {
       this.props.signupClinician(user, this.props.history)
@@ -93,6 +95,16 @@ class SignupForm extends React.Component {
                 value={this.state.handle}
                 onChange={this.updateAvatar}
                 placeholder="Johnny"
+              />
+              </label>
+            <br/>
+            <label>Phone Number
+              <br/>
+              <input type="tel"
+                value={this.state.phone}
+                onChange={this.update('phone')}
+                placeholder='0000000000' 
+                // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}"
               />
               </label>
             <br/>

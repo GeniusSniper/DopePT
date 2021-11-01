@@ -19,6 +19,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
       id: req.clinician.id,
       handle: req.clinician.handle,
       email: req.clinician.email,
+      phone: req.clinician.phone,
       isClinician: true,
     });
   })
@@ -42,6 +43,7 @@ router.post('/register', (req, res) => {
             handle: req.body.handle,
             email: req.body.email,
             password: req.body.password,
+            phone: req.body.phone,
             isClinician: true,
           })
 
@@ -56,6 +58,7 @@ router.post('/register', (req, res) => {
                   id: payload.id,
                  handle: payload.handle,
                  isClinician: true,
+                 phone: payload.phone,
                  email: payload.email
                 },
                   keys.secretOrKey,
@@ -67,6 +70,7 @@ router.post('/register', (req, res) => {
                         id: payload.id,
                         handle: payload.handle,
                         email: payload.email,
+                        phone: payload.phone,
                         isClinician: true,
                       },
                       success: true,
@@ -107,6 +111,7 @@ router.post('/register', (req, res) => {
               id: clinician.id, 
               handle: clinician.handle,
               email: clinician.email,
+              phone: clinician.phone,
               isClinician: true,
             };
 
@@ -121,6 +126,7 @@ router.post('/register', (req, res) => {
                     id: payload.id,
                     handle: payload.handle,
                     email: payload.email,
+                    phone: payload.phone,
                     isClinician: true,
                   },
                     success: true,

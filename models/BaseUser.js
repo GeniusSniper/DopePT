@@ -5,7 +5,7 @@ const Schema = mongoose.Schema;
 function BaseUserSchema() {  
   Schema.apply(this, arguments);  
 
-  this.add({  
+  this.add({
     handle: {
       type: String,
       required: true
@@ -22,11 +22,15 @@ function BaseUserSchema() {
       type: Date,
       default: Date.now
     },
+    phone: {
+      type: Number,
+      required: true
+    },
     isClinician: {
       type: Boolean,
       default: false
     }
-  });  
+  });
 }  
 
 util.inherits(BaseUserSchema, Schema);

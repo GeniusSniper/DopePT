@@ -1,5 +1,5 @@
 import { connect } from 'react-redux'
-import userProfile from './user_profile';
+import SwitchBar from './switchBar';
 
 const mSTP = state => {
     const user = state.session.currentUser || state.session.user;
@@ -16,4 +16,4 @@ const mDTP = dispatch => ({
 
 })
 
-export default connect(mSTP, mDTP)(userProfile);
+export default connect(mSTP, mDTP)(SwitchBar);

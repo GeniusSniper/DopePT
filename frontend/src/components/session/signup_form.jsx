@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import '../../styles/home.css'
+import '../../styles/home.css';
+import multiavatar from '@multiavatar/multiavatar';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -10,12 +11,14 @@ class SignupForm extends React.Component {
       handle: '',
       password: '',
       password2: '',
+      phone: '',
       errors: {},
       isClinician: false,
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    this.updateAvatar = this.updateAvatar.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,7 +37,8 @@ class SignupForm extends React.Component {
       email: this.state.email,
       handle: this.state.handle,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      phone: this.state.phone,
     };
     if (this.state.isClinician) {
       this.props.signupClinician(user, this.props.history)
@@ -43,6 +47,16 @@ class SignupForm extends React.Component {
     }
 
     // this.props.signup(user, this.props.history); 
+  }
+
+  updateAvatar(e){
+    e.preventDefault();
+    let avatarClass = document.querySelector('.avatar');
+    let avatar = multiavatar(e.currentTarget.value);
+    avatarClass.innerHTML = avatar;
+    this.setState({
+      handle: e.currentTarget.value
+    });
   }
 
   renderErrors() {
@@ -64,6 +78,7 @@ class SignupForm extends React.Component {
         {/* <img className='background' src={Background} alt="" /> */}
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
+            <div className='avatar'></div>
             <br/>
               <label>Email
                 <br/>
@@ -78,8 +93,18 @@ class SignupForm extends React.Component {
               <br/>
               <input type="text"
                 value={this.state.handle}
-                onChange={this.update('handle')}
+                onChange={this.updateAvatar}
                 placeholder="Johnny"
+              />
+              </label>
+            <br/>
+            <label>Phone Number
+              <br/>
+              <input type="tel"
+                value={this.state.phone}
+                onChange={this.update('phone')}
+                placeholder='000-000-0000' 
+                // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required
               />
               </label>
             <br/>

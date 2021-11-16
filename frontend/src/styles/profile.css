@@ -32,7 +32,6 @@
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
-    padding-bottom: 50%;
 }
 
 .exercise-index-container {

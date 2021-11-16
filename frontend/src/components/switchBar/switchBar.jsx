@@ -5,9 +5,10 @@ import ExercisesContainer from '../exercises/exercises_container';
 import ReactCalendar from '../calendar/calendar';
 import PatientsContainer from '../patients/patients_container'
 import CliniciansContainer from '../clinicians/clinician_container';
+import UserProfileContainer from '../userProfile/userProfileContainer';
 import 'react-calendar/dist/Calendar.css';
 
-class userProfile extends React.Component {
+class SwitchBar extends React.Component {
     constructor(props) {
         super(props)
         this.state = {
@@ -21,6 +22,8 @@ class userProfile extends React.Component {
         switch (this.state.sidebar) {
             case 'exercises':
                 return <ExercisesContainer userType={this.props.userType}/>
+            case 'userProfile': 
+                return <UserProfileContainer />
             case 'patients':
                 return <PatientsContainer/>
             case 'clinician':
@@ -59,6 +62,12 @@ class userProfile extends React.Component {
                         })}>
                         Exercises
                     </div>
+                    <div
+                        onClick={() => this.setState({
+                            sidebar: 'userProfile'
+                        })}>
+                        User Profile
+                    </div>
                     <div 
                         onClick={this.switchTabs}>
                         {this.props.isDoctor ? 'Patients' : 'Clinician'}
@@ -76,4 +85,4 @@ class userProfile extends React.Component {
     }
 }
 
-export default userProfile;
+export default SwitchBar;

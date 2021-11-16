@@ -10,6 +10,7 @@ const passport = require('passport');
 const validateRegisterInput = require('../../validation/register');
 const validateLoginInput = require('../../validation/login');
 const Exercise = require("../../models/Exercise");
+const Clinician = require('../../models/Clinician');
 
 router.get("/test", (req, res) => res.json({ msg: "This is the patients route" }));
 
@@ -18,6 +19,7 @@ router.get('/current', passport.authenticate('jwt', {session: false}), (req, res
       id: req.patient.id,
       handle: req.patient.handle,
       email: req.patient.email,
+      phone: req.patient.phone,
       isClinician: false,
     });
   })
@@ -36,10 +38,12 @@ router.post('/register', (req, res) => {
           // Throw a 400 error if the email address already exists
           return res.status(400).json({email: "A patient has already registered with this address"})
         } else {
+
           // Otherwise create a new patient
-          const newPatient = new Patient({
+          let newPatient = new Patient({
             handle: req.body.handle,
             email: req.body.email,
+            phone: req.body.phone,
             password: req.body.password,
             isClinician: false
           })
@@ -51,11 +55,22 @@ router.post('/register', (req, res) => {
               newPatient.password = hash;
               newPatient.save()
                 .then(payload => {
+                  Clinician.find().then( cli => {
+                    let num = parseInt(Math.random() * cli.length);
+                    Patient.findById(payload.id).then( async pat => {
+                      pat.clinician = cli[num];
+                      cli[num].patients.push(pat);
+                      await pat.save();
+                      await cli[num].save();
+                    });
+                  });
+
                   jwt.sign({
                       id: payload.id,
                      handle: payload.handle,
                      isClinician: false,
-                     email: payload.email
+                     email: payload.email,
+                     phone: payload.phone
                     },
                     keys.secretOrKey,
                     // Tell the key to expire in one hour
@@ -66,6 +81,7 @@ router.post('/register', (req, res) => {
                           id: payload.id,
                           handle: payload.handle,
                           email: payload.email,
+                          phone: payload.phone,
                           isClinician: false
                         },
                         success: true,
@@ -104,7 +120,7 @@ router.post('/register', (req, res) => {
         bcrypt.compare(password, patient.password)
         .then(isMatch => {
             if (isMatch) {
-            const payload = {id: patient.id, handle: patient.handle, email: patient.email, isClinician: false};
+            const payload = {id: patient.id, handle: patient.handle, email: patient.email, isClinician: false, phone: patient.phone};
 
             jwt.sign(
                 payload,

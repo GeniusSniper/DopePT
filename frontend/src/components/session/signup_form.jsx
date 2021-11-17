@@ -3,6 +3,9 @@ import { withRouter, Link } from 'react-router-dom';
 import '../../styles/home.css';
 import multiavatar from '@multiavatar/multiavatar';
 
+// import { createAvatar } from '@dicebear/avatars';
+// import * as style from '@dicebear/avatars-male-sprites';
+
 class SignupForm extends React.Component {
   constructor(props) {
     super(props);
@@ -72,6 +75,13 @@ class SignupForm extends React.Component {
   }
 
   render() {
+
+    // let svg = createAvatar(style, {
+    //   seed: 'custom-seed',
+    //   // ... and other options
+    // });
+
+    // console.log(svg);
     return (
       <div className="login-form-container">
         {/* <div className='background'></div> */}

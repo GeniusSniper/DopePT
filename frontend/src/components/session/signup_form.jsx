@@ -20,7 +20,9 @@ class SignupForm extends React.Component {
       phone: '',
       errors: {},
       isClinician: false,
-      avatar: createAvatar(style)
+      avatar: createAvatar(style, {
+        seed: ''
+      })
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);

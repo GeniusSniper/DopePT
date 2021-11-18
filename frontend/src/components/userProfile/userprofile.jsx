@@ -1,19 +1,28 @@
 import React from 'react';
-import multiavatar from '@multiavatar/multiavatar';
+// import multiavatar from '@multiavatar/multiavatar';
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/adventurer';
 
 
 class UserProfile extends React.Component {
-    render(){
-        if(!this.props.user) return null;
-        let avatar = () => {
-            let avatarClass = document.querySelector('.avatar');
-            console.log(avatarClass);
-            // avatarClass.innerHTML = multiavatar(); 
+    constructor(props){
+        super(props);
+        console.log(props)
+        this.state = {
+            avatar: createAvatar(style, {
+                seed: props.user.handle
+            }),
+            email: props.user.email,
+            phone: props.user.phone
         }
+    }
+
+    render(){
         return (
             <div>
-                <div className='avatar'></div>
-                {avatar()}
+                <div className='userProfileAvatar' dangerouslySetInnerHTML={{__html: this.state.avatar}}></div>
+                <div>Email: {this.state.email}</div>
+                <div>Phone: {this.state.phone}</div>
             </div>
         )
     }

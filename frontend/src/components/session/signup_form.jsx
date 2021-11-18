@@ -1,9 +1,12 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../styles/home.css';
-import multiavatar from '@multiavatar/multiavatar';
+// import Avatar from '../avatar/avatar';
 
-// import { createAvatar } from '@dicebear/avatars';
+// import multiavatar from '@multiavatar/multiavatar';
+
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/adventurer';
 // import * as style from '@dicebear/avatars-male-sprites';
 
 class SignupForm extends React.Component {
@@ -17,6 +20,7 @@ class SignupForm extends React.Component {
       phone: '',
       errors: {},
       isClinician: false,
+      avatar: createAvatar(style)
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -54,11 +58,14 @@ class SignupForm extends React.Component {
 
   updateAvatar(e){
     e.preventDefault();
-    let avatarClass = document.querySelector('.avatar');
-    let avatar = multiavatar(e.currentTarget.value);
-    avatarClass.innerHTML = avatar;
+    // let avatarClass = document.querySelector('.avatar');
+    // let avatar = multiavatar(e.currentTarget.value);
+    // avatarClass.innerHTML = avatar;
     this.setState({
-      handle: e.currentTarget.value
+      handle: e.currentTarget.value,
+      avatar: createAvatar(style, {
+        seed: e.currentTarget.value
+      })
     });
   }
 
@@ -77,7 +84,7 @@ class SignupForm extends React.Component {
   render() {
 
     // let svg = createAvatar(style, {
-    //   seed: 'custom-seed',
+    //   seed: '',
     //   // ... and other options
     // });
 
@@ -88,7 +95,8 @@ class SignupForm extends React.Component {
         {/* <img className='background' src={Background} alt="" /> */}
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
-            <div className='avatar'></div>
+            <div className='avatar' dangerouslySetInnerHTML={{__html: this.state.avatar}}></div>
+            {/* <Avatar /> */}
             <br/>
               <label>Email
                 <br/>

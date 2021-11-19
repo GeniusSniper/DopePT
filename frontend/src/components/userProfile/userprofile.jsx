@@ -10,7 +10,7 @@ class UserProfile extends React.Component {
     this.state = {
       avatar: createAvatar(style, {
         seed: props.user.handle,
-        size: 192
+        size: 192,
       }),
       handle: props.user.handle,
       email: props.user.email,
@@ -26,7 +26,13 @@ class UserProfile extends React.Component {
               Handle:
               <input
                 onChange={(e) => {
-                  this.setState({ handle: e.target.value });
+                  this.setState({
+                    handle: e.target.value,
+                    avatar: createAvatar(style, {
+                      seed: e.target.value,
+                      size: 192,
+                    }),
+                  });
                 }}
                 type="text"
                 value={this.state.handle}
@@ -53,14 +59,14 @@ class UserProfile extends React.Component {
               />
             </div>
           </form>
-      )
+        )
       : () => (
           <div>
-              <div>Handle: {this.state.handle}</div>
-              <div>Email: {this.state.email}</div>
-              <div>Phone: {this.state.phone}</div>
+            <div>Handle: {this.state.handle}</div>
+            <div>Email: {this.state.email}</div>
+            <div>Phone: {this.state.phone}</div>
           </div>
-      );
+        );
     return (
       <div>
         <div

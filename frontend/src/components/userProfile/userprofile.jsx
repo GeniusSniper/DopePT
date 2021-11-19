@@ -16,12 +16,18 @@ class UserProfile extends React.Component {
       email: props.user.email,
       phone: props.user.phone,
     };
+    this.updateProfile = this.updateProfile.bind(this);
+  }
+
+  updateProfile(e) {
+    e.preventDefault();
+    this.setState({ edit: false, password: "", password1: "" });
   }
 
   render() {
     let info = this.state.edit
       ? () => (
-          <form>
+          <form onSubmit={this.updateProfile}>
             <div>
               Handle:
               <input
@@ -36,6 +42,26 @@ class UserProfile extends React.Component {
                 }}
                 type="text"
                 value={this.state.handle}
+              />
+            </div>
+            <div>
+              Password:
+              <input
+                type="password"
+                onChange={(e) => {
+                  this.setState({ password: e.target.value });
+                }}
+                value={this.state.password}
+              />
+            </div>
+            <div>
+              Confirm Password:
+              <input
+                type="password"
+                onChange={(e) => {
+                  this.setState({ password1: e.target.value });
+                }}
+                value={this.state.password1}
               />
             </div>
             <div>
@@ -58,6 +84,7 @@ class UserProfile extends React.Component {
                 value={this.state.phone}
               />
             </div>
+            <button>Submit</button>
           </form>
         )
       : () => (

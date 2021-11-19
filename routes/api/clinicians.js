@@ -138,7 +138,7 @@ router.post('/register', (req, res) => {
             }
         })
       })
-  })
+  })                    
 
   router.get('/:userId', async (req, res) => {
     let clinician = await Clinician.findById(req.params.userId).populate('patients');
@@ -166,8 +166,8 @@ router.post('/register', (req, res) => {
   // });
 
   router.get('/:userId', async (req, res) => {
-    let patients = await Clinician.findById(req.params.userId).populate('Patient');
-    return res.json(patients.patients);
+    let clinician = await Clinician.findById(req.params.userId).populate('Patient');
+    return res.json(clinician.patients);
   })
 
   router.post('/:userId/exercises/', (req, res) => {
@@ -182,7 +182,7 @@ router.post('/register', (req, res) => {
       Exercise.findOne({ title: req.body.title })
         .then( exercise => {
           if(exercise) {
-            return res.status(400).json({ title: 'The title has already exists' });
+            return res.status(400).json({ title: 'The title already exists' });
           }
 
           const newExercise = new Exercise({

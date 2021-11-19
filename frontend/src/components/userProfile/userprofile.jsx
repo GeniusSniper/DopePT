@@ -18,26 +18,55 @@ class UserProfile extends React.Component {
   }
 
   render() {
+    let info = this.state.edit
+      ? () => (
+          <form>
+            <div>
+              Handle:
+              <input
+                onChange={(e) => {
+                  this.setState({ handle: e.target.value });
+                }}
+                type="text"
+                value={this.state.handle}
+              />
+            </div>
+            <div>
+              Email:
+              <input
+                onChange={(e) => {
+                  this.setState({ email: e.target.value });
+                }}
+                type="text"
+                value={this.state.email}
+              />
+            </div>
+            <div>
+              Phone:
+              <input
+                onChange={(e) => {
+                  this.setState({ phone: e.target.value });
+                }}
+                type="text"
+                value={this.state.phone}
+              />
+            </div>
+          </form>
+      )
+      : () => (
+          <div>
+              <div>Handle: {this.state.handle}</div>
+              <div>Email: {this.state.email}</div>
+              <div>Phone: {this.state.phone}</div>
+          </div>
+      );
     return (
       <div>
         <div
           className="userProfileAvatar"
           dangerouslySetInnerHTML={{ __html: this.state.avatar }}
         ></div>
-        <div>
-          <div>
-            Handle:
-            <input readonly type="text" value={this.state.handle} />
-          </div>
-          <div>
-            Email:
-            <input readonly type="text" value={this.state.email} />
-          </div>
-          <div>
-            Phone:
-            <input readonly type="text" value={this.state.phone} />
-          </div>
-        </div>
+        <div>{info()}</div>
       </div>
     );
   }

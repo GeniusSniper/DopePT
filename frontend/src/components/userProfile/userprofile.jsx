@@ -10,6 +10,7 @@ class UserProfile extends React.Component {
     this.state = {
       avatar: createAvatar(style, {
         seed: props.user.handle,
+        size: 192
       }),
       handle: props.user.handle,
       email: props.user.email,

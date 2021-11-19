@@ -69,6 +69,11 @@ class UserProfile extends React.Component {
         );
     return (
       <div>
+        <div>
+          <button onClick={() => this.setState({ edit: true })}>
+            Edit Profile
+          </button>
+        </div>
         <div
           className="userProfileAvatar"
           dangerouslySetInnerHTML={{ __html: this.state.avatar }}

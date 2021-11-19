@@ -25,9 +25,18 @@ class UserProfile extends React.Component {
           dangerouslySetInnerHTML={{ __html: this.state.avatar }}
         ></div>
         <div>
-          <div>Handle: {this.state.handle}</div>
-          <div>Email: {this.state.email}</div>
-          <div>Phone: {this.state.phone}</div>
+          <div>
+            Handle:
+            <input readonly type="text" value={this.state.handle} />
+          </div>
+          <div>
+            Email:
+            <input readonly type="text" value={this.state.email} />
+          </div>
+          <div>
+            Phone:
+            <input readonly type="text" value={this.state.phone} />
+          </div>
         </div>
       </div>
     );

@@ -29,7 +29,7 @@ class AssignExercise extends React.Component {
                             this.props.assignExercise(exercise._id, this.props.patient._id);
                             this.setState({ [i]: true })
                         }}>
-                        Assign this Exercise
+                        Assign This Exercise
                     </button>)
                 }
             } else {
@@ -44,6 +44,12 @@ class AssignExercise extends React.Component {
         let patientExercises = this.props.patientExercise.map( exercise => (
             <div className='patient-exercise-list-item' key={exercise._id}>
                 <div>{exercise.title}</div>
+                <button
+                        className='exercise-button'
+                
+                >
+                    Delete This Exercise
+                </button>
             </div>
         ))
         return (

@@ -251,4 +251,14 @@ router.post("/assign/:exerciseId/:patientId", (req, res) => {
   });
 });
 
+router.post("/removePatienExercise/:exerciseId/:patientId", (req, res) => {
+  Exercise.findById(req.params.exerciseId).then((exer) => {
+    Patient.findById(req.params.patientId).then(async (pat) => {
+      pat.exercises = pat.exercises.filter(item => item !== exer)
+      await pat.save();
+      return res.json(exer);
+    });
+  });
+});
+
 module.exports = router;

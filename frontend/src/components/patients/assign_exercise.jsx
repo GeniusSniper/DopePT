@@ -6,13 +6,6 @@ class AssignExercise extends React.Component {
     super(props);
 
     this.state = {};
-    // console.log(props,this.props);
-    // if(props.patientExercise){
-    //     props.patientExercise.forEach( exe =>{
-    //         console.log(exe)
-    //         this.state[exe._id] = true;
-    //     })
-    // }
   }
 
   componentDidMount() {

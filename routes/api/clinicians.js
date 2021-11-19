@@ -153,18 +153,18 @@ router.post("/login", (req, res) => {
   });
 });
 
-router.post("/:userId", (req, res) => {
-  const { errors, isValid } = validateRegisterInput(req.body);
-  if (!isValid) {
-    return res.status(400).json(errors);
-  }
+// router.post("/:userId", (req, res) => {
+//   const { errors, isValid } = validateRegisterInput(req.body);
+//   if (!isValid) {
+//     return res.status(400).json(errors);
+//   }
 
-  // Clinician.findById(req.params.userId).then( async (clincian) => {
-  //   clincian.handle = req.body.handle;
-  //   clincian.email = req.body.email;
-  //   clincian.phone = req.body.phone;
-  // });
-});
+//   Clinician.findById(req.params.userId).then( async (clincian) => {
+//     clincian.handle = req.body.handle;
+//     clincian.email = req.body.email;
+//     clincian.phone = req.body.phone;
+//   });
+// });
 
 router.get("/:userId", async (req, res) => {
   let clinician = await Clinician.findById(req.params.userId).populate(

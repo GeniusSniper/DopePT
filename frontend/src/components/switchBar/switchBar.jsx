@@ -1,5 +1,5 @@
 import React from "react";
-import Cat from "../../styles/images/cat1.jpg";
+// import Cat from "../../styles/images/cat1.jpg";
 import "../../styles/profile.css";
 import ExercisesContainer from "../exercises/exercises_container";
 import ReactCalendar from "../calendar/calendar";

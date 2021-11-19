@@ -1,5 +1,5 @@
 import React from "react";
-import Cat from "../../styles/images/cat1.jpg";
+// import Cat from "../../styles/images/cat1.jpg";
 import "../../styles/clinicians.css";
 import { createAvatar } from "@dicebear/avatars";
 import * as style from "@dicebear/adventurer";

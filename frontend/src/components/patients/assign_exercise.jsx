@@ -34,6 +34,10 @@ class AssignExercise extends React.Component {
           <button
             className="exercise-button"
             onClick={() => {
+              this.props.removePatienExercise(
+                exercise._id,
+                this.props.patient._id
+              );
               this.setState({ [exercise._id]: false });
             }}
           >

@@ -84,7 +84,7 @@ const data = [
     },{
         'model': 'Clinician',
         'documents': [{
-            'handle': 'clinician',
+            'handle': 'Clinician',
             'email': 'clinician@email.com',
             'password': '$2a$10$xYpgufwbkO71ZxZAy8MTcu7JyhLrTp2duCqu/2qZT4mSOYazn0qva',
             'phone': '5555555555',

@@ -18,33 +18,67 @@ class AssignExercise extends React.Component {
 
   render() {
     // if(this.props.patientExercise.length === 0) return null;
-    let allExercises = this.props.allExercises.map((exercise, i) => {
-      let button =
-      //button doesnt change when clicked
-        this.props.patient.exercises.indexOf(exercise._id) === -1 ? (
-          <button
-            className="exercise-button"
-            onClick={() => {
-              this.props.assignExercise(exercise._id, this.props.patient._id);
-              this.setState({ [exercise._id]: true });
-            }}
-          >
-            Assign This Exercise
-          </button>
-        ) : (
-          <button
-            className="exercise-button"
-            onClick={() => {
-              this.props.removePatienExercise(
-                exercise._id,
-                this.props.patient._id
-              );
-              this.setState({ [exercise._id]: false });
-            }}
-          >
-            Delete This Exercise
-          </button>
-        );
+    let button;
+    let allExercises = this.props.allExercises.map((exercise) => {
+      if (this.props.patient.exercises.indexOf(exercise._id) === -1) {
+        if (!this.state[exercise._id]) {
+          button = (
+            <button
+              className="exercise-button"
+              onClick={() => {
+                this.props.assignExercise(exercise._id, this.props.patient._id);
+                this.setState({ [exercise._id]: true });
+              }}
+            >
+              Assign This Exercise
+            </button>
+          );
+        } else {
+          button = (
+            <button
+              className="exercise-button"
+              onClick={() => {
+                this.props.removePatienExercise(
+                  exercise._id,
+                  this.props.patient._id
+                );
+                this.setState({ [exercise._id]: false });
+              }}
+            >
+              Delete This Exercise
+            </button>
+          );
+        }
+      } else {
+        if (!this.state[exercise._id]) {
+          button = (
+            <button
+              className="exercise-button"
+              onClick={() => {
+                this.props.removePatienExercise(
+                  exercise._id,
+                  this.props.patient._id
+                );
+                this.setState({ [exercise._id]: true });
+              }}
+            >
+              Delete This Exercise
+            </button>
+          );
+        } else {
+          button = (
+            <button
+              className="exercise-button"
+              onClick={() => {
+                this.props.assignExercise(exercise._id, this.props.patient._id);
+                this.setState({ [exercise._id]: false });
+              }}
+            >
+              Assign This Exercise
+            </button>
+          );
+        }
+      }
       return (
         <div className="all-exercises-list" key={exercise._id}>
           <div>{exercise.title}</div>

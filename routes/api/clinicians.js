@@ -208,6 +208,33 @@ router.post('/register', (req, res) => {
       })
   })
 
+  //Update exercise
+  router.patch('/:exerciseId', async (req, res) => {
+    try {
+      const exercise = await Exercise.findOne({ _id: req.params.exerciseId});
+
+      if (req.body.title) {
+        exercise.title = req.body.title;
+      }
+      if (req.body.description) {
+        exercise.description = req.body.description;
+      }
+      if (req.body.instructions) {
+        exercise.instructions = req.body.instructions;
+      }
+      if (req.body.urls) {
+        exercise.urls = req.body.urls;
+      }
+
+      await exercise.save();
+      res.send(exercise);
+
+    } catch {
+      res.status(404);
+      res.send({error: "Exercise doesn't exist"});
+    }
+  })
+
   router.post('/assign/:exerciseId/:patientId', (req, res) => {
     Exercise.findById(req.params.exerciseId).then(exer => {
       Patient.findById(req.params.patientId).then( async (pat) => {

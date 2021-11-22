@@ -42,11 +42,9 @@ router.post("/register", (req, res) => {
     (clinician) => {
       if (clinician) {
         // Throw a 400 error if the email address already exists
-        return res
-          .status(400)
-          .json({
-            email: "A clinician has already registered with this address",
-          });
+        return res.status(400).json({
+          email: "A clinician has already registered with this address",
+        });
       } else {
         // Otherwise create a new clinician
         const newclinician = new Clinician({
@@ -252,12 +250,15 @@ router.post("/assign/:exerciseId/:patientId", (req, res) => {
 });
 
 router.post("/removePatienExercise/:exerciseId/:patientId", (req, res) => {
-  Exercise.findById(req.params.exerciseId).then((exer) => {
-    Patient.findById(req.params.patientId).then(async (pat) => {
-      pat.exercises = pat.exercises.filter(item => item !== exer)
-      await pat.save();
-      return res.json(exer);
-    });
+  Patient.findById(req.params.patientId).then(async (pat) => {
+    //doesnt work
+    pat.exercises = pat.exercises.filter(
+      (item) =>
+        // pat.exercises.forEach((item) => {
+        JSON.stringify(item) !== JSON.stringify(req.params.exerciseId)
+    );
+    await pat.save();
+    return res.json({ code: 200, message: "deleted" });
   });
 });
 

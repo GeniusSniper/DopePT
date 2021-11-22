@@ -20,6 +20,7 @@ class AssignExercise extends React.Component {
     // if(this.props.patientExercise.length === 0) return null;
     let allExercises = this.props.allExercises.map((exercise, i) => {
       let button =
+      //button doesnt change when clicked
         this.props.patient.exercises.indexOf(exercise._id) === -1 ? (
           <button
             className="exercise-button"

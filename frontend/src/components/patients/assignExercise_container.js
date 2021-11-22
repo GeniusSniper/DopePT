@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 import {
   clearExercises,
   patientExercises,
-  removePatientExercise,
+  removeAssignExercise,
   requestAssignExercise,
 } from "../../actions/exercise_actions";
 import AssignExercise from "./assign_exercise";
@@ -23,7 +23,7 @@ const mdtp = (dispatch) => ({
     dispatch(patientExercises(userType, userId)),
   clearPatientExercise: () => dispatch(clearExercises()),
   removePatienExercise: (exerciseId, patientId) =>
-    dispatch(removePatientExercise(exerciseId, patientId)),
+    dispatch(removeAssignExercise(exerciseId, patientId)),
 });
 
 export default connect(mstp, mdtp)(AssignExercise);

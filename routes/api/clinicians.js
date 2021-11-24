@@ -267,7 +267,7 @@ router.post("/removePatienExercise/:exerciseId/:patientId", (req, res) => {
 
 router.post("/updateCalendar/:userId", (req, res) => {
   Clinician.findById(req.params.userId).then(async (clinician) => {
-    clinician.calendar = req.body.calendar;
+    clinician.calendar = req.body;
     await clinician.save();
     return res.json({
       code: 200,

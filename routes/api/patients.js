@@ -189,7 +189,7 @@ router.get("/:userId/exercises", async (req, res) => {
 
 router.post("/updateCalendar/:userId", (req, res) => {
   Patient.findById(req.params.userId).then(async (pat) => {
-    pat.calendar = req.body.calendar;
+    pat.calendar = req.body;
     await pat.save();
     return res.json({
       code: 200,

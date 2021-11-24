@@ -29,5 +29,5 @@ export const getConnection = (userType, userId) => {
 };
 
 export const updateCalendar = (userType, userId, data) => {
-  return axios.post(`/api/${userType}/${userId}`, data);
+  return axios.post(`/api/${userType}/updateCalendar/${userId}`, data);
 };

@@ -33,16 +33,16 @@ class Calendar extends React.Component {
     this.addingEvent = this.addingEvent.bind(this);
   }
 
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   addingEvent(e) {
-    console.log(e);
     if (e.data) {
-      // this.setState({data: this.state.data.push(e.data[0])});
       setTimeout(() => {
-        console.log(this.data);
+        this.props.updateCalendar(
+          this.props.userType,
+          this.props.currentUser.id,
+          this.data
+        );
       }, 500);
     }
   }

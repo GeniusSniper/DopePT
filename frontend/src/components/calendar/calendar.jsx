@@ -17,23 +17,24 @@ import {
 class Calendar extends React.Component {
   constructor(props) {
     super(props);
-    this.data = [
-      {
-        Id: 1,
-        Subject: "Clinicians are not available",
-        StartTime: new Date(2021, 0, 24, 10, 0),
-        EndTime: new Date(2021, 0, 24, 12, 30),
-        IsAllDay: true,
-        RecurrenceRule: "FREQ=WEEKLY;BYDAY=SA,SU;",
-        IsBlock: true,
-      },
-    ];
+    // this.data = [
+    //   {
+    //     Id: 1,
+    //     Subject: "Clinicians are not available",
+    //     StartTime: new Date(2021, 0, 24, 10, 0),
+    //     EndTime: new Date(2021, 0, 24, 12, 30),
+    //     IsAllDay: true,
+    //     RecurrenceRule: "FREQ=WEEKLY;BYDAY=SA,SU;",
+    //     IsBlock: true,
+    //   },
+    // ];
+    this.data = props.currentUser.calendar;
     this.eventSettings = { dataSource: this.data, editFollowingEvents: true };
     this.addingEvent = this.addingEvent.bind(this);
   }
 
   componentDidMount() {
-    
+
   }
 
   addingEvent(e) {

@@ -30,7 +30,20 @@ function BaseUserSchema() {
       type: Boolean,
       default: false,
     },
-    calendar: [],
+    calendar: {
+      type: Array,
+      default: [
+        {
+          Id: 1,
+          Subject: "Clinicians are not available",
+          StartTime: new Date(2021, 0, 24, 10, 0),
+          EndTime: new Date(2021, 0, 24, 12, 30),
+          IsAllDay: true,
+          RecurrenceRule: "FREQ=WEEKLY;BYDAY=SA,SU;",
+          IsBlock: true,
+        },
+      ],
+    },
   });
 }
 

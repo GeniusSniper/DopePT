@@ -2,7 +2,7 @@ import React from "react";
 // import Cat from "../../styles/images/cat1.jpg";
 import "../../styles/profile.css";
 import ExercisesContainer from "../exercises/exercises_container";
-import ReactCalendar from "../calendar/calendar";
+import CalendarContainer from "../calendar/calendar_container";
 import PatientsContainer from "../patients/patients_container";
 import CliniciansContainer from "../clinicians/clinician_container";
 import UserProfileContainer from "../userProfile/userProfileContainer";
@@ -31,7 +31,7 @@ class SwitchBar extends React.Component {
       case "clinician":
         return <CliniciansContainer />;
       case "calendar":
-        return <ReactCalendar />;
+        return <CalendarContainer />;
       default:
         break;
     }

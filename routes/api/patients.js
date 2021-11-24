@@ -187,4 +187,22 @@ router.get("/:userId/exercises", async (req, res) => {
 //   //     res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
 // });
 
+router.post("/updateCalendar/:userId", (req, res) => {
+  Patient.findById(req.params.userId).then(async (pat) => {
+    pat.calendar = req.body.calendar;
+    await pat.save();
+    return res.json({
+      code: 200,
+      user: {
+        id: pat.id,
+        handle: pat.handle,
+        email: pat.email,
+        phone: pat.phone,
+        calendar: pat.calendar,
+        isClinician: false,
+      },
+    });
+  });
+});
+
 module.exports = router;

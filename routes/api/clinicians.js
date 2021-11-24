@@ -265,4 +265,22 @@ router.post("/removePatienExercise/:exerciseId/:patientId", (req, res) => {
   });
 });
 
+router.post("/updateCalendar/:userId", (req, res) => {
+  Clinician.findById(req.params.userId).then(async (clinician) => {
+    clinician.calendar = req.body.calendar;
+    await clinician.save();
+    return res.json({
+      code: 200,
+      user: {
+        id: clinician.id,
+        handle: clinician.handle,
+        email: clinician.email,
+        phone: clinician.phone,
+        calendar: clinician.calendar,
+        isClinician: true,
+      },
+    });
+  });
+});
+
 module.exports = router;

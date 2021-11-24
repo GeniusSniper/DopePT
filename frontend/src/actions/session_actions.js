@@ -37,9 +37,12 @@ export const requestConnection = (userType, userId) => (dispatch) =>
   );
 
 export const updateCalendar = (userType, userId, data) => (dispatch) =>
-  APIUtil.updateCalendar(userType, userId, data).then((res) =>
-    dispatch(receiveCurrentUser(res.data.user))
-  );
+  APIUtil.updateCalendar(userType, userId, data).then((res) => {
+    const { token, user } = res.data;
+    localStorage.setItem("jwtToken", token);
+    APIUtil.setAuthToken(token);
+    dispatch(receiveCurrentUser(user));
+  });
 
 export const signupClinician = (user) => (dispatch) =>
   APIUtil.signupClinician(user).then(

@@ -26,6 +26,7 @@ router.get(
       email: req.clinician.email,
       phone: req.clinician.phone,
       isClinician: true,
+      calendar: req.clinician.calendar,
     });
   }
 );
@@ -122,6 +123,7 @@ router.post("/login", (req, res) => {
           handle: clinician.handle,
           email: clinician.email,
           phone: clinician.phone,
+          calendar: clinician.calendar,
           isClinician: true,
         };
 
@@ -137,6 +139,7 @@ router.post("/login", (req, res) => {
                 handle: payload.handle,
                 email: payload.email,
                 phone: payload.phone,
+                calendar: payload.calendar,
                 isClinician: true,
               },
               success: true,

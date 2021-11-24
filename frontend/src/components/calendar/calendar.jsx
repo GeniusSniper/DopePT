@@ -33,9 +33,9 @@ class Calendar extends React.Component {
   }
 
   componentDidMount() {
-
+    
   }
-  
+
   addingEvent(e) {
     console.log(e);
     if (e.data) {

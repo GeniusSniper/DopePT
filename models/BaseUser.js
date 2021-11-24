@@ -1,49 +1,51 @@
-const util = require('util');
-const mongoose = require('mongoose');
+const util = require("util");
+const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-function BaseUserSchema() {  
-  Schema.apply(this, arguments);  
+function BaseUserSchema() {
+  Schema.apply(this, arguments);
 
   this.add({
     handle: {
       type: String,
-      required: true
+      required: true,
     },
     email: {
       type: String,
-      required: true
+      required: true,
     },
     password: {
       type: String,
-      required: true
+      required: true,
     },
     date: {
       type: Date,
-      default: Date.now
+      default: Date.now,
     },
     phone: {
       type: String,
-      required: true
+      required: true,
     },
     isClinician: {
       type: Boolean,
-      default: false
-    }
+      default: false,
+    },
+    calendar: [],
   });
-}  
+}
 
 util.inherits(BaseUserSchema, Schema);
-
 
 // BaseUser = mongoose.model('BaseUser', BaseUserSchema);
 
 const UserSchema = new BaseUserSchema();
-UserSchema.virtual('type').get(function () { return this.__t; });  
+UserSchema.virtual("type").get(function () {
+  return this.__t;
+});
 
-User = mongoose.model('User', UserSchema);
+User = mongoose.model("User", UserSchema);
 
-module.exports = { 
-  BaseUserSchema, 
-  User
+module.exports = {
+  BaseUserSchema,
+  User,
 };

@@ -269,17 +269,28 @@ router.post("/updateCalendar/:userId", (req, res) => {
   Clinician.findById(req.params.userId).then(async (clinician) => {
     clinician.calendar = req.body;
     await clinician.save();
-    return res.json({
-      code: 200,
-      user: {
-        id: clinician.id,
-        handle: clinician.handle,
-        email: clinician.email,
-        phone: clinician.phone,
-        calendar: clinician.calendar,
-        isClinician: true,
-      },
-    });
+    const payload = {
+      id: clinician.id,
+      handle: clinician.handle,
+      email: clinician.email,
+      phone: clinician.phone,
+      calendar: clinician.calendar,
+      isClinician: true,
+    };
+
+    jwt.sign(
+      payload,
+      keys.secretOrKey,
+      // Tell the key to expire in one hour
+      { expiresIn: 3600 },
+      (err, token) => {
+        res.json({
+          user: payload,
+          success: true,
+          token: "Bearer " + token,
+        });
+      }
+    );
   });
 });
 

@@ -8,3 +8,26 @@
 textarea {
     border-radius: 10px;
 }
+
+.container-cropper{
+    display: block;
+    position: relative;
+    z-index: 5;
+}
+
+.container-button{
+    display: block;
+}
+
+.buttons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cropper {
+    width: 100%;
+    height: 100%;
+    min-width: 400px;
+    min-height: 400px;
+}

@@ -1,6 +1,13 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
-import '../../styles/home.css'
+import '../../styles/home.css';
+// import Avatar from '../avatar/avatar';
+
+// import multiavatar from '@multiavatar/multiavatar';
+
+import { createAvatar } from '@dicebear/avatars';
+import * as style from '@dicebear/adventurer';
+// import * as style from '@dicebear/avatars-male-sprites';
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -10,12 +17,17 @@ class SignupForm extends React.Component {
       handle: '',
       password: '',
       password2: '',
+      phone: '',
       errors: {},
       isClinician: false,
+      avatar: createAvatar(style, {
+        seed: ''
+      })
     };
 
     this.handleSubmit = this.handleSubmit.bind(this);
     this.clearedErrors = false;
+    this.updateAvatar = this.updateAvatar.bind(this);
   }
 
   componentWillReceiveProps(nextProps) {
@@ -34,7 +46,8 @@ class SignupForm extends React.Component {
       email: this.state.email,
       handle: this.state.handle,
       password: this.state.password,
-      password2: this.state.password2
+      password2: this.state.password2,
+      phone: this.state.phone,
     };
     if (this.state.isClinician) {
       this.props.signupClinician(user, this.props.history)
@@ -43,6 +56,19 @@ class SignupForm extends React.Component {
     }
 
     // this.props.signup(user, this.props.history); 
+  }
+
+  updateAvatar(e){
+    e.preventDefault();
+    // let avatarClass = document.querySelector('.avatar');
+    // let avatar = multiavatar(e.currentTarget.value);
+    // avatarClass.innerHTML = avatar;
+    this.setState({
+      handle: e.currentTarget.value,
+      avatar: createAvatar(style, {
+        seed: e.currentTarget.value
+      })
+    });
   }
 
   renderErrors() {
@@ -58,12 +84,21 @@ class SignupForm extends React.Component {
   }
 
   render() {
+
+    // let svg = createAvatar(style, {
+    //   seed: '',
+    //   // ... and other options
+    // });
+
+    // console.log(svg);
     return (
       <div className="login-form-container">
         {/* <div className='background'></div> */}
         {/* <img className='background' src={Background} alt="" /> */}
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
+            <div className='avatar' dangerouslySetInnerHTML={{__html: this.state.avatar}}></div>
+            {/* <Avatar /> */}
             <br/>
               <label>Email
                 <br/>
@@ -78,8 +113,18 @@ class SignupForm extends React.Component {
               <br/>
               <input type="text"
                 value={this.state.handle}
-                onChange={this.update('handle')}
+                onChange={this.updateAvatar}
                 placeholder="Johnny"
+              />
+              </label>
+            <br/>
+            <label>Phone Number
+              <br/>
+              <input type="tel"
+                value={this.state.phone}
+                onChange={this.update('phone')}
+                placeholder='000-000-0000' 
+                // pattern="[0-9]{3}-[0-9]{3}-[0-9]{4}" required
               />
               </label>
             <br/>

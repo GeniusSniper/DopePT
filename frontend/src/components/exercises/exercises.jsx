@@ -21,7 +21,7 @@ class Exercises extends React.Component{
     }
 
     render(){
-        if(this.props.allExercises.length === 0) return null;
+        // if(this.props.allExercises.length === 0) return null;
         let isClinician = (this.props.userType === 'clinicians');
         let option, deleteExercise, mainShow;
         
@@ -43,7 +43,9 @@ class Exercises extends React.Component{
             )
         }
 
-        const allExercises = this.props.allExercises.map( (exercise) => 
+        let allExercises;
+
+        allExercises = this.props.allExercises.map( (exercise) => 
             <div className='exercise-index-container' key={exercise._id}>
                 <ul  onClick={() => { this.setState({i: exercise._id, option: false}) }}>
                     <div className='exercise-title-index'>
@@ -59,6 +61,13 @@ class Exercises extends React.Component{
 
 
         mainShow = this.state.option ? <NewExerciseContainer/> : <ExerciseContainer exerciseId={this.state.i}/>;
+
+        if(this.props.allExercises.length === 0 && mainShow) {
+            mainShow = (
+                <div>No Exercise available! please contact your clinician</div>
+            )
+        }
+
         return (
             <div className='profile-grid'>
                 <div className='left-side-bar'>

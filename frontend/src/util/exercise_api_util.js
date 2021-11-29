@@ -15,3 +15,7 @@ export const deleteExercise = (exerciseId) => (
 export const assignExercise = (exerciseId, patientId) => (
     axios.post(`/api/clinicians/assign/${exerciseId}/${patientId}`)
 );
+
+export const removePatientExercise = (exerciseId, patientId) => (
+    axios.post(`/api/clinicians/removePatienExercise/${exerciseId}/${patientId}`)
+)

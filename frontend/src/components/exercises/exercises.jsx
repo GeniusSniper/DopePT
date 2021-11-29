@@ -2,13 +2,16 @@ import React from 'react';
 import ExerciseContainer from './exercise_container';
 import '../../styles/profile.css';
 import NewExerciseContainer from './new_exercise_container';
+import UpdateExerciseContainer from './UpdateExerciseContainer';
 
 class Exercises extends React.Component{
     constructor(props){
         super(props);
         this.state = {
             i: 0,
-            option: false
+            option: false,
+            update: false,
+            exercise: null
         }
     }
 
@@ -23,10 +26,10 @@ class Exercises extends React.Component{
     render(){
         // if(this.props.allExercises.length === 0) return null;
         let isClinician = (this.props.userType === 'clinicians');
-        let option, deleteExercise, mainShow;
+        let createExerciseButton, deleteExercise, mainShow, updateExerciseButton;
         
         if(isClinician){
-            option = (
+            createExerciseButton = (
                 <button onClick={() => this.setState({option: true}) }
                     className='exercise-button'>
                     Create an exercise
@@ -37,6 +40,13 @@ class Exercises extends React.Component{
                     className='exercise-button'>
                     Delete Exercise
                 </button>)
+
+            updateExerciseButton = exercise => (
+                <button onClick={() => this.setState({update: true, exercise})}
+                    className='exercise-button'>
+                    Update Exercise
+                </button>
+            )
         } else {
             deleteExercise = () => (
                 null
@@ -56,11 +66,20 @@ class Exercises extends React.Component{
                     </div>
                 </ul> 
                 {deleteExercise(exercise._id)}
+                {updateExerciseButton(exercise)}
             </div>
             )
 
 
-        mainShow = this.state.option ? <NewExerciseContainer/> : <ExerciseContainer exerciseId={this.state.i}/>;
+        // mainShow = this.state.option ? <NewExerciseContainer/> : <ExerciseContainer exerciseId={this.state.i}/>;
+
+        if (this.state.option) {
+            mainShow = <NewExerciseContainer/>
+        } else if (this.state.update) {
+            mainShow = <UpdateExerciseContainer exercise={this.state.exercise}/>
+        } else {
+            mainShow = <ExerciseContainer exerciseId={this.state.i}/>
+        }
 
         if(this.props.allExercises.length === 0 && mainShow) {
             mainShow = (
@@ -72,7 +91,7 @@ class Exercises extends React.Component{
             <div className='profile-grid'>
                 <div className='left-side-bar'>
                     <div className='exercises-index'>
-                        {option}
+                        {createExerciseButton}
                         <br />
                         {allExercises}
                     </div>

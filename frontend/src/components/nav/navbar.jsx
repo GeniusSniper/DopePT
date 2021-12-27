@@ -1,5 +1,5 @@
 import React from 'react';
-// import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import '../../styles/navbar.css';
 
 class NavBar extends React.Component {
@@ -21,7 +21,18 @@ class NavBar extends React.Component {
                 <button className='logout-button' onClick={this.logoutUser}>Logout</button>
             </div>
         );
-      } 
+      } else {
+        return (
+          <div className='login-links'>
+            <Link className='logout-button' to='/login'>
+              Login
+            </Link>
+            <Link className='logout-button' to='/signup'>
+              Signup
+            </Link>
+          </div>
+        )
+      }
   }
 
   render() {

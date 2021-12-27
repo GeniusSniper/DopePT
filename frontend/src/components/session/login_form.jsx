@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../styles/home.css'
+import Background from '../../styles/images/splash-image.jpg'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -124,7 +125,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        {/* <img className='background' src={Background} alt='background'/> */}
+        <img className='background' src={Background} alt='background'/>
         {/* <div className='background'></div> */}
         <div className="login-form-container">
           <div className='login-form'>

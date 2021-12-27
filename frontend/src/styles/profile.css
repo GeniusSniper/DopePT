@@ -16,7 +16,7 @@
 .profile-grid {
     display: grid;
     grid-template-columns: 30% 70%;
-    background-color: teal;
+    background-color: #66CCFF;
 }
 
 .profile-grid > div {
@@ -123,7 +123,7 @@
 
 .navigation-tabs > div {
     border-left: solid black 1px;
-    background-color: teal;
+    background-color: #66CCFF;
     padding: 2%;
     color: white;
 }
@@ -157,7 +157,7 @@
 .calendar-container {
     display: flex;
     justify-content: center;
-    background-color: teal;
+    background-color: #66CCFF;
     height: 100%;
     padding: 5%;
 }

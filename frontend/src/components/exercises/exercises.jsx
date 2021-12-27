@@ -41,12 +41,12 @@ class Exercises extends React.Component{
                     Delete Exercise
                 </button>)
 
-            updateExerciseButton = exercise => (
-                <button onClick={() => this.setState({update: true, exercise})}
-                    className='exercise-button'>
-                    Update Exercise
-                </button>
-            )
+            // updateExerciseButton = exercise => (
+            //     <button onClick={() => this.setState({update: true, exercise})}
+            //         className='exercise-button'>
+            //         Update Exercise
+            //     </button>
+            // )
         } else {
             deleteExercise = () => (
                 null
@@ -66,7 +66,7 @@ class Exercises extends React.Component{
                     </div>
                 </ul> 
                 {deleteExercise(exercise._id)}
-                {updateExerciseButton(exercise)}
+                {/* {updateExerciseButton(exercise)} */}
             </div>
             )
 
@@ -75,8 +75,8 @@ class Exercises extends React.Component{
 
         if (this.state.option) {
             mainShow = <NewExerciseContainer/>
-        } else if (this.state.update) {
-            mainShow = <UpdateExerciseContainer exercise={this.state.exercise}/>
+        // } else if (this.state.update) {
+        //     mainShow = <UpdateExerciseContainer exercise={this.state.exercise}/>
         } else {
             mainShow = <ExerciseContainer exerciseId={this.state.i}/>
         }

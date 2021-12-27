@@ -74,7 +74,7 @@ class UpdateExercise extends React.Component {
 
         // console.log(res2.data);
 
-        this.props.UpdateExercise(this.props.exercise,{
+        this.props.updateExercise({
             title: this.state.title,
             description: this.state.description,
             instructions: this.state.instructions,

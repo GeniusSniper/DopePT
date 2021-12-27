@@ -5,6 +5,16 @@ input {
     outline: none;
 }
 
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0.7;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
 label {
     padding-bottom: 1em;
 }
@@ -19,7 +29,7 @@ label {
 .login-form {
     border: solid black 1px;
     padding: 1em;
-    background-color: teal;
+    background-color: #66CCFF;
 }
 
 .submit-button-container {
@@ -101,25 +111,4 @@ label {
 .form-swap-button:hover{
     background-color: goldenrod;
     cursor: pointer;
-}
-
-/* .background {
-    z-index: -1;
-    position: absolute;
-    left: 0px;
-    top: 0px;  
-    width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-} */
-
-.background {
-    z-index: -1;
-    position: absolute;
-    background-image: linear-gradient(to bottom right, #FF00FF, red);
-    left: 0px;
-    top: 0px;  
-    width: 100vh;
-    overflow: hidden;
-    height: 100vh;
 }

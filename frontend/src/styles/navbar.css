@@ -1,10 +1,14 @@
 .navbar-container {
+    width: 100%;
     display: flex;
-    justify-content: center;
-    justify-content: space-around;
+    justify-content: space-evenly;
     align-items: center;
-    background-color: teal;
+    background-color: #66CCFF;
     color: white;
+}
+
+.login-links {
+    gap: 10px;
 }
 
 .logout-button {

@@ -17,10 +17,10 @@ const App = () => (
   <div>
     <NavBarContainer />
     <Switch>
-      <Route exact path='/' component={Splash}/>
-      <ProtectedRoute exact path="/" component={MainPageContainer} />
       <AuthRoute exact path="/login" component={LoginFormContainer} />
       <AuthRoute exact path="/signup" component={SignupFormContainer} />
+      <Route exact path='/' component={Splash}/>
+      <ProtectedRoute exact path="/main" component={MainPageContainer} />
       {/* <ProtectedRoute exact path='/:userType/exercises' component={ExercisesContainer}/> */}
       {/* <ProtectedRoute exact path='/:userType/exercises/:exerciseId' component={ExerciseContainer}/> */}
     </Switch>

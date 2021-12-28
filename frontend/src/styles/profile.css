@@ -16,7 +16,7 @@
 .profile-grid {
     display: grid;
     grid-template-columns: 30% 70%;
-    background-color: #66CCFF;
+    background-color: #4169e1;
 }
 
 .profile-grid > div {
@@ -28,7 +28,6 @@
 }
 
 .exercises-index {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     overflow-y: scroll;
     display: flex;
     flex-direction: column;
@@ -41,7 +40,6 @@
 }
 
 .patients-index {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: column;
     width: 100%;
@@ -50,7 +48,6 @@
 }
 
 .patient-index {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -59,7 +56,6 @@
 }
 
 .exercise-show {
-    font-family: Georgia, 'Times New Roman', Times, serif;
     display: block;
     width: 100%;
 }
@@ -99,13 +95,13 @@
 
 .exercise-title-index:hover{
     cursor: pointer;
-    color: goldenrod;
+    color: black;
     text-decoration: underline;
 }
 
 .patient-title-index:hover{
     cursor: pointer;
-    color: goldenrod;
+    color: black;
     text-decoration: underline;
 }
 
@@ -123,14 +119,14 @@
 
 .navigation-tabs > div {
     border-left: solid black 1px;
-    background-color: #66CCFF;
+    background-color: #4169e1;
     padding: 2%;
     color: white;
 }
 
 .navigation-tabs > div:hover {
     cursor: pointer;
-    color: goldenrod;
+    color: black;
     text-decoration: underline;
 }
 
@@ -139,7 +135,7 @@
     margin: 2%;
     border-radius: 25px;
     background-color: black;
-    background: linear-gradient(to right, goldenrod 50%, black 50%);
+    background: linear-gradient(to right, black 50%, black 50%);
     background-size: 200% 100%;
     background-position: right bottom;
     border: 1px solid black;
@@ -157,7 +153,7 @@
 .calendar-container {
     display: flex;
     justify-content: center;
-    background-color: #66CCFF;
+    background-color: #4169e1;
     height: 100%;
     padding: 5%;
 }

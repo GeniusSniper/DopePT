@@ -37,14 +37,14 @@ class LoginForm extends React.Component {
     };
     if (this.state.isClinician) {
       this.props.loginClinician(user)
-        // .then(
-        //   () => this.props.history.push('/')
-        // );
+        .then(
+          () => this.props.history.push('/main')
+        );
     } else {
       this.props.loginPatient(user)
-        // .then(
-        //   () => this.props.history.push('/')
-        // );
+        .then(
+          () => this.props.history.push('/main')
+        );
     }
   }
 
@@ -65,9 +65,15 @@ class LoginForm extends React.Component {
     };
 
     if (this.title().props.children[1] === 'Login for Clincians') {
-      this.props.loginClinician(clinician);
+      this.props.loginClinician(clinician)
+      .then(
+        () => this.props.history.push('/main')
+      );
     } else {
       this.props.loginPatient(patient)
+      .then(
+        () => this.props.history.push('/main')
+      );
     }
   }
 

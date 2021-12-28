@@ -1,6 +1,6 @@
 .navbar-container {
     width: 100%;
-    background-color: #66CCFF;
+    background-color: #4169e1;
     color: white;
 }
 
@@ -13,7 +13,7 @@
 }
 
 .logout-button-container {
-    width: 90px;
+    width: 100px;
 }
 
 .login-links {
@@ -28,6 +28,6 @@
 }
 
 .logout-button:hover {
-    background-color: goldenrod;
+    color: black;
     cursor: pointer;
 }

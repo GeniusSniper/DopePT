@@ -37,14 +37,13 @@ class NavBar extends React.Component {
 
   render() {
       return (
-        <div>
-            <div className='navbar-container'>
-              <div></div>
-              <h1 className='logo'>DOPE PT</h1>
-              <div className='logout-button-container'>
-                { this.getLinks() }
-              </div>
+        <div className='navbar-container'>
+          <div className='navbar'>
+            <h1 className='logo'>DOPE PT</h1>
+            <div className='logout-button-container'>
+              { this.getLinks() }
             </div>
+          </div>
         </div>
       );
   }

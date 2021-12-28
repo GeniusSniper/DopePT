@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../styles/home.css';
+import Background from '../../styles/images/splash-image.jpg'
 import multiavatar from '@multiavatar/multiavatar';
 
 class SignupForm extends React.Component {
@@ -74,8 +75,7 @@ class SignupForm extends React.Component {
   render() {
     return (
       <div className="login-form-container">
-        {/* <div className='background'></div> */}
-        {/* <img className='background' src={Background} alt="" /> */}
+        <img className='background' src={Background} alt="background" />
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
             <div className='avatar'></div>

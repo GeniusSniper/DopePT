@@ -135,19 +135,21 @@
     margin: 2%;
     border-radius: 25px;
     background-color: black;
-    background: linear-gradient(to right, black 50%, black 50%);
-    background-size: 200% 100%;
-    background-position: right bottom;
+    /* background: linear-gradient(to right, black 50%, black 50%); */
+    /* background-size: 200% 100%; */
+    /* background-position: right bottom; */
     border: 1px solid black;
     height: 2em;
     color: white;
     white-space: nowrap;
-    transition: background .5s ease;
+    transition: background .2s ease;
 }
 
 .exercise-button:hover {
     cursor: pointer;
-    background-position: left bottom;
+    color: black;
+    background-color: white;
+    /* background-position: left bottom; */
 }
 
 .calendar-container {

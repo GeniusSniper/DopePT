@@ -8,6 +8,7 @@ import '../../styles/home.css';
 import { createAvatar } from '@dicebear/avatars';
 import * as style from '@dicebear/adventurer';
 // import * as style from '@dicebear/avatars-male-sprites';
+import Background from '../../styles/images/splash-image.jpg'
 
 class SignupForm extends React.Component {
   constructor(props) {
@@ -93,8 +94,7 @@ class SignupForm extends React.Component {
     // console.log(svg);
     return (
       <div className="login-form-container">
-        {/* <div className='background'></div> */}
-        {/* <img className='background' src={Background} alt="" /> */}
+        <img className='background' src={Background} alt="background" />
         <form onSubmit={this.handleSubmit}>
           <div className="login-form">
             <div className='avatar' dangerouslySetInnerHTML={{__html: this.state.avatar}}></div>

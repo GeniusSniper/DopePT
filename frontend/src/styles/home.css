@@ -28,7 +28,8 @@ label {
 .login-form {
     border: solid black 1px;
     padding: 1em;
-    background-color: #4169e1;
+    /* background-color: #4169e1; */
+    background-color: rgba(6, 105, 225, 0.9 );
 }
 
 .submit-button-container {

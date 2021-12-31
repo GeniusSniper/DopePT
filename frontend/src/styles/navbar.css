@@ -1,10 +1,24 @@
 .navbar-container {
-    display: flex;
-    justify-content: center;
-    justify-content: space-around;
-    align-items: center;
-    background-color: teal;
+    width: 100%;
+    background-color: #4169e1;
     color: white;
+}
+
+.navbar {
+    display: flex;
+    margin-left: 5%;
+    margin-right: 5%;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logout-button-container {
+    width: 100px;
+}
+
+.login-links {
+    display: flex;
+    justify-content: space-between;
 }
 
 .logout-button {
@@ -14,6 +28,6 @@
 }
 
 .logout-button:hover {
-    background-color: goldenrod;
+    color: black;
     cursor: pointer;
 }

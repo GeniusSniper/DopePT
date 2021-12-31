@@ -5,6 +5,10 @@
     align-items: center;
 }
 
+.exercise-show {
+    overflow-y: scroll;
+}
+
 textarea {
     border-radius: 10px;
 }

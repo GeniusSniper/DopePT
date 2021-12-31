@@ -5,6 +5,15 @@ input {
     outline: none;
 }
 
+.background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    z-index: -1;
+}
+
 label {
     padding-bottom: 1em;
 }
@@ -19,7 +28,8 @@ label {
 .login-form {
     border: solid black 1px;
     padding: 1em;
-    background-color: teal;
+    /* background-color: #4169e1; */
+    background-color: rgba(6, 105, 225, 0.9 );
 }
 
 .submit-button-container {
@@ -48,12 +58,14 @@ label {
 }
 
 .demo-button:hover {
-    background-color: goldenrod;
+    background-color: white;
+    color: black;
     cursor: pointer;
 }
 
 .submit-button:hover {
-    background-color: goldenrod;
+    background-color: white;
+    color: black;
     cursor: pointer;
 }
 
@@ -79,7 +91,8 @@ label {
 }
 
 .link-button:hover {
-    background-color: goldenrod;
+    background-color: white;
+    color: black;
 }
 
 .form-swap-button {
@@ -99,27 +112,7 @@ label {
 }
 
 .form-swap-button:hover{
-    background-color: goldenrod;
+    background-color: white;
+    color: black;
     cursor: pointer;
-}
-
-/* .background {
-    z-index: -1;
-    position: absolute;
-    left: 0px;
-    top: 0px;  
-    width: 100%;
-    overflow: hidden;
-    max-height: 100%;
-} */
-
-.background {
-    z-index: -1;
-    position: absolute;
-    background-image: linear-gradient(to bottom right, #FF00FF, red);
-    left: 0px;
-    top: 0px;  
-    width: 100vh;
-    overflow: hidden;
-    height: 100vh;
 }

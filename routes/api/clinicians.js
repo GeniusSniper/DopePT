@@ -195,6 +195,10 @@ router.get("/:userId/exercises", (req, res) => {
 //     .catch(err =>
 //         res.status(404).json({ noexercisefound: 'No exercise found by the info you gave'}));
 // });
+  router.get('/:userId', async (req, res) => {
+    let clinician = await Clinician.findById(req.params.userId).populate('Patient');
+    return res.json(clinician.patients);
+  })
 
 // router.get('/:userId', async (req, res) => {
 //   let patients = await Clinician.findById(req.params.userId).populate('Patient');
@@ -280,6 +284,70 @@ router.post("/updateCalendar/:userId", (req, res) => {
         isClinician: true,
       },
     });
+      Exercise.findOne({ title: req.body.title })
+        .then( exercise => {
+          if(exercise) {
+            return res.status(400).json({ title: 'The title already exists' });
+          }
+
+          const newExercise = new Exercise({
+            title: req.body.title,
+            description: req.body.description,
+            instructions: req.body.instructions,
+            urls: req.body.urls
+          })
+
+          newExercise.save()
+            .then(exercise => res.json(exercise))
+            .catch(err => console.log(err))
+        })
+  })
+
+  router.delete('/:exerciseId', (req, res) => {
+    Exercise.findOneAndRemove({ _id: req.params.exerciseId})
+      .exec( err => {
+        if(err) {
+          return res.json({code: 400, message: 'There was an error deleting it ', error: err})
+        }
+        return res.json({code: 200, message: 'deleted'})
+      })
+  })
+
+  //Update exercise
+  router.patch('/:exerciseId', async (req, res) => {
+    try {
+      const exercise = await Exercise.findOne({ _id: req.params.exerciseId});
+
+      if (req.body.title) {
+        exercise.title = req.body.title;
+      }
+      if (req.body.description) {
+        exercise.description = req.body.description;
+      }
+      if (req.body.instructions) {
+        exercise.instructions = req.body.instructions;
+      }
+      if (req.body.urls) {
+        exercise.urls = req.body.urls;
+      }
+
+      await exercise.save();
+      res.send(exercise);
+
+    } catch {
+      res.status(404);
+      res.send({error: "Exercise doesn't exist"});
+    }
+  })
+
+  router.post('/assign/:exerciseId/:patientId', (req, res) => {
+    Exercise.findById(req.params.exerciseId).then(exer => {
+      Patient.findById(req.params.patientId).then( async (pat) => {
+        pat.exercises.push(exer);
+        await pat.save()
+        return res.json(exer);
+      })
+    })
   });
 });
 

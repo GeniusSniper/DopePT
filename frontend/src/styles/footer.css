@@ -3,19 +3,23 @@
     display: block;
     width: 100%;
     /* bottom: 0; */
-    background-color: teal;
+    background-color: #4169e1;
     border: 1px solid black;
 }
 
 .main {
     display: block;
+    height: 100px;
     width: 100%;
+    position: absolute;
+    bottom: 0;
 }
 
 .contact {
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
+    color: white;
 }
 
 .icon {
@@ -25,4 +29,12 @@
 .about {
     display: grid;
     place-items: center;
+}
+
+a, a:visited, a:active {
+    color: white; 
+}
+
+a:hover {
+    color: black;
 }

@@ -78,8 +78,13 @@ export const createExercise = (userId, exercise) => (dispatch) =>
     }
   );
 
-export const removeExercise = (exerciseId) => (dispatch) => {
-  return APIUtil.deleteExercise(exerciseId).then(() =>
-    dispatch(deleteEcercise(exerciseId))
-  );
-};
+export const updateExercise = (exercise) => dispatch => (
+    APIUtil.updateExercise(exercise)
+        .then(exercise => dispatch(receiveExercise(exercise)))
+)
+
+export const removeExercise = (exerciseId) => dispatch => {
+    return (
+    APIUtil.deleteExercise(exerciseId)
+        .then( () => dispatch(deleteEcercise(exerciseId)))
+)}

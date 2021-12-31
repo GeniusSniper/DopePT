@@ -14,7 +14,7 @@ module.exports = function validateExerciseInput(data) {
   }
 
   if (Validator.isEmpty(data.description)) {
-    errors.description = 'Desription field is required';
+    errors.description = 'Description field is required';
   }
 
   if (Validator.isEmpty(data.instructions)) {

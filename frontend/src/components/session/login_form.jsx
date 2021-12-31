@@ -1,6 +1,7 @@
 import React from 'react';
 import { withRouter, Link } from 'react-router-dom';
 import '../../styles/home.css'
+import Background from '../../styles/images/splash-image.jpg'
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -36,14 +37,14 @@ class LoginForm extends React.Component {
     };
     if (this.state.isClinician) {
       this.props.loginClinician(user)
-        // .then(
-        //   () => this.props.history.push('/')
-        // );
+        .then(
+          () => this.props.history.push('/main')
+        );
     } else {
       this.props.loginPatient(user)
-        // .then(
-        //   () => this.props.history.push('/')
-        // );
+        .then(
+          () => this.props.history.push('/main')
+        );
     }
   }
 
@@ -64,9 +65,15 @@ class LoginForm extends React.Component {
     };
 
     if (this.title().props.children[1] === 'Login for Clincians') {
-      this.props.loginClinician(clinician);
+      this.props.loginClinician(clinician)
+      .then(
+        () => this.props.history.push('/main')
+      );
     } else {
       this.props.loginPatient(patient)
+      .then(
+        () => this.props.history.push('/main')
+      );
     }
   }
 
@@ -124,8 +131,7 @@ class LoginForm extends React.Component {
   render() {
     return (
       <div>
-        {/* <img className='background' src={Background} alt='background'/> */}
-        {/* <div className='background'></div> */}
+        <img className='background' src={Background} alt='background'/>
         <div className="login-form-container">
           <div className='login-form'>
           <form onSubmit={this.handleSubmit}>

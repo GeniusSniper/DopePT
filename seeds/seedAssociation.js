@@ -5,7 +5,7 @@ const Exercise = require('../models/Exercise');
 const Clinician = require('../models/Clinician');
 const Patient = require('../models/Patient');
 
-seeder.connect(keys.mongoURI.toString(),() => {
+seeder.connect(keys.mongoURI,() => {
     Exercise.find().then( exer => { 
         Patient.find().then( pat => {
             Clinician.find().then( async (cli) => {

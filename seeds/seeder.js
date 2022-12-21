@@ -125,7 +125,7 @@ const data = [
 const modelsPath = ['models/Exercise.js', 'models/Clinician.js', 'models/Patient.js'];
 const models = ['Exercise', 'Clinician', 'Patient'];
 
-seeder.connect(keys.mongoURI.toString(),() => {
+seeder.connect(keys.mongoURI,() => {
     seeder.loadModels(modelsPath);
     seeder.clearModels(models, () => {
         seeder.populateModels(data, (err, suc) => {
